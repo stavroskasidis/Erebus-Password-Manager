@@ -1,4 +1,4 @@
-﻿/// <binding Clean='clean' />
+/// <binding BeforeBuild='min' Clean='clean' />
 "use strict";
 
 var gulp = require("gulp"),
@@ -12,10 +12,12 @@ var webroot = "./wwwroot/";
 var paths = {
     js: webroot + "js/**/*.js",
     minJs: webroot + "js/**/*.min.js",
+    unbundledJs: webroot + "js/unbundled/*.js",
     css: webroot + "css/**/*.css",
     minCss: webroot + "css/**/*.min.css",
     concatJsDest: webroot + "js/site.min.js",
-    concatCssDest: webroot + "css/site.min.css"
+    concatCssDest: webroot + "css/site.min.css",
+    
 };
 
 gulp.task("clean:js", function (cb) {
@@ -29,7 +31,7 @@ gulp.task("clean:css", function (cb) {
 gulp.task("clean", ["clean:js", "clean:css"]);
 
 gulp.task("min:js", function () {
-    return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
+    return gulp.src([paths.js, "!" + paths.minJs, "!" + paths.unbundledJs], { base: "." })
         .pipe(concat(paths.concatJsDest))
         .pipe(uglify())
         .pipe(gulp.dest("."));
