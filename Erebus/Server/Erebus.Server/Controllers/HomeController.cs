@@ -10,6 +10,8 @@ namespace Erebus.Server.Controllers
     {
         public IActionResult Index()
         {
+            var test = new PCLTest.Class1();
+
             return View();
         }
 
