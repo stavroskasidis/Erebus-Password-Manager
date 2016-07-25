@@ -13,7 +13,8 @@ namespace Erebus.Mobile
         {
             InitializeComponent();
 
-            PCLTest.Class1 test = new PCLTest.Class1();
+            //PCLTest.Class1 test = new PCLTest.Class1();
+            PCLTest2.Class1 test2 = new PCLTest2.Class1();
             
             MainPage = new Erebus.Mobile.MainPage();
         }

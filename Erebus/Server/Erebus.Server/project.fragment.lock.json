@@ -1,17 +1,17 @@
 {
   "version": 2,
   "exports": {
-    "PCLTest/1.0.0": {
+    "PCLTest2/1.0.0": {
       "type": "project",
-      "framework": ".NETPortable,Version=v4.5,Profile=Profile111",
+      "framework": ".NETStandard,Version=v1.3",
       "compile": {
-        "bin/Debug/PCLTest.dll": {}
+        "bin/Debug/PCLTest2.dll": {}
       },
       "runtime": {
-        "bin/Debug/PCLTest.dll": {}
+        "bin/Debug/PCLTest2.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/PCLTest.pdb": {
+        "bin/Debug/PCLTest2.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
