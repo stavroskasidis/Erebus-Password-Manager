@@ -1,6 +1,23 @@
 {
   "version": 2,
   "exports": {
+    "Erebus.Core/1.0.0": {
+      "type": "project",
+      "framework": ".NETStandard,Version=v1.3",
+      "compile": {
+        "bin/Debug/Erebus.Core.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Erebus.Core.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Erebus.Core.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
     "Erebus.Model/1.0.0": {
       "type": "project",
       "framework": ".NETStandard,Version=v1.3",

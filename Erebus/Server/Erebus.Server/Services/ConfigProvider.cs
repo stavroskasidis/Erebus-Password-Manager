@@ -20,13 +20,13 @@ namespace Erebus.Server.Services
             return new ServerConfig()
             {
                 DisableSSLRequirement = bool.Parse(this.ConfigurationRoot["ServerConfiguration:DisableSSLRequirement"]),
-                SmtpSettings = new SmtpSettings()
-                {
-                    SenderAddress = this.ConfigurationRoot["ServerConfiguration:SmtpSettings:SenderAddress"],
-                    Host = this.ConfigurationRoot["ServerConfiguration:SmtpSettings:Host"],
-                    Port = int.Parse(this.ConfigurationRoot["ServerConfiguration:SmtpSettings:Port"]),
-                    UseSSL = bool.Parse(this.ConfigurationRoot["ServerConfiguration:SmtpSettings:UseSSL"])
-                }
+                //SmtpSettings = new SmtpSettings()
+                //{
+                //    SenderAddress = this.ConfigurationRoot["ServerConfiguration:SmtpSettings:SenderAddress"],
+                //    Host = this.ConfigurationRoot["ServerConfiguration:SmtpSettings:Host"],
+                //    Port = int.Parse(this.ConfigurationRoot["ServerConfiguration:SmtpSettings:Port"]),
+                //    UseSSL = bool.Parse(this.ConfigurationRoot["ServerConfiguration:SmtpSettings:UseSSL"])
+                //}
             };
         }
     }

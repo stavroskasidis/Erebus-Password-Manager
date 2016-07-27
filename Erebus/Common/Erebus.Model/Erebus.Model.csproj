@@ -39,17 +39,11 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
-    <Compile Include="VaultFolder.cs" />
+    <Compile Include="Entry.cs" />
+    <Compile Include="Group.cs" />
     <Compile Include="PersistableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vault.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Erebus.DataAccess\Erebus.DataAccess.csproj">
-      <Project>{39da9345-a9f2-4f40-9431-d60243dcaab8}</Project>
-      <Name>Erebus.DataAccess</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

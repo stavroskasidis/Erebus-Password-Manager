@@ -1,5 +1,4 @@
-﻿using Erebus.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Erebus.Model
 {
-    public abstract class PersistableObject : IPersistableObject
+    public abstract class PersistableObject
     {
         public Guid ID { get; set; }
 
