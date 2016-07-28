@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IFileSystem.cs" />
     <Compile Include="Contracts\ISerializer.cs" />
+    <Compile Include="Contracts\IVaultFactory.cs" />
     <Compile Include="GuardClauses.cs" />
     <Compile Include="Contracts\ISymetricCryptographer.cs" />
     <Compile Include="Contracts\IPasswordGenerator.cs" />

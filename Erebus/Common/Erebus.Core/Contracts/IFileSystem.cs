@@ -11,5 +11,6 @@ namespace Erebus.Core.Contracts
         bool FileExists(string path);
         byte[] ReadAllBytes(string path);
         void WriteAllBytes(string path, byte[] data);
+        IEnumerable<string> GetDirectoryFiles(string path,string searchPattern);
     }
 }

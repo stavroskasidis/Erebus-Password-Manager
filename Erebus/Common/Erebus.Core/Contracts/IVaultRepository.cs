@@ -10,8 +10,8 @@ namespace Erebus.Core.Contracts
 {
     public interface IVaultRepository
     {
-        Vault GetVault(string vaultStorageName, SecureString masterPassword);
-        void SaveVault(string vaultStorageName, Vault vault, SecureString masterPassword);
+        Vault GetVault(string vaultName, SecureString masterPassword);
+        void SaveVault(Vault vault, SecureString masterPassword);
         IEnumerable<string> GetAllVaultNames();
     }
 }
