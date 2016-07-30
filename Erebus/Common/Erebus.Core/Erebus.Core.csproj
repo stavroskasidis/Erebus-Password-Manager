@@ -39,17 +39,21 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IClockProvider.cs" />
     <Compile Include="Contracts\IFileSystem.cs" />
     <Compile Include="Contracts\ISerializer.cs" />
     <Compile Include="Contracts\IVaultFactory.cs" />
+    <Compile Include="Contracts\IVaultHandler.cs" />
     <Compile Include="GuardClauses.cs" />
     <Compile Include="Contracts\ISymetricCryptographer.cs" />
     <Compile Include="Contracts\IPasswordGenerator.cs" />
     <Compile Include="Contracts\IVaultRepository.cs" />
     <Compile Include="Implementations\AesCryptographer.cs" />
+    <Compile Include="Implementations\ClockProvider.cs" />
     <Compile Include="Implementations\JsonSerializer.cs" />
     <Compile Include="Implementations\FileSystem.cs" />
     <Compile Include="Implementations\VaultFileRepository.cs" />
+    <Compile Include="Implementations\VaultHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecureStringExtensions.cs" />
   </ItemGroup>

@@ -32,6 +32,9 @@
                 "portable-net45+win8"
             ],
             "dependencies": {
+                "Erebus.Core": {
+                    "target": "project"
+                },
                 "Erebus.Model": {
                     "target": "project"
                 }

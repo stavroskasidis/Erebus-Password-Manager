@@ -8,11 +8,11 @@ namespace Erebus.Model
 {
     public abstract class PersistableObject
     {
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         public PersistableObject()
         {
-            ID = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
 
         public DateTime CreatedAt { get; set; }
