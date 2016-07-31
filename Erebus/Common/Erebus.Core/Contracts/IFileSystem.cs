@@ -9,6 +9,8 @@ namespace Erebus.Core.Contracts
     public interface IFileSystem
     {
         bool FileExists(string path);
+        bool DirectoryExists(string path);
+        void CreateDirectory(string path);
         byte[] ReadAllBytes(string path);
         void WriteAllBytes(string path, byte[] data);
         IEnumerable<string> GetDirectoryFiles(string path,string searchPattern);

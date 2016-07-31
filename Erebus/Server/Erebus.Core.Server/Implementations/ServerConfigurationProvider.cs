@@ -1,25 +1,27 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Erebus.Core.Server.Contracts;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Erebus.Server.Services
+namespace Erebus.Core.Server.Implementations
 {
-    public class ConfigProvider : IConfigProvider
+    public class ServerConfigurationProvider : IServerConfigurationProvider
     {
         private readonly IConfigurationRoot ConfigurationRoot;
 
-        public ConfigProvider(IConfigurationRoot configurationRoot)
+        public ServerConfigurationProvider(IConfigurationRoot configurationRoot)
         {
             this.ConfigurationRoot = configurationRoot;
         }
 
-        public ServerConfig GetConfiguration()
+        public ServerConfiguration GetConfiguration()
         {
-            return new ServerConfig()
+            return new ServerConfiguration()
             {
                 DisableSSLRequirement = bool.Parse(this.ConfigurationRoot["ServerConfiguration:DisableSSLRequirement"]),
+                VaultsFolder = this.ConfigurationRoot["ServerConfiguration:VaultsFolder"]
                 //SmtpSettings = new SmtpSettings()
                 //{
                 //    SenderAddress = this.ConfigurationRoot["ServerConfiguration:SmtpSettings:SenderAddress"],

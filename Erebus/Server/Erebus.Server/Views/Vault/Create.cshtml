@@ -1,0 +1,31 @@
+﻿@model VaultCreateViewModel
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+
+<div>
+    <p>
+        You have no vaults. Start by creating a vault.
+    </p>
+    <p>
+        WARNING: Master password can be changed but is not retrievable. If you forget it, you WILL lose access to this vault !!
+    </p>
+</div>
+
+<form asp-action="Create" asp-controller="Vault".>
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <label asp-for="VaultName"></label>
+    <input asp-for="VaultName" />
+    <span asp-validation-for="VaultName" class="text-danger"></span>
+
+    <label asp-for="MasterPassword"></label>
+    <input asp-for="MasterPassword" />
+    <span asp-validation-for="MasterPassword" class="text-danger"></span>
+
+    <label asp-for="MasterPasswordConfirm"></label>
+    <input asp-for="MasterPasswordConfirm" />
+    <span asp-validation-for="MasterPasswordConfirm" class="text-danger"></span>
+
+    <button type="submit" >@StringResources.Create</button>
+</form>

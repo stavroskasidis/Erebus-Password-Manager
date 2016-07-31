@@ -15,6 +15,8 @@ namespace Erebus.Tests.Common
     public class AesCryptographerTests
     {
         private SecureString Key;
+        private SecureString SecondKey;
+        private Mock<ISecureStringConverter> SecureStringConverterMock;
 
         [SetUp]
         public void Setup()
@@ -24,6 +26,16 @@ namespace Erebus.Tests.Common
             {
                 Key.AppendChar(c);
             }
+
+            this.SecondKey = new SecureString();
+            foreach (char c in "654321")
+            {
+                SecondKey.AppendChar(c);
+            }
+
+            SecureStringConverterMock = new Mock<ISecureStringConverter>(MockBehavior.Strict);
+            SecureStringConverterMock.Setup(mock => mock.ToString(this.Key)).Returns("123456");
+            SecureStringConverterMock.Setup(mock => mock.ToString(this.SecondKey)).Returns("654321");
         }
 
         [TearDown]
@@ -35,10 +47,41 @@ namespace Erebus.Tests.Common
 
         private AesCryptographer CreateDefault()
         {
-            var defaultInstance = new AesCryptographer();
+            var defaultInstance = new AesCryptographer(SecureStringConverterMock.Object);
 
             return defaultInstance;
         }
+
+        [Test]
+        [TestCaseSource("RoundtripCases")]
+        public void IsKeyValid_KeyIsValid_ReturnsTrue(byte[] input)
+        {
+            //Arrange
+            var sut = CreateDefault();
+
+            //Act
+            var encrypted = sut.Encrypt(input, this.Key);
+            bool isValid = sut.IsKeyValid(encrypted, this.Key);
+
+            //Assert
+            Assert.AreEqual(true, isValid);
+        }
+
+        [Test]
+        [TestCaseSource("RoundtripCases")]
+        public void IsKeyValid_KeyIsNotValid_ReturnsFalse(byte[] input)
+        {
+            //Arrange
+            var sut = CreateDefault();
+
+            //Act
+            var encrypted = sut.Encrypt(input, this.Key);
+            bool isValid = sut.IsKeyValid(encrypted, this.SecondKey);
+
+            //Assert
+            Assert.AreEqual(false, isValid);
+        }
+
 
         [Test]
         public void Decrypt_InputIsNull_ThrowsArgumentNullException()

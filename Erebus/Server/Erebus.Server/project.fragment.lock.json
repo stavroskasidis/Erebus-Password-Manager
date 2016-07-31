@@ -17,6 +17,40 @@
           "copyToOutput": true
         }
       }
+    },
+    "Erebus.Resources/1.0.0": {
+      "type": "project",
+      "framework": ".NETStandard,Version=v1.3",
+      "compile": {
+        "bin/Debug/Erebus.Resources.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Erebus.Resources.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Erebus.Resources.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "Erebus.Core/1.0.0": {
+      "type": "project",
+      "framework": ".NETStandard,Version=v1.3",
+      "compile": {
+        "bin/Debug/Erebus.Core.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Erebus.Core.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Erebus.Core.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
     }
   }
 }

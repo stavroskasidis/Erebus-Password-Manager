@@ -1,0 +1,25 @@
+﻿@model LoginIndexViewModel
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+<div>
+    <p> Select a Vault</p>
+</div>
+
+<form asp-action="Validate">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <label asp-for="SelectedVault"></label>
+    <select asp-for="SelectedVault" asp-items="Model.VaultNames.Select(x=> new SelectListItem() { Text = x, Value = x })"></select>
+
+    <label asp-for="MasterPassword"></label>
+    <input asp-for="MasterPassword" />
+    <span asp-validation-for="MasterPassword" class="text-danger"></span>
+
+
+    <button type="submit">@StringResources.Login</button>
+
+</form>
+
+

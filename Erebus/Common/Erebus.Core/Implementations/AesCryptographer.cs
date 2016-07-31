@@ -14,6 +14,14 @@ namespace Erebus.Core.Implementations
     {
         private static readonly byte[] Salt = new byte[] { 0x2a, 0xdc, 0xfa, 0x00, 0xa1, 0xed, 0x7a, 0xed, 0xc5, 0xfe, 0x07, 0xad, 0x4d, 0x08, 0x21, 0x3d };
         private static readonly int BufferSize = 1024;
+        private static readonly int Iterations = 10000;
+
+        private ISecureStringConverter SecureStringConverter;
+
+        public AesCryptographer(ISecureStringConverter secureStringConverter)
+        {
+            SecureStringConverter = secureStringConverter;
+        }
 
         public byte[] Decrypt(byte[] input, SecureString key)
         {
@@ -24,7 +32,7 @@ namespace Erebus.Core.Implementations
             // with the specified key and IV.
             using (Aes aesAlg = Aes.Create())
             {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(key.ToActualString(), Salt);
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(SecureStringConverter.ToString(key), Salt, Iterations);
                 aesAlg.Key = pdb.GetBytes(32);
                 aesAlg.IV = pdb.GetBytes(16);
 
@@ -49,6 +57,46 @@ namespace Erebus.Core.Implementations
 
         }
 
+
+        public bool IsKeyValid(byte[] input, SecureString key)
+        {
+            GuardClauses.ArgumentIsNotNull(nameof(input), input);
+            GuardClauses.ArgumentIsNotNull(nameof(key), key);
+
+            try
+            {
+                using (Aes aesAlg = Aes.Create())
+                {
+                    Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(SecureStringConverter.ToString(key), Salt, Iterations);
+                    aesAlg.Key = pdb.GetBytes(32);
+                    aesAlg.IV = pdb.GetBytes(16);
+
+                    // Create a decrytor to perform the stream transform.
+                    ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+                    // Create the streams used for decryption.
+                    using (MemoryStream msInput = new MemoryStream(input))
+                    using (CryptoStream csDecrypt = new CryptoStream(msInput, decryptor, CryptoStreamMode.Read))
+                    using (MemoryStream msOutput = new MemoryStream())
+                    {
+                        var buffer = new byte[BufferSize];
+                        var read = csDecrypt.Read(buffer, 0, buffer.Length);
+                        while (read > 0)
+                        {
+                            msOutput.Write(buffer, 0, read);
+                            read = csDecrypt.Read(buffer, 0, buffer.Length);
+                        }
+                    }
+                }
+
+                return true;
+            }
+            catch(CryptographicException)
+            {
+                return false;
+            }
+        }
+
         public byte[] Encrypt(byte[] input, SecureString key)
         {
             GuardClauses.ArgumentIsNotNull(nameof(input), input);
@@ -56,7 +104,7 @@ namespace Erebus.Core.Implementations
 
             using (Aes aesAlg = Aes.Create())
             {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(key.ToActualString(), Salt);
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(SecureStringConverter.ToString(key), Salt, Iterations);
                 aesAlg.Key = pdb.GetBytes(32);
                 aesAlg.IV = pdb.GetBytes(16);
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);

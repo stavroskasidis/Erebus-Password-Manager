@@ -10,7 +10,14 @@ namespace Erebus.Model
     {
         public string Name { get; set; }
 
-        public virtual ICollection<Group> Groups { get; set; }
-        public virtual ICollection<Entry> Entries { get; set; }
+        public List<Group> Groups { get; set; }
+        public List<Entry> Entries { get; set; }
+
+        public Group()
+        {
+            this.Id = Guid.NewGuid();
+            this.Groups = new List<Group>();
+            this.Entries = new List<Entry>();
+        }
     }
 }

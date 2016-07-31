@@ -11,5 +11,6 @@ namespace Erebus.Core.Contracts
     {
         byte[] Encrypt(byte[] input, SecureString key);
         byte[] Decrypt(byte[] input, SecureString key);
+        bool IsKeyValid(byte[] input, SecureString key);
     }
 }

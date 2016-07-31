@@ -17,6 +17,13 @@ namespace Erebus.Core.Implementations
             return File.Exists(path);
         }
 
+        public bool DirectoryExists(string path)
+        {
+            GuardClauses.ArgumentIsNotNull(nameof(path), path);
+
+            return Directory.Exists(path);
+        }
+
         public byte[] ReadAllBytes(string path)
         {
             GuardClauses.ArgumentIsNotNull(nameof(path), path);
@@ -37,7 +44,12 @@ namespace Erebus.Core.Implementations
             GuardClauses.ArgumentIsNotNull(nameof(path), path);
             GuardClauses.ArgumentIsNotNull(nameof(searchPattern), searchPattern);
 
-            return Directory.GetFiles(path, searchPattern);
+            return Directory.GetFiles(path, searchPattern).Select(filePath=> Path.GetFileName(filePath));
+        }
+
+        public void CreateDirectory(string path)
+        {
+            Directory.CreateDirectory(path);
         }
     }
 }

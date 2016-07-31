@@ -10,8 +10,15 @@ using Microsoft.Extensions.Logging;
 using Erebus.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Erebus.Server.Services;
 using Microsoft.AspNetCore.Mvc;
+using Erebus.Server.Authorization;
+using Erebus.Core.Contracts;
+using Erebus.Core.Implementations;
+using System.Security;
+using Erebus.Core.Server.Implementations;
+using Erebus.Core.Server.Contracts;
+using Erebus.Core.Server;
+using Microsoft.AspNetCore.Http;
 
 namespace Erebus.Server
 {
@@ -32,26 +39,59 @@ namespace Erebus.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var configProvider = new ConfigProvider(this.Configuration);
+            var configProvider = new ServerConfigurationProvider(this.Configuration);
 
             // Add framework services.
             services.AddMvc(options =>
             {
-                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
+                //var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                //options.Filters.Add(new AuthorizeFilter(policy));
+                
                 if (configProvider.GetConfiguration().DisableSSLRequirement == false)
                 {
                     options.Filters.Add(new RequireHttpsAttribute());
                 }
 
+                options.Filters.Add(typeof(VaultAuthorizationAttribute));
+
             });
-            
-            services.AddSingleton<IConfigProvider>(configProvider);
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.CookieName = ".Erebus";
+            });
+
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IServerConfigurationProvider>(configProvider);
+            services.AddTransient<IClockProvider, ClockProvider>();
+            services.AddTransient<IFileSystem, FileSystem>();
+            services.AddTransient<ISecureStringConverter, SecureStringConverter>();
+            services.AddTransient<ISerializer, JsonSerializer>();
+            services.AddTransient<ISymetricCryptographer, AesCryptographer>();
+            services.AddTransient<IVaultRepositoryFactory, VaultFileRepositoryFactory>();
+            services.AddTransient<IVaultHandlerFactory, VaultHandlerFactory>();
+            services.AddTransient<IVaultFactory, DefaultVaultFactory>();
+            services.AddTransient<IPasswordGenerator,PasswordGenerator>();
+            services.AddTransient<ISessionContext, SessionContext>();
+
+            services.AddSingleton<ISecureStringBinarySerializer>(factory =>
+            {
+                var serializerEncryptionKey = new SecureString();
+                string randomPassword = factory.GetRequiredService<IPasswordGenerator>().GeneratePassword(50, true,true,true);
+                var secureStringConverter = factory.GetRequiredService<ISecureStringConverter>();
+                return new SecureStringBinarySerializer(factory.GetRequiredService<ISymetricCryptographer>(),
+                                                        secureStringConverter.ToSecureString(randomPassword), 
+                                                        factory.GetRequiredService<ISecureStringConverter>());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseSession();
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 

@@ -10,6 +10,7 @@ namespace Erebus.Core.Contracts
 {
     public interface IVaultRepository
     {
+        bool IsPasswordValid(string vaultName, SecureString masterPassword);
         Vault GetVault(string vaultName, SecureString masterPassword);
         void SaveVault(Vault vault, SecureString masterPassword);
         IEnumerable<string> GetAllVaultNames();

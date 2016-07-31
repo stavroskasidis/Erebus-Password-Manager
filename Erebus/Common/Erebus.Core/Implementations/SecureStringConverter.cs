@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Erebus.Core.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -6,11 +7,12 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Erebus.Core
+namespace Erebus.Core.Implementations
 {
-    public static class SecureStringExtensions
+    public class SecureStringConverter : ISecureStringConverter
     {
-        public static string ToActualString(this SecureString secureString)
+
+        public string ToString(SecureString secureString)
         {
             IntPtr marshaledSecureString = SecureStringMarshal.SecureStringToGlobalAllocUnicode(secureString);
             string actualString = Marshal.PtrToStringUni(marshaledSecureString);
@@ -18,7 +20,7 @@ namespace Erebus.Core
             return actualString;
         }
 
-        public static SecureString ToSecureString(this string actualString)
+        public SecureString ToSecureString(string actualString)
         {
             SecureString secureString = new SecureString();
             foreach(char c in actualString)

@@ -9,11 +9,8 @@ namespace Erebus.Server.Controllers
 {
     public class HomeController : Controller
     {
-        private IVaultRepository VaultRepository;
-
-        public HomeController(IVaultRepository vaultRepository)
-        {
-            this.VaultRepository = vaultRepository;
+        public HomeController()
+        { 
         }
 
         public IActionResult Index()

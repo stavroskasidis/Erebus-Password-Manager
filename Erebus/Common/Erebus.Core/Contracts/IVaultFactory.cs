@@ -9,6 +9,6 @@ namespace Erebus.Core.Contracts
 {
     public interface IVaultFactory
     {
-        Vault CreateVault();
+        Vault CreateVault(string vaultName);
     }
 }

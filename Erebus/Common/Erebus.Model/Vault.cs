@@ -9,6 +9,12 @@ namespace Erebus.Model
     public class Vault : PersistableObject
     {
         public string Name { get; set; }
-        public virtual ICollection<Group> Groups { get; set; }
+        public List<Group> Groups { get; set; }
+
+        public Vault()
+        {
+            this.Id = Guid.NewGuid();
+            this.Groups = new List<Group>();
+        }
     }
 }

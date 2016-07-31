@@ -41,9 +41,13 @@
   <ItemGroup>
     <Compile Include="Contracts\IClockProvider.cs" />
     <Compile Include="Contracts\IFileSystem.cs" />
+    <Compile Include="Contracts\ISecureStringConverter.cs" />
+    <Compile Include="Contracts\ISecureStringBinarySerializer.cs" />
     <Compile Include="Contracts\ISerializer.cs" />
     <Compile Include="Contracts\IVaultFactory.cs" />
     <Compile Include="Contracts\IVaultHandler.cs" />
+    <Compile Include="Contracts\IVaultHandlerFactory.cs" />
+    <Compile Include="Contracts\IVaultRepositoryFactory.cs" />
     <Compile Include="GuardClauses.cs" />
     <Compile Include="Contracts\ISymetricCryptographer.cs" />
     <Compile Include="Contracts\IPasswordGenerator.cs" />
@@ -52,10 +56,14 @@
     <Compile Include="Implementations\ClockProvider.cs" />
     <Compile Include="Implementations\JsonSerializer.cs" />
     <Compile Include="Implementations\FileSystem.cs" />
+    <Compile Include="Implementations\PasswordGenerator.cs" />
+    <Compile Include="Implementations\SecureStringBinarySerializer.cs" />
+    <Compile Include="Implementations\DefaultVaultFactory.cs" />
     <Compile Include="Implementations\VaultFileRepository.cs" />
     <Compile Include="Implementations\VaultHandler.cs" />
+    <Compile Include="Implementations\VaultHandlerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecureStringExtensions.cs" />
+    <Compile Include="Implementations\SecureStringConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Erebus.Model\Erebus.Model.csproj">

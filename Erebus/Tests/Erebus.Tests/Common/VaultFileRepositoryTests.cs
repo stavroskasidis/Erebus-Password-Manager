@@ -16,6 +16,7 @@ namespace Erebus.Tests.Common
         Mock<IFileSystem> FileSystemMock;
         Mock<ISymetricCryptographer> SymetricCryptographerMock;
         Mock<ISerializer> SerializerMock;
+        Mock<IClockProvider> ClockProvider;
         string VaultStorageFolder = "Vaults";
         string VaultFileExtension = ".evf";
 
@@ -25,6 +26,7 @@ namespace Erebus.Tests.Common
             FileSystemMock = new Mock<IFileSystem>(MockBehavior.Strict);
             SymetricCryptographerMock = new Mock<ISymetricCryptographer>(MockBehavior.Strict);
             SerializerMock = new Mock<ISerializer>(MockBehavior.Strict);
+            ClockProvider = new Mock<IClockProvider>(MockBehavior.Strict);
         }
 
 
@@ -34,14 +36,16 @@ namespace Erebus.Tests.Common
                                                                 VaultStorageFolder,
                                                                 VaultFileExtension,
                                                                 SymetricCryptographerMock.Object,
-                                                                SerializerMock.Object);
+                                                                SerializerMock.Object,
+                                                                ClockProvider.Object);
+            ClockProvider.Setup(mock => mock.GetNow()).Returns(DateTime.Now);
 
             return vault;
         }
 
 
         [Test]
-        public void GetAllVaultNames_VaultFolderHas3VaultFiles_All3FilesAreReturned()
+        public void GetAllVaultNames_VaultFolderExistsAndHas3VaultFiles_All3FilesAreReturned()
         {
             //Arrange
             var sut = CreateDefault();
@@ -50,8 +54,9 @@ namespace Erebus.Tests.Common
                                                "vault3." + this.VaultFileExtension
                                              };
 
-            FileSystemMock.Setup(x => x.GetDirectoryFiles(this.VaultStorageFolder, "*" + this.VaultFileExtension))
+            FileSystemMock.Setup(mock => mock.GetDirectoryFiles(this.VaultStorageFolder, "*" + this.VaultFileExtension))
                           .Returns(expected);
+            FileSystemMock.Setup(mock => mock.DirectoryExists(this.VaultStorageFolder)).Returns(true);
 
             //Act
             var result = sut.GetAllVaultNames();
@@ -63,6 +68,26 @@ namespace Erebus.Tests.Common
             Assert.AreEqual(expected[1], result.ElementAt(1));
             Assert.AreEqual(expected[2], result.ElementAt(2));
         }
-        
+
+        [Test]
+        public void GetAllVaultNames_VaultFolderDoesNotExist_FolderIsCreated()
+        {
+            //Arrange
+            var sut = CreateDefault();
+            string[] expected = new string[] { };
+
+            FileSystemMock.Setup(mock => mock.GetDirectoryFiles(this.VaultStorageFolder, "*" + this.VaultFileExtension))
+                          .Returns(expected);
+            FileSystemMock.Setup(mock => mock.DirectoryExists(this.VaultStorageFolder)).Returns(false);
+            FileSystemMock.Setup(mock => mock.CreateDirectory(this.VaultStorageFolder));
+
+            //Act
+            var result = sut.GetAllVaultNames();
+
+            //Assert
+            Assert.AreEqual(0, result.Count());
+            FileSystemMock.Verify(mock=> mock.CreateDirectory(this.VaultStorageFolder));
+        }
+
     }
 }

@@ -13,5 +13,12 @@ namespace Erebus.Model
         public string Password { get; set; }
         public string Url { get; set; }
         public string Description { get; set; }
+
+        public Entry()
+        {
+            this.Id = Guid.NewGuid();
+        }
+
+
     }
 }

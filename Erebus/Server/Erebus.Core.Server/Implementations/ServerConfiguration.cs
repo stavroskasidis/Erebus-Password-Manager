@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Erebus.Server.Services
+namespace Erebus.Core.Server.Implementations
 {
-    public class ServerConfig
+    public class ServerConfiguration
     {
         public bool DisableSSLRequirement { get; set; }
+        public string VaultsFolder { get; set; }
         //public SmtpSettings SmtpSettings { get; set; }
     }
 

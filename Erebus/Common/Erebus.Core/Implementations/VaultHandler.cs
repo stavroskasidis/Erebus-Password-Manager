@@ -27,6 +27,25 @@ namespace Erebus.Core.Implementations
             return GetGroup(groupId, this.Vault.Groups);
         }
 
+        public void AddGroup(Guid? parentGroupId,Group group)
+        {
+            GuardClauses.ArgumentIsNotNull(nameof(group), group);
+            group.CreatedAt = this.ClockProvider.GetNow();
+            group.UpdatedAt = this.ClockProvider.GetNow();
+
+            if (parentGroupId == null)
+            {
+                Vault.Groups.Add(group);
+            }
+            else
+            {
+                var parentGroup = GetGroup(parentGroupId.Value, Vault.Groups);
+                if (parentGroup == null) throw new ArgumentException("Group not found", nameof(parentGroupId));
+                parentGroup.Groups.Add(group);
+            }
+        }
+
+
         private Group GetGroup(Guid groupId, IEnumerable<Group> groups)
         {
             if (groups == null) return null;
