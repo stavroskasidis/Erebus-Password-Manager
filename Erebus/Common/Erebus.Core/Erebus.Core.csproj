@@ -45,8 +45,8 @@
     <Compile Include="Contracts\ISecureStringBinarySerializer.cs" />
     <Compile Include="Contracts\ISerializer.cs" />
     <Compile Include="Contracts\IVaultFactory.cs" />
-    <Compile Include="Contracts\IVaultHandler.cs" />
-    <Compile Include="Contracts\IVaultHandlerFactory.cs" />
+    <Compile Include="Contracts\IVaultExplorer.cs" />
+    <Compile Include="Contracts\IVaultExplorerFactory.cs" />
     <Compile Include="Contracts\IVaultRepositoryFactory.cs" />
     <Compile Include="GuardClauses.cs" />
     <Compile Include="Contracts\ISymetricCryptographer.cs" />

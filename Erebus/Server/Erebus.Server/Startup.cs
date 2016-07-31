@@ -71,7 +71,7 @@ namespace Erebus.Server
             services.AddTransient<ISerializer, JsonSerializer>();
             services.AddTransient<ISymetricCryptographer, AesCryptographer>();
             services.AddTransient<IVaultRepositoryFactory, VaultFileRepositoryFactory>();
-            services.AddTransient<IVaultHandlerFactory, VaultHandlerFactory>();
+            services.AddTransient<IVaultExplorerFactory, VaultHandlerFactory>();
             services.AddTransient<IVaultFactory, DefaultVaultFactory>();
             services.AddTransient<IPasswordGenerator,PasswordGenerator>();
             services.AddTransient<ISessionContext, SessionContext>();
@@ -98,7 +98,7 @@ namespace Erebus.Server
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
+                //app.UseBrowserLink();
             }
             else
             {

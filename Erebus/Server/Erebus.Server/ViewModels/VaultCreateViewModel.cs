@@ -11,18 +11,18 @@ namespace Erebus.Server.ViewModels
     public class VaultCreateViewModel
     {
         [LocalizedRequired]
-        [LocalizedDisplayName(nameof(StringResources.Name))]
+        [Display(Name = nameof(StringResources.Name), ResourceType = typeof(StringResources))]
         public string VaultName { get; set; }
 
         [LocalizedRequired]
         [DataType(DataType.Password)]
-        [LocalizedDisplayName(nameof(StringResources.MasterPassword))]
+        [Display(Name = nameof(StringResources.MasterPassword), ResourceType = typeof(StringResources))]
         public string MasterPassword { get; set; }
 
         [LocalizedRequired]
         [DataType(DataType.Password)]
         [Compare(nameof(MasterPassword))]
-        [LocalizedDisplayName(nameof(StringResources.MasterPasswordConfirm))]
+        [Display(Name = nameof(StringResources.MasterPasswordConfirm), ResourceType = typeof(StringResources))]
         public string MasterPasswordConfirm { get; set; }
     }
 }

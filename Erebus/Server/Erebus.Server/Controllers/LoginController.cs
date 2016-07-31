@@ -1,6 +1,7 @@
 ﻿using Erebus.Core.Contracts;
 using Erebus.Core.Server;
 using Erebus.Core.Server.Contracts;
+using Erebus.Resources;
 using Erebus.Server.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -47,16 +48,24 @@ namespace Erebus.Server.Controllers
         public IActionResult Validate(LoginIndexViewModel model)
         {
             var repository = VaultRepositoryFactory.CreateInstance();
-            using (var masterPasswordSecure = SecureStringConverter.ToSecureString(model.MasterPassword))
+            if (ModelState.IsValid)
             {
-                if (repository.IsPasswordValid(model.SelectedVault, masterPasswordSecure))
+                using (var masterPasswordSecure = SecureStringConverter.ToSecureString(model.MasterPassword))
                 {
-                    this.SessionContext.SetCurrentVault(model.SelectedVault);
-                    this.SessionContext.SetMasterPassword(masterPasswordSecure);
-                    return RedirectToAction("Index", "Home");
+                    if (repository.IsPasswordValid(model.SelectedVault, masterPasswordSecure))
+                    {
+                        this.SessionContext.SetCurrentVault(model.SelectedVault);
+                        this.SessionContext.SetMasterPassword(masterPasswordSecure);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(nameof(model.MasterPassword), StringResources.IncorrectPassword);
+                    }
                 }
             }
 
+            model.VaultNames = repository.GetAllVaultNames();
             return View("Index", model);
         }
     }

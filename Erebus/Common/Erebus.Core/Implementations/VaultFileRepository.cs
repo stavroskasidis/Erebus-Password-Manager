@@ -89,7 +89,8 @@ namespace Erebus.Core.Implementations
                 FileSystem.CreateDirectory(VaultStorageFolder);
             }
 
-            return FileSystem.GetDirectoryFiles(VaultStorageFolder, "*" + VaultFileExtension);
+            var files = FileSystem.GetDirectoryFiles(VaultStorageFolder, "*" + VaultFileExtension);
+            return files.Select(x => Path.GetFileNameWithoutExtension(x));
         }
     }
 }

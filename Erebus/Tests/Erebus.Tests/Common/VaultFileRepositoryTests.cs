@@ -49,13 +49,15 @@ namespace Erebus.Tests.Common
         {
             //Arrange
             var sut = CreateDefault();
-            string[] expected = new string[] { "vault1." + this.VaultFileExtension,
-                                               "vault2." + this.VaultFileExtension,
-                                               "vault3." + this.VaultFileExtension
+            string[] expected = new string[] { "vault1", "vault2", "vault3" };
+            string[] files = new string[] { expected[0] + this.VaultFileExtension,
+                                            expected[1] + this.VaultFileExtension,
+                                            expected[2] + this.VaultFileExtension
                                              };
 
+
             FileSystemMock.Setup(mock => mock.GetDirectoryFiles(this.VaultStorageFolder, "*" + this.VaultFileExtension))
-                          .Returns(expected);
+                          .Returns(files);
             FileSystemMock.Setup(mock => mock.DirectoryExists(this.VaultStorageFolder)).Returns(true);
 
             //Act
@@ -86,7 +88,7 @@ namespace Erebus.Tests.Common
 
             //Assert
             Assert.AreEqual(0, result.Count());
-            FileSystemMock.Verify(mock=> mock.CreateDirectory(this.VaultStorageFolder));
+            FileSystemMock.Verify(mock => mock.CreateDirectory(this.VaultStorageFolder));
         }
 
     }

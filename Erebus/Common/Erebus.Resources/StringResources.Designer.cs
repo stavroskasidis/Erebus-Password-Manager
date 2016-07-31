@@ -62,11 +62,38 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Entry.
+        /// </summary>
+        public static string AddEntry {
+            get {
+                return ResourceManager.GetString("AddEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Group.
+        /// </summary>
+        public static string AddGroup {
+            get {
+                return ResourceManager.GetString("AddGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         public static string Create {
             get {
                 return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect password.
+        /// </summary>
+        public static string IncorrectPassword {
+            get {
+                return ResourceManager.GetString("IncorrectPassword", resourceCulture);
             }
         }
         

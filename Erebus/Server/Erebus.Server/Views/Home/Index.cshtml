@@ -1,1 +1,13 @@
 ﻿
+@section Styles{
+<link rel="stylesheet" href="~/lib/jstree/dist/themes/default/style.css"  minified-auto-switch="true"/>    
+}
+
+@section Scripts {
+    <script src="~/lib/jstree/src/jstree.js" asp-append-version="true" minified-auto-switch="true"></script>
+    <script src="~/js/home/homeIndex.js" asp-append-version="true" minified-auto-switch="true"> </script>
+}
+
+<button id="add-group-button" type="button" class="btn">@StringResources.AddGroup</button>
+<button id="add-entry-button" type="button" class="btn">@StringResources.AddEntry</button>
+<div id="vault-tree"></div>

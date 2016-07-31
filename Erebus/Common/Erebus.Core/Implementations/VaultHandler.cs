@@ -8,7 +8,7 @@ using Erebus.Model;
 
 namespace Erebus.Core.Implementations
 {
-    public class VaultHandler : IVaultHandler
+    public class VaultHandler : IVaultExplorer
     {
         private Vault Vault;
         private IClockProvider ClockProvider;

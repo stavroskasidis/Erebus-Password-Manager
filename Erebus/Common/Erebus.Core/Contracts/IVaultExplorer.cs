@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Erebus.Core.Contracts
 {
-    public interface IVaultHandler
+    public interface IVaultExplorer
     {
         Group GetGroupById(Guid groupId);
         void AddGroup(Guid? parentGroupId, Group group);
