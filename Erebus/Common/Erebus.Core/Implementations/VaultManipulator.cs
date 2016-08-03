@@ -8,12 +8,12 @@ using Erebus.Model;
 
 namespace Erebus.Core.Implementations
 {
-    public class VaultHandler : IVaultExplorer
+    public class VaultManipulator : IVaultManipulator
     {
         private Vault Vault;
         private IClockProvider ClockProvider;
 
-        public VaultHandler(Vault vault, IClockProvider clockProvider)
+        public VaultManipulator(Vault vault, IClockProvider clockProvider)
         {
             GuardClauses.ArgumentIsNotNull(nameof(vault), vault);
             GuardClauses.ArgumentIsNotNull(nameof(clockProvider), clockProvider);
@@ -43,6 +43,11 @@ namespace Erebus.Core.Implementations
                 if (parentGroup == null) throw new ArgumentException("Group not found", nameof(parentGroupId));
                 parentGroup.Groups.Add(group);
             }
+        }
+
+        public void UpdateGroup(Group group)
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -93,9 +98,15 @@ namespace Erebus.Core.Implementations
             return null;
         }
 
+        public void UpdateEntry(Entry entry)
+        {
+            throw new NotImplementedException();
+        }
+
         public Entry GetEntryById(Guid entryId)
         {
             return GetEntry(entryId, Vault.Groups);
         }
+
     }
 }

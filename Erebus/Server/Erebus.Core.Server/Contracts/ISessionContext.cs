@@ -11,8 +11,8 @@ namespace Erebus.Core.Server.Contracts
         SecureString GetMasterPassword();
         void SetMasterPassword(SecureString masterPassword);
 
-        string GetCurrentVault();
-        void SetCurrentVault(string currentVaultName);
+        string GetCurrentVaultName();
+        void SetCurrentVaultName(string currentVaultName);
 
     }
 }

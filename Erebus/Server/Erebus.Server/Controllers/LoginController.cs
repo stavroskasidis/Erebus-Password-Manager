@@ -54,9 +54,9 @@ namespace Erebus.Server.Controllers
                 {
                     if (repository.IsPasswordValid(model.SelectedVault, masterPasswordSecure))
                     {
-                        this.SessionContext.SetCurrentVault(model.SelectedVault);
+                        this.SessionContext.SetCurrentVaultName(model.SelectedVault);
                         this.SessionContext.SetMasterPassword(masterPasswordSecure);
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "VaultExplorer");
                     }
                     else
                     {

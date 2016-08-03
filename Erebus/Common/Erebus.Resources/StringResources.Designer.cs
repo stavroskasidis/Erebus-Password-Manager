@@ -80,6 +80,24 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Sub-Group.
+        /// </summary>
+        public static string AddSubGroup {
+            get {
+                return ResourceManager.GetString("AddSubGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         public static string Create {
@@ -139,6 +157,15 @@ namespace Erebus.Resources {
         public static string RequiredErrorMessage {
             get {
                 return ResourceManager.GetString("RequiredErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

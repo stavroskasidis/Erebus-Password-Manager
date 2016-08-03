@@ -123,6 +123,12 @@
   <data name="AddGroup" xml:space="preserve">
     <value>Add Group</value>
   </data>
+  <data name="AddSubGroup" xml:space="preserve">
+    <value>Add Sub-Group</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>
@@ -143,6 +149,9 @@
   </data>
   <data name="RequiredErrorMessage" xml:space="preserve">
     <value>This field is required</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="Vault" xml:space="preserve">
     <value>Vault</value>

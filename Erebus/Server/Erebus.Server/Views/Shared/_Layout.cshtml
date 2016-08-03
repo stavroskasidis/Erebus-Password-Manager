@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Erebus Password Manager</title>
 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" minified-auto-switch="true"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" minified-auto-switch="true"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" minified-auto-switch="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" minified-auto-switch="true" />
     @RenderSection("styles", required: false)
 </head>
 <body>
@@ -16,5 +16,15 @@
     <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true" minified-auto-switch="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true" minified-auto-switch="true"></script>
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(function () {
+            $(document).ajaxError(function (e, xhr, settings) {
+                if (xhr.status == 401) {
+                    location = '@Url.Action( "Index", "Login" )';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

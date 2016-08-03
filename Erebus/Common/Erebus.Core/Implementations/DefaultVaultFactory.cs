@@ -10,9 +10,9 @@ namespace Erebus.Core.Implementations
 {
     public class DefaultVaultFactory : IVaultFactory
     {
-        private IVaultExplorerFactory VaultHandlerFactory;
+        private IVaultManipulatorFactory VaultHandlerFactory;
 
-        public DefaultVaultFactory(IVaultExplorerFactory vaultHandlerFactory)
+        public DefaultVaultFactory(IVaultManipulatorFactory vaultHandlerFactory)
         {
             this.VaultHandlerFactory = vaultHandlerFactory;
         }

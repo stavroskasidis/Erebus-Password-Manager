@@ -1,0 +1,23 @@
+﻿@model GroupEditViewModel
+
+<bootstrap-modal id="modal-@Model.Id">
+    <modal-body>
+        <form id="form-@Model.Id" asp-action="AddOrEditGroup" >
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ParentId" />
+            <label asp-for="Name"></label>
+            <input asp-for="Name" />
+        </form>
+    </modal-body>
+    <modal-footer>
+        <button id="modal-@Model.Id-save-btn" type="button" class="btn btn-primary" >@StringResources.Save</button>
+        @*<button type="button" class="btn btn-default" data-dismiss="modal">@StringResources.Cancel</button>*@
+    </modal-footer>
+</bootstrap-modal>
+
+<script type="text/javascript">
+    $("#modal-@Model.Id").modal("show");
+    $("#modal-@Model.Id-save-btn").on("click", function () {
+        vaultExplorerIndex.submitModalForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId');
+    });
+</script>

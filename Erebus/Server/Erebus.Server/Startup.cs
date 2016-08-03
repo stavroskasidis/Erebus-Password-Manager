@@ -71,7 +71,7 @@ namespace Erebus.Server
             services.AddTransient<ISerializer, JsonSerializer>();
             services.AddTransient<ISymetricCryptographer, AesCryptographer>();
             services.AddTransient<IVaultRepositoryFactory, VaultFileRepositoryFactory>();
-            services.AddTransient<IVaultExplorerFactory, VaultHandlerFactory>();
+            services.AddTransient<IVaultManipulatorFactory, VaultManipulatorFactory>();
             services.AddTransient<IVaultFactory, DefaultVaultFactory>();
             services.AddTransient<IPasswordGenerator,PasswordGenerator>();
             services.AddTransient<ISessionContext, SessionContext>();
@@ -102,7 +102,7 @@ namespace Erebus.Server
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/VaultExplorer/Error");
             }
 
             app.UseStaticFiles();
@@ -112,7 +112,7 @@ namespace Erebus.Server
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=VaultExplorer}/{action=Index}/{id?}");
             });
 
         }

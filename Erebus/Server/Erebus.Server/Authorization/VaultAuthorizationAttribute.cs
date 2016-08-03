@@ -21,7 +21,16 @@ namespace Erebus.Server.Authorization
             if ((masterPassword == null || currentVault == null ) 
                 && context.Filters.Any(x=> x.GetType() == typeof(AllowAnonymousFilter)) == false)
             {
-                context.Result = new RedirectResult("/Login/Index");
+                var isAjax = context.HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest";
+                if (isAjax)
+                {
+                    context.Result = new UnauthorizedResult();
+                }
+                else
+                {
+                    context.Result = new RedirectResult("/Login/Index");
+                }
+                
             }
         }
     }

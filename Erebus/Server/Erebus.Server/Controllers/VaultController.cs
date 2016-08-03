@@ -48,7 +48,7 @@ namespace Erebus.Server.Controllers
                 var vault = this.VaultFactory.CreateVault(model.VaultName);
                 repository.SaveVault(vault, this.SecureStringConverter.ToSecureString(model.MasterPassword));
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "VaultExplorer");
             }
 
             return View(model);

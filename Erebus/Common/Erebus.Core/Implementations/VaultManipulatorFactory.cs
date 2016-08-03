@@ -8,11 +8,11 @@ using Erebus.Model;
 
 namespace Erebus.Core.Implementations
 {
-    public class VaultHandlerFactory : IVaultExplorerFactory
+    public class VaultManipulatorFactory : IVaultManipulatorFactory
     {
         private IClockProvider ClockProvider;
 
-        public VaultHandlerFactory(IClockProvider clockProvider)
+        public VaultManipulatorFactory(IClockProvider clockProvider)
         {
             GuardClauses.ArgumentIsNotNull(nameof(clockProvider), clockProvider);
 
@@ -20,9 +20,9 @@ namespace Erebus.Core.Implementations
         }
 
 
-        public IVaultExplorer CreateInstance(Vault vault)
+        public IVaultManipulator CreateInstance(Vault vault)
         {
-            return new VaultHandler(vault, ClockProvider);
+            return new VaultManipulator(vault, ClockProvider);
         }
     }
 }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Erebus.Core.Contracts
 {
-    public interface IVaultExplorerFactory
+    public interface IVaultManipulatorFactory
     {
-        IVaultExplorer CreateInstance(Vault vault);
+        IVaultManipulator CreateInstance(Vault vault);
     }
 }
