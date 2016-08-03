@@ -117,36 +117,44 @@ namespace Erebus.Server.Controllers
         {
             using (var masterPassword = SessionContext.GetMasterPassword())
             {
-                var currentVaultName = SessionContext.GetCurrentVaultName();
-                var vaultRepository = VaultRepositoryFactory.CreateInstance();
-                var vault = vaultRepository.GetVault(currentVaultName, masterPassword);
-                var vaultManipulator = this.VaultManipulatorFactory.CreateInstance(vault);
-
-                var group = vaultManipulator.GetGroupById(Guid.Parse(model.Id));
-
-                bool isNew = false;
-                if (group == null)
+                if (ModelState.IsValid)
                 {
-                    group = new Model.Group();
-                    group.Id = Guid.Parse(model.Id);
-                    isNew = true;
-                }
 
-                group.Name = model.Name;
+                    var currentVaultName = SessionContext.GetCurrentVaultName();
+                    var vaultRepository = VaultRepositoryFactory.CreateInstance();
+                    var vault = vaultRepository.GetVault(currentVaultName, masterPassword);
+                    var vaultManipulator = this.VaultManipulatorFactory.CreateInstance(vault);
 
-                if (isNew)
-                {
-                    Guid? parentId = model.ParentId == "#" ? null : (Guid?)Guid.Parse(model.ParentId);
-                    vaultManipulator.AddGroup(parentId, group);
+                    var group = vaultManipulator.GetGroupById(Guid.Parse(model.Id));
+
+                    bool isNew = false;
+                    if (group == null)
+                    {
+                        group = new Model.Group();
+                        group.Id = Guid.Parse(model.Id);
+                        isNew = true;
+                    }
+
+                    group.Name = model.Name;
+
+                    if (isNew)
+                    {
+                        Guid? parentId = model.ParentId == "#" ? null : (Guid?)Guid.Parse(model.ParentId);
+                        vaultManipulator.AddGroup(parentId, group);
+                    }
+                    else
+                    {
+                        vaultManipulator.UpdateGroup(group);
+                    }
+
+                    vaultRepository.SaveVault(vault, masterPassword);
+                    return Json(new { success = true });
+
                 }
                 else
                 {
-                    vaultManipulator.UpdateGroup(group);
+                    return Json(new { success = false });
                 }
-
-                vaultRepository.SaveVault(vault, masterPassword);
-
-                return Json(new { success = true });
             }
         }
     }

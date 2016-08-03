@@ -132,6 +132,9 @@
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>
+  <data name="EditGroup" xml:space="preserve">
+    <value>Edit Group</value>
+  </data>
   <data name="IncorrectPassword" xml:space="preserve">
     <value>Incorrect password</value>
   </data>

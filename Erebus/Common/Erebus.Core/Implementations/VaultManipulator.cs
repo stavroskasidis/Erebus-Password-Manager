@@ -47,7 +47,13 @@ namespace Erebus.Core.Implementations
 
         public void UpdateGroup(Group group)
         {
-            throw new NotImplementedException();
+            GuardClauses.ArgumentIsNotNull(nameof(group), group);
+
+            var existingGroup = GetGroup(group.Id, Vault.Groups);
+            if (existingGroup == null) throw new ArgumentException("Group not found", nameof(group));
+
+            existingGroup.UpdatedAt = this.ClockProvider.GetNow();
+            existingGroup.Name = group.Name;
         }
 
 

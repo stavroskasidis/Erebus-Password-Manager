@@ -10,10 +10,11 @@ namespace Erebus.Core.Implementations
 {
     public class FileSystem : IFileSystem
     {
+        private static object lockObject = new object();
+
         public bool FileExists(string path)
         {
             GuardClauses.ArgumentIsNotNull(nameof(path), path);
-
             return File.Exists(path);
         }
 
@@ -26,17 +27,23 @@ namespace Erebus.Core.Implementations
 
         public byte[] ReadAllBytes(string path)
         {
-            GuardClauses.ArgumentIsNotNull(nameof(path), path);
-
-            return File.ReadAllBytes(path);
+            lock (lockObject)
+            {
+                GuardClauses.ArgumentIsNotNull(nameof(path), path);
+                
+                return File.ReadAllBytes(path);
+            }
         }
 
         public void WriteAllBytes(string path, byte[] data)
         {
-            GuardClauses.ArgumentIsNotNull(nameof(path), path);
-            GuardClauses.ArgumentIsNotNull(nameof(data), data);
+            lock (lockObject)
+            {
+                GuardClauses.ArgumentIsNotNull(nameof(path), path);
+                GuardClauses.ArgumentIsNotNull(nameof(data), data);
 
-            File.WriteAllBytes(path, data);
+                File.WriteAllBytes(path, data);
+            }
         }
 
         public IEnumerable<string> GetDirectoryFiles(string path, string searchPattern)
@@ -44,12 +51,15 @@ namespace Erebus.Core.Implementations
             GuardClauses.ArgumentIsNotNull(nameof(path), path);
             GuardClauses.ArgumentIsNotNull(nameof(searchPattern), searchPattern);
 
-            return Directory.GetFiles(path, searchPattern).Select(filePath=> Path.GetFileName(filePath));
+            return Directory.GetFiles(path, searchPattern).Select(filePath => Path.GetFileName(filePath));
         }
 
         public void CreateDirectory(string path)
         {
-            Directory.CreateDirectory(path);
+            lock (lockObject)
+            {
+                Directory.CreateDirectory(path);
+            }
         }
     }
 }

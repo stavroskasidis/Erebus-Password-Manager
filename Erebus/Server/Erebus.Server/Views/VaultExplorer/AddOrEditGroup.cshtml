@@ -3,6 +3,8 @@
 <bootstrap-modal id="modal-@Model.Id">
     <modal-body>
         <form id="form-@Model.Id" asp-action="AddOrEditGroup" >
+            <div asp-validation-summary="All" class="text-danger"></div>
+
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="ParentId" />
             <label asp-for="Name"></label>
@@ -16,6 +18,7 @@
 </bootstrap-modal>
 
 <script type="text/javascript">
+    $.validator.unobtrusive.parse($('#form-@Model.Id'));
     $("#modal-@Model.Id").modal("show");
     $("#modal-@Model.Id-save-btn").on("click", function () {
         vaultExplorerIndex.submitModalForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId');

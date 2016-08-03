@@ -1,5 +1,4 @@
 ﻿using Erebus.Resources;
-using Erebus.Server.Localization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,11 +11,11 @@ namespace Erebus.Server.ViewModels
     {
         public IEnumerable<string> VaultNames { get; set; }
 
-        [LocalizedRequired]
+        [Required(ErrorMessageResourceName = nameof(StringResources.RequiredErrorMessage), ErrorMessageResourceType = typeof(StringResources))]
         [Display(Name = nameof(StringResources.Vault), ResourceType = typeof(StringResources))]
         public string SelectedVault { get; set; }
 
-        [LocalizedRequired]
+        [Required(ErrorMessageResourceName = nameof(StringResources.RequiredErrorMessage), ErrorMessageResourceType = typeof(StringResources))]
         [DataType(DataType.Password)]
         [Display(Name = nameof(StringResources.MasterPassword), ResourceType = typeof(StringResources))]
         public string MasterPassword { get; set; }

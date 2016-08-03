@@ -1,5 +1,4 @@
 ﻿using Erebus.Resources;
-using Erebus.Server.Localization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,8 +12,8 @@ namespace Erebus.Server.ViewModels
         public string Id { get; set; }
 
         public string ParentId { get; set; }
-
-        [LocalizedRequired]
+        
+        [Required(ErrorMessageResourceName = nameof(StringResources.RequiredErrorMessage), ErrorMessageResourceType = typeof(StringResources))]
         [Display(Name = nameof(StringResources.Name), ResourceType = typeof(StringResources))]
         public string Name { get; set; }
     }
