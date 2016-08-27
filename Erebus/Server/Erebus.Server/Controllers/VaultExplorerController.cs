@@ -65,14 +65,14 @@ namespace Erebus.Server.Controllers
                 if (parentId == "#")
                 {
                     //Root
-                    treeNodes.AddRange(vault.Groups.Select(group => CreateTreeNode(group.Id.ToString(), group.Name, parentId, group.Groups.Count > 0 || group.Entries.Count > 0, true, group.Entries.Count)));
+                    treeNodes.AddRange(vault.Groups.Select(group => CreateTreeNode(group.Id.ToString(), group.Name, parentId, group.Groups.Count > 0, true, group.Entries.Count)));
                 }
                 else
                 {
                     var vaultManipulator = VaultManipulatorFactory.CreateInstance(vault);
                     var parentGroup = vaultManipulator.GetGroupById(Guid.Parse(parentId));
 
-                    treeNodes.AddRange(parentGroup.Groups.Select(group => CreateTreeNode(group.Id.ToString(), group.Name, parentId, group.Groups.Count > 0 || group.Entries.Count > 0, false, group.Entries.Count)));
+                    treeNodes.AddRange(parentGroup.Groups.Select(group => CreateTreeNode(group.Id.ToString(), group.Name, parentId, group.Groups.Count > 0, false, group.Entries.Count)));
                     //treeNodes.AddRange(parentGroup.Entries.Select(entry => CreateTreeNode(entry.Id.ToString(), entry.Title, parentId, false, false, false)));
                 }
 
@@ -119,7 +119,8 @@ namespace Erebus.Server.Controllers
                     return PartialView(new GroupEditViewModel()
                     {
                         Id = Guid.NewGuid().ToString(),
-                        ParentId = parentId
+                        ParentId = parentId,
+                        ModalTitle = (parentId == "#") ? StringResources.NewGroup : StringResources.NewSubGroup
                     });
                 }
                 else
@@ -130,7 +131,8 @@ namespace Erebus.Server.Controllers
                     {
                         Id = id,
                         Name = group.Name,
-                        ParentId = parentId
+                        ParentId = parentId,
+                        ModalTitle = StringResources.GroupEdit
                     });
                 }
 
@@ -232,7 +234,8 @@ namespace Erebus.Server.Controllers
                     return PartialView(new EntryEditViewModel()
                     {
                         Id = Guid.NewGuid().ToString(),
-                        ParentId = parentId
+                        ParentId = parentId,
+                        ModalTitle = StringResources.NewEntry
                     });
                 }
                 else
@@ -247,7 +250,8 @@ namespace Erebus.Server.Controllers
                         UserName = entry.UserName,
                         Password = entry.Password,
                         Url = entry.Url,
-                        Description = entry.Description
+                        Description = entry.Description,
+                        ModalTitle = StringResources.EntryEdit
                     });
                 }
 
@@ -305,6 +309,30 @@ namespace Erebus.Server.Controllers
                     {
                         return Json(new { success = false });
                     }
+                }
+            }
+            finally
+            {
+                SyncContext.Release();
+            }
+        }
+
+        [HttpPost]
+        public JsonResult DeleteEntry(Guid id)
+        {
+            SyncContext.Lock();
+            try
+            {
+                using (var masterPassword = SessionContext.GetMasterPassword())
+                {
+                    var currentVaultName = SessionContext.GetCurrentVaultName();
+                    var vaultRepository = VaultRepositoryFactory.CreateInstance();
+                    var vault = vaultRepository.GetVault(currentVaultName, masterPassword);
+                    var vaultManipulator = this.VaultManipulatorFactory.CreateInstance(vault);
+                    vaultManipulator.DeleteEntryById(id);
+                    vaultRepository.SaveVault(vault, masterPassword);
+
+                    return Json(new { success = true });
                 }
             }
             finally

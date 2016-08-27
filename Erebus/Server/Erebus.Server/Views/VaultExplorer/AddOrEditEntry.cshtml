@@ -1,31 +1,43 @@
 ﻿@model EntryEditViewModel
 
-<bootstrap-modal id="modal-@Model.Id">
+<bootstrap-modal id="modal-@Model.Id" title="@Model.ModalTitle">
     <modal-body>
-        <form id="form-@Model.Id" asp-action="AddOrEditEntry" >
-            <div asp-validation-summary="All" class="text-danger"></div>
-
+        <form id="form-@Model.Id" asp-action="AddOrEditEntry">
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="ParentId" />
-            <label asp-for="Title"></label>
-            <input asp-for="Title" />
+            <div class="form-group">
+                <label asp-for="Title" add-metadata-classes="true"></label>
+                <span asp-validation-for="Title" class="text-danger"></span>
+                <input asp-for="Title" class="form-control" />
+            </div>
 
-            <label asp-for="UserName"></label>
-            <input asp-for="UserName" />
-            
-            <label asp-for="Password"></label>
-            <input asp-for="Password" />
+            <div class="form-group">
+                <label asp-for="UserName" add-metadata-classes="true"></label>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+                <input asp-for="UserName" class="form-control"/>
+            </div>
 
-            <label asp-for="Url"></label>
-            <input asp-for="Url" />
+            <div class="form-group">
+                <label asp-for="Password" add-metadata-classes="true"></label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <input asp-for="Password" class="form-control"/>
+            </div>
 
-            <label asp-for="Description"></label>
-            <input asp-for="Description" />
+            <div class="form-group">
+                <label asp-for="Url" add-metadata-classes="true"></label>
+                <span asp-validation-for="Url" class="text-danger"></span>
+                <input asp-for="Url" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" add-metadata-classes="true"></label>
+                <span asp-validation-for="Description" class="text-danger"></span>
+                <input asp-for="Description" class="form-control" />
+            </div>
         </form>
     </modal-body>
     <modal-footer>
-        <button id="modal-@Model.Id-save-btn" type="button" class="btn btn-primary" >@StringResources.Save</button>
-        @*<button type="button" class="btn btn-default" data-dismiss="modal">@StringResources.Cancel</button>*@
+        <button id="modal-@Model.Id-save-btn" type="button" class="btn btn-primary">@StringResources.Save</button>
     </modal-footer>
 </bootstrap-modal>
 
@@ -33,6 +45,6 @@
     $.validator.unobtrusive.parse($('#form-@Model.Id'));
     $("#modal-@Model.Id").modal("show");
     $("#modal-@Model.Id-save-btn").on("click", function () {
-        vaultExplorerIndex.submitEditForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId',true);
+        vaultExplorerIndex.submitEntryEditForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId');
     });
 </script>

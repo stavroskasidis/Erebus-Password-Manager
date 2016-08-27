@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" minified-auto-switch="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" minified-auto-switch="true" />
     @RenderSection("styles", required: false)
-</head>
-<body>
-    @RenderBody()
-
 
     <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true" minified-auto-switch="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true" minified-auto-switch="true"></script>
     @RenderSection("scripts", required: false)
+</head>
+<body>
+    @RenderBody()
 
     <script type="text/javascript">
         $(function () {
@@ -24,6 +23,9 @@
                     location = '@Url.Action( "Index", "Login" )';
                 }
             });
+
+            //Bootstrap tooltips init
+            $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 </body>

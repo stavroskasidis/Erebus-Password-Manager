@@ -55,7 +55,8 @@
     <Compile Include="Contracts\IVaultRepository.cs" />
     <Compile Include="Implementations\AesCryptographer.cs" />
     <Compile Include="Implementations\ClockProvider.cs" />
-    <Compile Include="Implementations\GroupInfo.cs" />
+    <Compile Include="Implementations\GetEntryResult.cs" />
+    <Compile Include="Implementations\GetGroupResult.cs" />
     <Compile Include="Implementations\JsonSerializer.cs" />
     <Compile Include="Implementations\FileSystem.cs" />
     <Compile Include="Implementations\PasswordGenerator.cs" />

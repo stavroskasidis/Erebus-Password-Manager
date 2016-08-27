@@ -23,3 +23,7 @@ label.required:after {
     content:"*";
     color:red;
 }
+
+.actions-column {
+    width:100px;
+}

@@ -12,6 +12,8 @@ namespace Erebus.Server.ViewModels
         public string Id { get; set; }
 
         public string ParentId { get; set; }
+
+        public string ModalTitle { get; set; }
         
         [Required(ErrorMessageResourceName = nameof(StringResources.RequiredErrorMessage), ErrorMessageResourceType = typeof(StringResources))]
         [Display(Name = nameof(StringResources.Name), ResourceType = typeof(StringResources))]

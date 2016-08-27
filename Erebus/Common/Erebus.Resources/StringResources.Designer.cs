@@ -62,6 +62,15 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        public static string Actions {
+            get {
+                return ResourceManager.GetString("Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Entry.
         /// </summary>
         public static string AddEntry {
@@ -107,6 +116,24 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Entry.
+        /// </summary>
+        public static string DeleteEntry {
+            get {
+                return ResourceManager.GetString("DeleteEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Group.
         /// </summary>
         public static string DeleteGroup {
@@ -125,11 +152,47 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Entry.
+        /// </summary>
+        public static string EditEntry {
+            get {
+                return ResourceManager.GetString("EditEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Group.
         /// </summary>
         public static string EditGroup {
             get {
                 return ResourceManager.GetString("EditGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entry Edit.
+        /// </summary>
+        public static string EntryEdit {
+            get {
+                return ResourceManager.GetString("EntryEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group Edit.
+        /// </summary>
+        public static string GroupEdit {
+            get {
+                return ResourceManager.GetString("GroupEdit", resourceCulture);
             }
         }
         
@@ -175,6 +238,33 @@ namespace Erebus.Resources {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Entry.
+        /// </summary>
+        public static string NewEntry {
+            get {
+                return ResourceManager.GetString("NewEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Group.
+        /// </summary>
+        public static string NewGroup {
+            get {
+                return ResourceManager.GetString("NewGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Sub-Group.
+        /// </summary>
+        public static string NewSubGroup {
+            get {
+                return ResourceManager.GetString("NewSubGroup", resourceCulture);
             }
         }
         

@@ -32,21 +32,28 @@
         $('#' + treeId).on('changed.jstree', vaultExplorerIndex.onTreeNodeChange);
     };
 
+    vaultExplorerIndex.enableButtons = function () {
+        $("#" + addSubGroupButtonId).prop("disabled", false);
+        $("#" + editGroupButtonId).prop("disabled", false);
+        $("#" + deleteGroupButtonId).prop("disabled", false);
+        $("#" + addEntryButtonId).prop("disabled", false);
+    };
+
+    vaultExplorerIndex.disableButtons = function () {
+        $("#" + addSubGroupButtonId).prop("disabled", true);
+        $("#" + editGroupButtonId).prop("disabled", true);
+        $("#" + deleteGroupButtonId).prop("disabled", true);
+        $("#" + addEntryButtonId).prop("disabled", true);
+    };
+
     vaultExplorerIndex.onTreeNodeChange = function (e, data) {
         if (data.action === "select_node") {
             if (data.node) {
-                $("#" + addSubGroupButtonId).prop("disabled", false);
-                $("#" + editGroupButtonId).prop("disabled", false);
-                $("#" + deleteGroupButtonId).prop("disabled", false);
-                $("#" + addEntryButtonId).prop("disabled", false);
-
+                vaultExplorerIndex.enableButtons();
                 vaultExplorerIndex.loadGroupEntries(data.node.id);
             }
             else {
-                $("#" + addSubGroupButtonId).prop("disabled", true);
-                $("#" + editGroupButtonId).prop("disabled", true);
-                $("#" + deleteGroupButtonId).prop("disabled", true);
-                $("#" + addEntryButtonId).prop("disabled", true);
+                vaultExplorerIndex.disableButtons();
             }
         }
     };
@@ -149,14 +156,63 @@
         }
     };
 
-    vaultExplorerIndex.refreshNode = function (nodeId) {
+
+    vaultExplorerIndex.editEntry = function (entryId) {
+        var selectedNodes = $("#" + treeId).jstree().get_selected(true);
+        if (selectedNodes.length === 1) {
+            var node = selectedNodes[0];
+
+            $.ajax({
+                url: "/VaultExplorer/AddOrEditEntry",
+                method: "GET",
+                data: {
+                    id: entryId,
+                    parentId: node.id
+                }
+            }).done(function (html) {
+                $("body").append(html);
+            });
+        }
+    };
+
+    vaultExplorerIndex.deleteEntry = function (entryId) {
+
+        if (confirm("Entry will be deleted. Are you sure?")) {
+
+            $.ajax({
+                url: "/VaultExplorer/DeleteEntry",
+                method: "POST",
+                data: {
+                    id: entryId
+                }
+            })
+            .done(function () {
+                var selectedNodes = $("#" + treeId).jstree().get_selected(true);
+                if (selectedNodes.length === 1) {
+                    var node = selectedNodes[0];
+                    vaultExplorerIndex.refreshNode(node.parent, node.id);
+                    vaultExplorerIndex.loadGroupEntries(node.id);
+                }
+            });
+        }
+    };
+
+
+    vaultExplorerIndex.refreshNode = function (nodeId, afterRefreshSelectId) {
         var tree = $("#" + treeId).jstree();
         var node = tree.get_node(nodeId);
-        var parentNode = tree.get_node(node.parent);
-        tree.load_node(node);
+        tree.load_node(node, function () {
+            if (afterRefreshSelectId) {
+                tree.select_node(afterRefreshSelectId, true);
+                vaultExplorerIndex.enableButtons();
+            } else {
+                if (!tree.get_selected().length) {
+                    vaultExplorerIndex.disableButtons();
+                }
+            }
+
+        });
         tree.open_node(node);
-        tree.load_node(parentNode);
-        tree.open_node(parentNode);
     };
 
     //vaultExplorerIndex.openNode = function (nodeId) {
@@ -168,7 +224,31 @@
     //    $("#" + treeId).jstree().refresh()
     //};
 
-    vaultExplorerIndex.submitEditForm = function (formId, modalId, groupId, refreshEntries) {
+    vaultExplorerIndex.submitGroupEditForm = function (formId, modalId, parentNodeId) {
+        $("#" + formId).submit(function (e) {
+            if ($(this).valid()) {
+                var postData = $(this).serializeArray();
+                var formURL = $(this).attr("action");
+
+                $.ajax({
+                    url: formURL,
+                    type: "POST",
+                    data: postData,
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.success) {
+                            vaultExplorerIndex.closeModal(modalId);
+                            vaultExplorerIndex.refreshNode(parentNodeId);
+                        }
+                    }
+                });
+            }
+            e.preventDefault();
+        });
+
+        $("#" + formId).submit();
+    };
+
+    vaultExplorerIndex.submitEntryEditForm = function (formId, modalId, groupId) {
         $("#" + formId).submit(function (e) {
             if ($(this).valid()) {
                 var postData = $(this).serializeArray();
@@ -183,10 +263,8 @@
                             vaultExplorerIndex.closeModal(modalId);
                             var tree = $("#" + treeId).jstree();
                             var node = tree.get_node(groupId);
-                            vaultExplorerIndex.refreshNode(node.parent);
-                            if (refreshEntries) {
-                                vaultExplorerIndex.loadGroupEntries(groupId);
-                            }
+                            vaultExplorerIndex.refreshNode(node.parent, node.id);
+                            vaultExplorerIndex.loadGroupEntries(groupId);
                         }
                     }
                 });

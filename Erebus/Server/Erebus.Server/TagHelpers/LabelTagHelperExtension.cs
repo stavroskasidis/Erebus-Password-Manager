@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Erebus.Server.TagHelpers
 {
@@ -16,10 +17,15 @@ namespace Erebus.Server.TagHelpers
         [HtmlAttributeName(AddMetadataClassesAttribute)]
         public bool? AddMetadataClasses { get; set; }
 
+        [HtmlAttributeNotBound]
+        [ViewContext]
+        public ViewContext ViewContext { get; set; }
+
         public override int Order
         {
             get
             {
+
                 return int.MinValue;
             }
         }
@@ -28,10 +34,17 @@ namespace Erebus.Server.TagHelpers
         {
             base.Process(context, output);
 
-            if(AddMetadataClasses == true)
+            if (AddMetadataClasses == true)
             {
-                var classAttribute = output.Attributes["class"];
-                output.Attributes.SetAttribute("class", classAttribute == null ? "required" : classAttribute.Value + " required");
+                var modelExpression = context.AllAttributes["asp-for"];
+                if (modelExpression != null)
+                {
+                    if ((modelExpression.Value as ModelExpression).ModelExplorer.Metadata.IsRequired)
+                    {
+                        var classAttribute = output.Attributes["class"];
+                        output.Attributes.SetAttribute("class", classAttribute == null ? "required" : classAttribute.Value + " required");
+                    }
+                }
             }
         }
     }

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
   <data name="AddEntry" xml:space="preserve">
     <value>Add Entry</value>
   </data>
@@ -132,14 +135,32 @@
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteEntry" xml:space="preserve">
+    <value>Delete Entry</value>
+  </data>
   <data name="DeleteGroup" xml:space="preserve">
     <value>Delete Group</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditEntry" xml:space="preserve">
+    <value>Edit Entry</value>
+  </data>
   <data name="EditGroup" xml:space="preserve">
     <value>Edit Group</value>
+  </data>
+  <data name="EntryEdit" xml:space="preserve">
+    <value>Entry Edit</value>
+  </data>
+  <data name="GroupEdit" xml:space="preserve">
+    <value>Group Edit</value>
   </data>
   <data name="IncorrectPassword" xml:space="preserve">
     <value>Incorrect password</value>
@@ -155,6 +176,15 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="NewEntry" xml:space="preserve">
+    <value>New Entry</value>
+  </data>
+  <data name="NewGroup" xml:space="preserve">
+    <value>New Group</value>
+  </data>
+  <data name="NewSubGroup" xml:space="preserve">
+    <value>New Sub-Group</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>

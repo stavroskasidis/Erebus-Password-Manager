@@ -13,6 +13,8 @@ namespace Erebus.Server.ViewModels
 
         public string ParentId { get; set; }
 
+        public string ModalTitle { get; set; }
+
         [Required(ErrorMessageResourceName = nameof(StringResources.RequiredErrorMessage), ErrorMessageResourceType = typeof(StringResources))]
         [Display(Name = nameof(StringResources.Title), ResourceType = typeof(StringResources))]
         public string Title { get; set; }

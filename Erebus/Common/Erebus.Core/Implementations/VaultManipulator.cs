@@ -97,20 +97,21 @@ namespace Erebus.Core.Implementations
 
         public Entry GetEntryById(Guid entryId)
         {
-            return GetEntry(entryId, Vault.Groups);
+            var result = GetEntry(entryId, Vault);
+            if (result == null) return null;
+            return result.Entry;
         }
 
-        private Entry GetEntry(Guid entryId, IEnumerable<Group> groups)
+        private GetEntryResult GetEntry(Guid entryId, IGroupContainer groupContainer)
         {
-            if (groups == null) return null;
-
-            var foundEntry = groups.SelectMany(x => x.Entries).FirstOrDefault(x => x.Id == entryId);
-            if (foundEntry != null) return foundEntry;
-
-            foreach (var group in groups)
+            if (groupContainer.Groups == null) return null;
+            foreach (var group in groupContainer.Groups)
             {
-                foundEntry = GetEntry(entryId, group.Groups);
-                if (foundEntry != null) return foundEntry;
+                var foundEntry = group.Entries.FirstOrDefault(x => x.Id == entryId);
+                if (foundEntry != null) return new GetEntryResult(foundEntry, group);
+
+                var result = GetEntry(entryId, group);
+                if (result != null) return result;
             }
 
             return null;
@@ -118,12 +119,27 @@ namespace Erebus.Core.Implementations
 
         public void UpdateEntry(Entry entry)
         {
-            throw new NotImplementedException();
+            GuardClauses.ArgumentIsNotNull(nameof(entry), entry);
+
+            var result = GetEntry(entry.Id, Vault);
+            if (result == null) throw new ArgumentException("Entry not found", nameof(entry));
+
+            var foundEntry = result.Entry;
+
+            foundEntry.UpdatedAt = this.ClockProvider.GetNow();
+            foundEntry.Title = entry.Title;
+            foundEntry.UserName = entry.UserName;
+            foundEntry.Password = entry.Password;
+            foundEntry.Url = entry.Url;
+            foundEntry.Description = entry.Description;
+
         }
 
         public void DeleteEntryById(Guid entryId)
         {
-            throw new NotImplementedException();
+            var result = this.GetEntry(entryId, Vault);
+            if (result == null) throw new ArgumentException("Entry not found", nameof(entryId));
+            result.Parent.Entries.Remove(result.Entry);
         }
     }
 }
