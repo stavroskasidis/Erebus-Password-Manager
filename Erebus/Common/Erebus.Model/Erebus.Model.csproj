@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Entry.cs" />
     <Compile Include="Group.cs" />
+    <Compile Include="IGroupContainer.cs" />
     <Compile Include="PersistableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vault.cs" />

@@ -10,8 +10,6 @@ namespace Erebus.Core.Implementations
 {
     public class FileSystem : IFileSystem
     {
-        private static object lockObject = new object();
-
         public bool FileExists(string path)
         {
             GuardClauses.ArgumentIsNotNull(nameof(path), path);
@@ -27,23 +25,17 @@ namespace Erebus.Core.Implementations
 
         public byte[] ReadAllBytes(string path)
         {
-            lock (lockObject)
-            {
-                GuardClauses.ArgumentIsNotNull(nameof(path), path);
-                
-                return File.ReadAllBytes(path);
-            }
+            GuardClauses.ArgumentIsNotNull(nameof(path), path);
+
+            return File.ReadAllBytes(path);
         }
 
         public void WriteAllBytes(string path, byte[] data)
         {
-            lock (lockObject)
-            {
-                GuardClauses.ArgumentIsNotNull(nameof(path), path);
-                GuardClauses.ArgumentIsNotNull(nameof(data), data);
+            GuardClauses.ArgumentIsNotNull(nameof(path), path);
+            GuardClauses.ArgumentIsNotNull(nameof(data), data);
 
-                File.WriteAllBytes(path, data);
-            }
+            File.WriteAllBytes(path, data);
         }
 
         public IEnumerable<string> GetDirectoryFiles(string path, string searchPattern)
@@ -56,10 +48,7 @@ namespace Erebus.Core.Implementations
 
         public void CreateDirectory(string path)
         {
-            lock (lockObject)
-            {
-                Directory.CreateDirectory(path);
-            }
+            Directory.CreateDirectory(path);
         }
     }
 }

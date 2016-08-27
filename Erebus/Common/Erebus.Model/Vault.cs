@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Erebus.Model
 {
-    public class Vault : PersistableObject
+    public class Vault : PersistableObject, IGroupContainer
     {
         public string Name { get; set; }
         public List<Group> Groups { get; set; }

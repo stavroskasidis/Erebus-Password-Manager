@@ -39,6 +39,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\ISyncContext.cs" />
     <Compile Include="Contracts\IClockProvider.cs" />
     <Compile Include="Contracts\IFileSystem.cs" />
     <Compile Include="Contracts\ISecureStringConverter.cs" />
@@ -54,11 +55,13 @@
     <Compile Include="Contracts\IVaultRepository.cs" />
     <Compile Include="Implementations\AesCryptographer.cs" />
     <Compile Include="Implementations\ClockProvider.cs" />
+    <Compile Include="Implementations\GroupInfo.cs" />
     <Compile Include="Implementations\JsonSerializer.cs" />
     <Compile Include="Implementations\FileSystem.cs" />
     <Compile Include="Implementations\PasswordGenerator.cs" />
     <Compile Include="Implementations\SecureStringBinarySerializer.cs" />
     <Compile Include="Implementations\DefaultVaultFactory.cs" />
+    <Compile Include="Implementations\SyncContext.cs" />
     <Compile Include="Implementations\VaultFileRepository.cs" />
     <Compile Include="Implementations\VaultManipulator.cs" />
     <Compile Include="Implementations\VaultManipulatorFactory.cs" />

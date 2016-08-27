@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Erebus.Model
 {
-    public class Group : PersistableObject
+    public class Group : PersistableObject, IGroupContainer
     {
         public string Name { get; set; }
 

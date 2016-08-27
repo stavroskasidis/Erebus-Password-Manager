@@ -1,0 +1,38 @@
+﻿@model EntryEditViewModel
+
+<bootstrap-modal id="modal-@Model.Id">
+    <modal-body>
+        <form id="form-@Model.Id" asp-action="AddOrEditEntry" >
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ParentId" />
+            <label asp-for="Title"></label>
+            <input asp-for="Title" />
+
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" />
+            
+            <label asp-for="Password"></label>
+            <input asp-for="Password" />
+
+            <label asp-for="Url"></label>
+            <input asp-for="Url" />
+
+            <label asp-for="Description"></label>
+            <input asp-for="Description" />
+        </form>
+    </modal-body>
+    <modal-footer>
+        <button id="modal-@Model.Id-save-btn" type="button" class="btn btn-primary" >@StringResources.Save</button>
+        @*<button type="button" class="btn btn-default" data-dismiss="modal">@StringResources.Cancel</button>*@
+    </modal-footer>
+</bootstrap-modal>
+
+<script type="text/javascript">
+    $.validator.unobtrusive.parse($('#form-@Model.Id'));
+    $("#modal-@Model.Id").modal("show");
+    $("#modal-@Model.Id-save-btn").on("click", function () {
+        vaultExplorerIndex.submitEditForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId',true);
+    });
+</script>

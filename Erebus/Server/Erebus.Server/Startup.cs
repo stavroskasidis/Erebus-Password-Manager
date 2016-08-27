@@ -75,6 +75,7 @@ namespace Erebus.Server
             services.AddTransient<IVaultFactory, DefaultVaultFactory>();
             services.AddTransient<IPasswordGenerator,PasswordGenerator>();
             services.AddTransient<ISessionContext, SessionContext>();
+            services.AddSingleton<ISyncContext, SyncContext>();
 
             services.AddSingleton<ISecureStringBinarySerializer>(factory =>
             {

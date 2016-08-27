@@ -24,10 +24,12 @@ namespace Erebus.Core.Implementations
 
         public Group GetGroupById(Guid groupId)
         {
-            return GetGroup(groupId, this.Vault.Groups);
+            var result = GetGroup(groupId, this.Vault);
+            if (result == null) return null;
+            return result.Group;
         }
 
-        public void AddGroup(Guid? parentGroupId,Group group)
+        public void AddGroup(Guid? parentGroupId, Group group)
         {
             GuardClauses.ArgumentIsNotNull(nameof(group), group);
             group.CreatedAt = this.ClockProvider.GetNow();
@@ -39,9 +41,9 @@ namespace Erebus.Core.Implementations
             }
             else
             {
-                var parentGroup = GetGroup(parentGroupId.Value, Vault.Groups);
-                if (parentGroup == null) throw new ArgumentException("Group not found", nameof(parentGroupId));
-                parentGroup.Groups.Add(group);
+                var getParentResult = GetGroup(parentGroupId.Value, Vault);
+                if (getParentResult == null) throw new ArgumentException("Group not found", nameof(parentGroupId));
+                getParentResult.Group.Groups.Add(group);
             }
         }
 
@@ -49,50 +51,60 @@ namespace Erebus.Core.Implementations
         {
             GuardClauses.ArgumentIsNotNull(nameof(group), group);
 
-            var existingGroup = GetGroup(group.Id, Vault.Groups);
-            if (existingGroup == null) throw new ArgumentException("Group not found", nameof(group));
+            var result = GetGroup(group.Id, Vault);
+            if (result == null) throw new ArgumentException("Group not found", nameof(group));
 
-            existingGroup.UpdatedAt = this.ClockProvider.GetNow();
-            existingGroup.Name = group.Name;
+            result.Group.UpdatedAt = this.ClockProvider.GetNow();
+            result.Group.Name = group.Name;
         }
 
 
-        private Group GetGroup(Guid groupId, IEnumerable<Group> groups)
+        private GetGroupResult GetGroup(Guid groupId, IGroupContainer parent)
         {
-            if (groups == null) return null;
+            if (parent.Groups == null) return null;
 
-            var foundGroup = groups.FirstOrDefault(x => x.Id == groupId);
-            if (foundGroup != null) return foundGroup;
+            var foundGroup = parent.Groups.FirstOrDefault(x => x.Id == groupId);
+            if (foundGroup != null) return new GetGroupResult(foundGroup, parent);
 
-            foreach (var group in groups)
+            foreach (var group in parent.Groups)
             {
-                foundGroup = GetGroup(groupId, group.Groups);
-                if (foundGroup != null) return foundGroup;
+                var result = GetGroup(groupId, group);
+                if (result != null) return result;
             }
 
             return null;
         }
 
+        public void DeleteGroupById(Guid groupId)
+        {
+            var result = this.GetGroup(groupId, Vault);
+            if (result == null) throw new ArgumentException("Group not found", nameof(groupId));
+            result.Parent.Groups.Remove(result.Group);
+        }
 
         public void AddEntry(Guid groupId, Entry entry)
         {
             GuardClauses.ArgumentIsNotNull(nameof(entry), entry);
 
-            var group = GetGroup(groupId, Vault.Groups);
-            if (group == null) throw new ArgumentException("Group not found", nameof(groupId));
+            var result = GetGroup(groupId, Vault);
+            if (result == null) throw new ArgumentException("Group not found", nameof(groupId));
 
             entry.CreatedAt = this.ClockProvider.GetNow();
             entry.UpdatedAt = this.ClockProvider.GetNow();
-            group.Entries.Add(entry);
+            result.Group.Entries.Add(entry);
 
         }
 
+        public Entry GetEntryById(Guid entryId)
+        {
+            return GetEntry(entryId, Vault.Groups);
+        }
 
         private Entry GetEntry(Guid entryId, IEnumerable<Group> groups)
         {
             if (groups == null) return null;
 
-            var foundEntry = groups.SelectMany(x=> x.Entries).FirstOrDefault(x => x.Id == entryId);
+            var foundEntry = groups.SelectMany(x => x.Entries).FirstOrDefault(x => x.Id == entryId);
             if (foundEntry != null) return foundEntry;
 
             foreach (var group in groups)
@@ -109,10 +121,9 @@ namespace Erebus.Core.Implementations
             throw new NotImplementedException();
         }
 
-        public Entry GetEntryById(Guid entryId)
+        public void DeleteEntryById(Guid entryId)
         {
-            return GetEntry(entryId, Vault.Groups);
+            throw new NotImplementedException();
         }
-
     }
 }
