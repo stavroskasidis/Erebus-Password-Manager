@@ -107,6 +107,15 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy.
+        /// </summary>
+        public static string Copy {
+            get {
+                return ResourceManager.GetString("Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         public static string Create {
@@ -278,7 +287,7 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This field is required.
+        ///   Looks up a localized string similar to &apos;{0}&apos; is required.
         /// </summary>
         public static string RequiredErrorMessage {
             get {
@@ -292,6 +301,15 @@ namespace Erebus.Resources {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show/Hide.
+        /// </summary>
+        public static string ShowHide {
+            get {
+                return ResourceManager.GetString("ShowHide", resourceCulture);
             }
         }
         
@@ -332,11 +350,38 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vault Creation.
+        /// </summary>
+        public static string VaultCreation {
+            get {
+                return ResourceManager.GetString("VaultCreation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Master password can be changed but is NOT retrievable. If you forget it, you WILL lose access to this vault !!.
+        /// </summary>
+        public static string VaultCreationMasterPasswordWarning {
+            get {
+                return ResourceManager.GetString("VaultCreationMasterPasswordWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vault name already exists. Please choose a different name.
         /// </summary>
         public static string VaultNameAlreadyExists {
             get {
                 return ResourceManager.GetString("VaultNameAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
             }
         }
     }

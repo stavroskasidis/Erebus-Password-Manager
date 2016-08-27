@@ -3,16 +3,7 @@
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
 
-<div>
-    <p>
-        You have no vaults. Start by creating a vault.
-    </p>
-    <p>
-        WARNING: Master password can be changed but is not retrievable. If you forget it, you WILL lose access to this vault !!
-    </p>
-</div>
-
-<form asp-action="Create" asp-controller="Vault".>
+@*<form asp-action="Create" asp-controller="Vault".>
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <label asp-for="VaultName"></label>
@@ -25,4 +16,60 @@
     <input asp-for="MasterPasswordConfirm" />
 
     <button type="submit" >@StringResources.Create</button>
-</form>
+</form>*@
+
+
+<div class="container">
+    <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">@StringResources.VaultCreation</div>
+            </div>
+
+            <div style="padding-top:30px" class="panel-body">
+                <form class="form-horizontal" role="form" asp-action="Create" >
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-folder-open"></i></span>
+                        <input asp-for="VaultName" class="form-control" placeholder="@StringResources.Name"/>
+                    </div>
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" class="form-control" asp-for="MasterPassword" placeholder="@StringResources.MasterPassword">
+                    </div>
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" class="form-control" asp-for="MasterPasswordConfirm" placeholder="@StringResources.MasterPasswordConfirm">
+                    </div>
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    
+                    
+                    @*<p class="bg-warning">@StringResources.VaultCreationMasterPasswordWarning</p>*@
+                    <div style="margin-top:10px" class="form-group">
+                        <!-- Button -->
+                        <div class="col-sm-6 controls col-md-offset-5">
+                            <button type="submit" class="btn btn-success">@StringResources.Create</button>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><span class="glyphicon glyphicon-alert"></span> @StringResources.Warning</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h5>@StringResources.VaultCreationMasterPasswordWarning</h5>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

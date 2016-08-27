@@ -132,6 +132,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>
@@ -190,10 +193,13 @@
     <value>Password</value>
   </data>
   <data name="RequiredErrorMessage" xml:space="preserve">
-    <value>This field is required</value>
+    <value>'{0}' is required</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="ShowHide" xml:space="preserve">
+    <value>Show/Hide</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
@@ -207,7 +213,16 @@
   <data name="Vault" xml:space="preserve">
     <value>Vault</value>
   </data>
+  <data name="VaultCreation" xml:space="preserve">
+    <value>Vault Creation</value>
+  </data>
+  <data name="VaultCreationMasterPasswordWarning" xml:space="preserve">
+    <value>Master password can be changed but is NOT retrievable. If you forget it, you WILL lose access to this vault !!</value>
+  </data>
   <data name="VaultNameAlreadyExists" xml:space="preserve">
     <value>Vault name already exists. Please choose a different name</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
   </data>
 </root>

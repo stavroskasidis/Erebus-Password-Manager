@@ -20,7 +20,21 @@
             <div class="form-group">
                 <label asp-for="Password" add-metadata-classes="true"></label>
                 <span asp-validation-for="Password" class="text-danger"></span>
-                <input asp-for="Password" class="form-control"/>
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <input asp-for="Password" value="@Model.Password" class="form-control" />
+                    </div>
+                    <div class="col-md-2 padding-reset">
+                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@StringResources.Copy">
+                            <span class="glyphicon glyphicon-copy"></span>
+                        </button>
+                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@StringResources.ShowHide">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </button>
+                    </div>
+                </div>
+
             </div>
 
             <div class="form-group">
@@ -43,7 +57,7 @@
 
 <script type="text/javascript">
     $.validator.unobtrusive.parse($('#form-@Model.Id'));
-    $("#modal-@Model.Id").modal("show");
+    $("#modal-@Model.Id").modal({ backdrop: 'static', keyboard: false });
     $("#modal-@Model.Id-save-btn").on("click", function () {
         vaultExplorerIndex.submitEntryEditForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId');
     });

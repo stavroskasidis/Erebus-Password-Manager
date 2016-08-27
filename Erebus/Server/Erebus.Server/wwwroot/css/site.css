@@ -2,28 +2,33 @@
     width: 100%;
     overflow: hidden; /* will contain if #first is longer than #second */
 }
+
 .vault-explorer-tree-wrapper {
     width: 400px;
-    
-    float:left; /* add this */
+    float: left; /* add this */
 }
+
 .vault-explorer-entries-grid {
     overflow: hidden; /* if you don't want #second to wrap below #first */
 }
 
 .button-glyphicon {
-    margin-right: 10px
+    margin-right: 10px;
 }
 
 .table-fixed {
-    table-layout:fixed;
+    table-layout: fixed;
 }
 
 label.required:after {
-    content:"*";
-    color:red;
+    content: "*";
+    color: red;
 }
 
 .actions-column {
-    width:100px;
+    width: 100px;
+}
+
+.padding-reset {
+    padding: 0px;
 }

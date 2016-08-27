@@ -20,7 +20,7 @@
 
 <script type="text/javascript">
     $.validator.unobtrusive.parse($('#form-@Model.Id'));
-    $("#modal-@Model.Id").modal("show");
+    $("#modal-@Model.Id").modal({ backdrop: 'static', keyboard: false });
     $("#modal-@Model.Id-save-btn").on("click", function () {
         vaultExplorerIndex.submitGroupEditForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId');
     });

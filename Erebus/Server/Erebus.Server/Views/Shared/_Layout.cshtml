@@ -11,10 +11,13 @@
 
     <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true" minified-auto-switch="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true" minified-auto-switch="true"></script>
+    <script src="~/lib/clipboard/dist/clipboard.js" asp-append-version="true" minified-auto-switch="true"></script>
     @RenderSection("scripts", required: false)
 </head>
 <body>
-    @RenderBody()
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
 
     <script type="text/javascript">
         $(function () {
@@ -25,7 +28,9 @@
             });
 
             //Bootstrap tooltips init
-            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="tooltip"]').tooltip({
+                trigger: 'hover'
+            });
         });
     </script>
 </body>
