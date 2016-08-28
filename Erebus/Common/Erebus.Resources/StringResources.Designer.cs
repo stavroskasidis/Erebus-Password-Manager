@@ -197,6 +197,33 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate.
+        /// </summary>
+        public static string Generate {
+            get {
+                return ResourceManager.GetString("Generate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generated Password.
+        /// </summary>
+        public static string GeneratedPassword {
+            get {
+                return ResourceManager.GetString("GeneratedPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate Password.
+        /// </summary>
+        public static string GeneratePassword {
+            get {
+                return ResourceManager.GetString("GeneratePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group Edit.
         /// </summary>
         public static string GroupEdit {
@@ -206,11 +233,56 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Include Digits (0, 1, 2, ..).
+        /// </summary>
+        public static string IncludeDigits {
+            get {
+                return ResourceManager.GetString("IncludeDigits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include lower-case ( a, b, c, ..).
+        /// </summary>
+        public static string IncludeLowerCase {
+            get {
+                return ResourceManager.GetString("IncludeLowerCase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include Symbols (!, @, #, ..).
+        /// </summary>
+        public static string IncludeSymbols {
+            get {
+                return ResourceManager.GetString("IncludeSymbols", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include upper-case (A, B, C, ..).
+        /// </summary>
+        public static string IncludeUpperCase {
+            get {
+                return ResourceManager.GetString("IncludeUpperCase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect password.
         /// </summary>
         public static string IncorrectPassword {
             get {
                 return ResourceManager.GetString("IncorrectPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Input.
+        /// </summary>
+        public static string InvalidInput {
+            get {
+                return ResourceManager.GetString("InvalidInput", resourceCulture);
             }
         }
         
@@ -238,6 +310,15 @@ namespace Erebus.Resources {
         public static string MasterPasswordConfirm {
             get {
                 return ResourceManager.GetString("MasterPasswordConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum password length is 4.
+        /// </summary>
+        public static string MinimumPasswordLengthWarning {
+            get {
+                return ResourceManager.GetString("MinimumPasswordLengthWarning", resourceCulture);
             }
         }
         
@@ -278,11 +359,29 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password Length.
+        /// </summary>
+        public static string PasswordLength {
+            get {
+                return ResourceManager.GetString("PasswordLength", resourceCulture);
             }
         }
         

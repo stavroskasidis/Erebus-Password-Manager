@@ -162,11 +162,35 @@
   <data name="EntryEdit" xml:space="preserve">
     <value>Entry Edit</value>
   </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Generate</value>
+  </data>
+  <data name="GeneratedPassword" xml:space="preserve">
+    <value>Generated Password</value>
+  </data>
+  <data name="GeneratePassword" xml:space="preserve">
+    <value>Generate Password</value>
+  </data>
   <data name="GroupEdit" xml:space="preserve">
     <value>Group Edit</value>
   </data>
+  <data name="IncludeDigits" xml:space="preserve">
+    <value>Include Digits (0, 1, 2, ..)</value>
+  </data>
+  <data name="IncludeLowerCase" xml:space="preserve">
+    <value>Include lower-case ( a, b, c, ..)</value>
+  </data>
+  <data name="IncludeSymbols" xml:space="preserve">
+    <value>Include Symbols (!, @, #, ..)</value>
+  </data>
+  <data name="IncludeUpperCase" xml:space="preserve">
+    <value>Include upper-case (A, B, C, ..)</value>
+  </data>
   <data name="IncorrectPassword" xml:space="preserve">
     <value>Incorrect password</value>
+  </data>
+  <data name="InvalidInput" xml:space="preserve">
+    <value>Invalid Input</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
@@ -176,6 +200,9 @@
   </data>
   <data name="MasterPasswordConfirm" xml:space="preserve">
     <value>Master Password Confirmation</value>
+  </data>
+  <data name="MinimumPasswordLengthWarning" xml:space="preserve">
+    <value>Minimum password length is 4</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -189,8 +216,14 @@
   <data name="NewSubGroup" xml:space="preserve">
     <value>New Sub-Group</value>
   </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="PasswordLength" xml:space="preserve">
+    <value>Password Length</value>
   </data>
   <data name="RequiredErrorMessage" xml:space="preserve">
     <value>'{0}' is required</value>

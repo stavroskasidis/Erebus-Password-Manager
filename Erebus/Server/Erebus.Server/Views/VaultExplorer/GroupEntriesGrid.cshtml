@@ -20,34 +20,19 @@
                 <td>@Html.DisplayFor(model => entry.UserName)</td>
                 <td>
                     <div class="input-group">
-                        <input class="form-control" type="password" id="@entry.Id" readonly value="@entry.Password" />
+                        <input class="form-control" type="password" id="grid-password-@entry.Id" readonly value="@entry.Password" />
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.copyPassword('@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Copy">
-                                <span class="glyphicon glyphicon-copy"></span>
+                            <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.toggleShowPassword(this,'grid-password-@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.ShowHide">
+                                <span class="glyphicon glyphicon-eye-open"></span>
                             </button>
                         </span>
-
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.toggleShowPassword(this,'@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.ShowHide">
-                                <span class="glyphicon glyphicon-eye-open"></span>
+                            <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.copyPassword('grid-password-@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Copy">
+                                <span class="glyphicon glyphicon-copy"></span>
                             </button>
                         </span>
                     </div>
 
-                    @*<div class="row">
-                            <div class="col-md-12">
-                                @*</div>
-                                    <div class="col-md-5 padding-reset">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.copyPassword('@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Copy">
-                                <span class="glyphicon glyphicon-copy"></span>
-                            </button>
-                            <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.toggleShowPassword(this,'@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.ShowHide">
-                                <span class="glyphicon glyphicon-eye-open"></span>
-                            </button>
-                        </div>
-                        </div>
-                        </div>*@
                 </td>
                 <td>@Html.DisplayFor(model => entry.Url)</td>
                 <td>
@@ -61,7 +46,5 @@
 
 <script type="text/javascript">
     //Bootstrap tooltips init
-    $('[data-toggle="tooltip"]').tooltip({
-        trigger: 'hover'
-    });
+    $('[data-toggle="tooltip"]').tooltip({trigger: 'hover'});
 </script>

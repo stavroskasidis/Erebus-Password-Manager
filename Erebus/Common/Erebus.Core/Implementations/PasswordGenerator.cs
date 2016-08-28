@@ -10,18 +10,27 @@ namespace Erebus.Core.Implementations
 {
     public class PasswordGenerator : IPasswordGenerator
     {
-        public string GeneratePassword(int length, bool includeUppercase, bool includeNumbers, bool includeSymbols)
+        public string GeneratePassword(int length, bool includeUppercase, bool includeLowerCase, bool includeDigits, bool includeSymbols)
         {
+            if(length < 4)
+            {
+                throw new Exception("Minimum password length is 4");
+            }
+
             while (true)
             {
                 using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
                 {
-                    StringBuilder sourceBuilder = new StringBuilder("abcdefghijklmnopqrstuvwxyz");
+                    StringBuilder sourceBuilder = new StringBuilder();
+                    if (includeLowerCase)
+                    {
+                        sourceBuilder.Append("abcdefghijklmnopqrstuvwxyz");
+                    }
                     if (includeUppercase)
                     {
                         sourceBuilder.Append("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
                     }
-                    if (includeNumbers)
+                    if (includeDigits)
                     {
                         sourceBuilder.Append("0123456789");
                     }
@@ -29,6 +38,8 @@ namespace Erebus.Core.Implementations
                     {
                         sourceBuilder.Append("!@#$%^&*()_");
                     }
+
+                    if (sourceBuilder.Length == 0) throw new Exception("Too few sources");
 
                     string source = sourceBuilder.ToString();
                     StringBuilder passwordBuilder = new StringBuilder();
@@ -39,20 +50,21 @@ namespace Erebus.Core.Implementations
                     }
 
                     var password = passwordBuilder.ToString();
-                    if (PasswordMeetsRequirements(password, includeUppercase, includeNumbers, includeSymbols))
+                    if (PasswordMeetsRequirements(password, includeUppercase, includeLowerCase, includeDigits, includeSymbols))
                     {
 
                         return password;
                     }
-
                 }
+
             }
         }
 
-        private bool PasswordMeetsRequirements(string password, bool includeUppercase, bool includeNumbers, bool includeSymbols)
+        private bool PasswordMeetsRequirements(string password, bool includeUppercase, bool includeLowerCase, bool includeDigits, bool includeSymbols)
         {
             return (includeUppercase == password.Any(x => char.IsUpper(x)))
-                && (includeNumbers == password.Any(x => char.IsDigit(x)))
+                && (includeLowerCase == password.Any(x => char.IsLower(x)))
+                && (includeDigits == password.Any(x => char.IsDigit(x)))
                 && (includeSymbols == password.Any(x => !char.IsLetterOrDigit(x)));
         }
 

@@ -7,6 +7,6 @@ namespace Erebus.Core.Contracts
 {
     public interface IPasswordGenerator
     {
-        string GeneratePassword(int length,bool includeUppercase, bool includeNumbers, bool includeSymbols);
+        string GeneratePassword(int length,bool includeUppercase, bool includeLowercase, bool includeDigits, bool includeSymbols);
     }
 }

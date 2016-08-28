@@ -80,7 +80,7 @@ namespace Erebus.Server
             services.AddSingleton<ISecureStringBinarySerializer>(factory =>
             {
                 var serializerEncryptionKey = new SecureString();
-                string randomPassword = factory.GetRequiredService<IPasswordGenerator>().GeneratePassword(50, true,true,true);
+                string randomPassword = factory.GetRequiredService<IPasswordGenerator>().GeneratePassword(50, true,true,true,true);
                 var secureStringConverter = factory.GetRequiredService<ISecureStringConverter>();
                 return new SecureStringBinarySerializer(factory.GetRequiredService<ISymetricCryptographer>(),
                                                         secureStringConverter.ToSecureString(randomPassword), 

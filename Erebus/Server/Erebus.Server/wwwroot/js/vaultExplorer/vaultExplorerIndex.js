@@ -225,7 +225,7 @@
     //};
 
     vaultExplorerIndex.submitGroupEditForm = function (formId, modalId, parentNodeId) {
-        $("#" + formId).submit(function (e) {
+        $("#" + formId).one("submit",function (e) {
             if ($(this).valid()) {
                 var postData = $(this).serializeArray();
                 var formURL = $(this).attr("action");
@@ -249,7 +249,7 @@
     };
 
     vaultExplorerIndex.submitEntryEditForm = function (formId, modalId, groupId) {
-        $("#" + formId).submit(function (e) {
+        $("#" + formId).one("submit",function (e) {
             if ($(this).valid()) {
                 var postData = $(this).serializeArray();
                 var formURL = $(this).attr("action");
@@ -364,6 +364,46 @@
         } else {
             copyToClipboard($("#" + inputId)[0]);
         }
+    };
+
+    vaultExplorerIndex.generatePassword = function (entryId) {
+        $.ajax({
+            url: "/VaultExplorer/GeneratePassword",
+            method: "GET",
+            data: {
+                id: entryId
+            }
+        }).done(function (html) {
+            $("body").append(html);
+        });
+    };
+
+    vaultExplorerIndex.submitGeneratePasswordForm = function (formId, inputId) {
+        $("#" + formId).one("submit",function (e) {
+            if ($(this).valid()) {
+                var postData = $(this).serializeArray();
+                var formURL = $(this).attr("action");
+
+                $.ajax({
+                    url: formURL,
+                    type: "POST",
+                    data: postData,
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.success) {
+                            $("#" + inputId).val(data.password);
+                        }
+                    }
+                });
+            }
+            e.preventDefault();
+        });
+
+        $("#" + formId).submit();
+    };
+
+    vaultExplorerIndex.acceptGeneratedPassword = function (modalId, targetInputId, generatedPasswordInputId) {
+        $("#" + targetInputId).val($("#" + generatedPasswordInputId).val());
+        vaultExplorerIndex.closeModal(modalId);
     };
 
     return vaultExplorerIndex;

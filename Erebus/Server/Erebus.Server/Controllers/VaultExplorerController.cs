@@ -16,13 +16,17 @@ namespace Erebus.Server.Controllers
         private ISessionContext SessionContext;
         private IVaultManipulatorFactory VaultManipulatorFactory;
         private ISyncContext SyncContext;
+        private IPasswordGenerator PasswordGenerator;
 
-        public VaultExplorerController(IVaultRepositoryFactory vaultRepositoryFactory, ISessionContext sessionContext, IVaultManipulatorFactory vaultManipulatorFactory, ISyncContext syncContext)
+        public VaultExplorerController(IVaultRepositoryFactory vaultRepositoryFactory, ISessionContext sessionContext,
+            IVaultManipulatorFactory vaultManipulatorFactory, ISyncContext syncContext,
+            IPasswordGenerator passwordGenerator)
         {
             this.VaultRepositoryFactory = vaultRepositoryFactory;
             this.SessionContext = sessionContext;
             this.VaultManipulatorFactory = vaultManipulatorFactory;
             this.SyncContext = syncContext;
+            this.PasswordGenerator = passwordGenerator;
         }
 
         public IActionResult Index()
@@ -339,6 +343,34 @@ namespace Erebus.Server.Controllers
             {
                 SyncContext.Release();
             }
+        }
+
+        [HttpGet]
+        public IActionResult GeneratePassword(string id)
+        {
+            var model = new GeneratePasswordViewModel()
+            {
+                Id = id,
+                IncludeLowerCase = true,
+                IncludeUpperCase = true,
+                PasswordLength = 20,
+                ModalTitle = StringResources.GeneratePassword
+            };
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public JsonResult GeneratePassword(GeneratePasswordViewModel model)
+        {
+            if (!ModelState.IsValid ||
+                (!model.IncludeDigits && !model.IncludeLowerCase && !model.IncludeSymbols && !model.IncludeUpperCase) ||
+                model.PasswordLength <= 0)
+            {
+                return Json(new { success = false, error = StringResources.InvalidInput });
+            }
+
+            var generatedPassword = this.PasswordGenerator.GeneratePassword(model.PasswordLength, model.IncludeUpperCase, model.IncludeLowerCase, model.IncludeDigits, model.IncludeSymbols);
+            return Json(new { success = true, password = generatedPassword });
         }
     }
 }

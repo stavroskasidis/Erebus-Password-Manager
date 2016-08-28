@@ -14,14 +14,12 @@
         </form>
     </modal-body>
     <modal-footer>
-        <button id="modal-@Model.Id-save-btn" type="button" class="btn btn-primary">@StringResources.Save</button>
+        <button id="modal-@Model.Id-save-btn" type="button" class="btn btn-primary" onclick="vaultExplorerIndex.submitGroupEditForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId');">@StringResources.Save</button>
     </modal-footer>
 </bootstrap-modal>
 
 <script type="text/javascript">
     $.validator.unobtrusive.parse($('#form-@Model.Id'));
+    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
     $("#modal-@Model.Id").modal({ backdrop: 'static', keyboard: false });
-    $("#modal-@Model.Id-save-btn").on("click", function () {
-        vaultExplorerIndex.submitGroupEditForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId');
-    });
 </script>
