@@ -4,12 +4,15 @@
 }
 
 .vault-explorer-tree-wrapper {
-    width: 400px;
+    width: 300px;
     float: left; /* add this */
+    overflow-x: auto;
 }
 
 .vault-explorer-entries-grid {
     overflow: hidden; /* if you don't want #second to wrap below #first */
+    overflow-x: auto;
+    white-space: normal;
 }
 
 .button-glyphicon {
@@ -25,10 +28,19 @@ label.required:after {
     color: red;
 }
 
+.password-column {
+    width: 400px;
+}
+
 .actions-column {
     width: 100px;
 }
 
+
 .padding-reset {
     padding: 0px;
+}
+
+.vault-explorer-entries-table-wrapper {
+    min-width: 860px;
 }

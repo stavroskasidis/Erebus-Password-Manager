@@ -20,7 +20,16 @@
             <div class="form-group">
                 <label asp-for="Password" add-metadata-classes="true"></label>
                 <span asp-validation-for="Password" class="text-danger"></span>
+
+
                 <div class="input-group">
+                    <span class="input-group-btn">
+                        <button id="modal-@Model.Id-generate-password-btn" type="button" class="btn btn-primary" data-toggle="tooltip" 
+                                data-placement="top" title="@StringResources.Generate" onclick="vaultExplorerIndex.generatePassword('@Model.Id');">
+                            <span class="fa fa-key"></span>
+                        </button>
+                    </span>
+
                     <input id="modal-password-@Model.Id" asp-for="Password" value="@Model.Password" class="form-control" />
 
                     <span class="input-group-btn">
@@ -28,19 +37,9 @@
                                 onclick="vaultExplorerIndex.toggleShowPassword(this,'modal-password-@Model.Id');">
                             <span class="glyphicon glyphicon-eye-open"></span>
                         </button>
-                    </span>
-
-                    <span class="input-group-btn">
                         <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@StringResources.Copy"
                                 onclick="vaultExplorerIndex.copyPassword('modal-password-@Model.Id');">
-                            <span class="glyphicon glyphicon-copy"></span>
-                        </button>
-                    </span>
-
-                    <span class="input-group-btn">
-                        <button id="modal-@Model.Id-generate-password-btn" type="button" class="btn btn-primary"
-                                onclick="vaultExplorerIndex.generatePassword('@Model.Id');">
-                            <span class="glyphicon glyphicon-export"></span> @StringResources.Generate
+                            <span class="fa fa-clipboard"></span>
                         </button>
                     </span>
                 </div>
@@ -67,5 +66,6 @@
 
 <script type="text/javascript">
     $.validator.unobtrusive.parse($('#form-@Model.Id'));
+    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
     $("#modal-@Model.Id").modal({ backdrop: 'static', keyboard: false });
 </script>

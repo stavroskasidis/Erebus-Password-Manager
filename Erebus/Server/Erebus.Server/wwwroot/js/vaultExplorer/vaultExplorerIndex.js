@@ -364,6 +364,8 @@
         } else {
             copyToClipboard($("#" + inputId)[0]);
         }
+
+        $("#" + inputId).notify("Copied!", { autoHide: true, autoHideDelay: 1500, className: "success" , position: "top center" });
     };
 
     vaultExplorerIndex.generatePassword = function (entryId) {

@@ -6,7 +6,7 @@
             <th>@StringResources.Title</th>
             <th>@StringResources.Description</th>
             <th>@StringResources.UserName</th>
-            <th>@StringResources.Password</th>
+            <th class="password-column">@StringResources.Password</th>
             <th>@StringResources.Url</th>
             <th class="actions-column">@StringResources.Actions</th>
         </tr>
@@ -25,10 +25,8 @@
                             <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.toggleShowPassword(this,'grid-password-@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.ShowHide">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </button>
-                        </span>
-                        <span class="input-group-btn">
                             <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.copyPassword('grid-password-@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Copy">
-                                <span class="glyphicon glyphicon-copy"></span>
+                                <span class="fa fa-clipboard"></span>
                             </button>
                         </span>
                     </div>

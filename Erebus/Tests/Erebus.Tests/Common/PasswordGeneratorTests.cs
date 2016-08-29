@@ -48,9 +48,9 @@ namespace Erebus.Tests.Common
         [TestCase(210, false,true, true, false)]
         [TestCase(30, true,  true, true, false)]
         [TestCase(40, true,  true, false, false)]
-        [TestCase(5, false,  false, false, false)]
-        [TestCase(2, false,  true, false, false)]
-        [TestCase(3, false,  true, true, false)]
+        [TestCase(5, false,  false, false, true)]
+        [TestCase(4, false,  true, false, false)]
+        [TestCase(7, false,  true, true, false)]
         [TestCase(6, true,   false, false, true)]
         [TestCase(32, true,  false, false, false)]
         public void GeneratePassword_GenerateAPasswordWithGivenInput_PasswordFulfilsRequirements(int length, bool includeUppercase, bool includeLowercase, bool includeNumbers, bool includeSymbols)
@@ -64,7 +64,7 @@ namespace Erebus.Tests.Common
             //Assert
             Assert.AreEqual(length, password.Length,"Invalid length");
             Assert.AreEqual(includeUppercase, password.Any(char.IsUpper), "Invalid uppercase requirement");
-            Assert.AreEqual(includeUppercase, password.Any(char.IsLower), "Invalid lowercase requirement");
+            Assert.AreEqual(includeLowercase, password.Any(char.IsLower), "Invalid lowercase requirement");
             Assert.AreEqual(includeNumbers, password.Any(char.IsDigit), "Invalid numbers requirement");
             Assert.AreEqual(includeSymbols, password.Any(c=> !char.IsLetterOrDigit(c)), "Invalid symbols requirement");
             
