@@ -365,7 +365,7 @@
             copyToClipboard($("#" + inputId)[0]);
         }
 
-        $("#" + inputId).notify("Copied!", { autoHide: true, autoHideDelay: 1500, className: "success" , position: "top center" });
+        $.notify("Copied!", { autoHide: true, autoHideDelay: 1500, className: "info" , position: "too center" });
     };
 
     vaultExplorerIndex.generatePassword = function (entryId) {

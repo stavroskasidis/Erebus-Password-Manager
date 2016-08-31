@@ -44,3 +44,7 @@ label.required:after {
 .vault-explorer-entries-table-wrapper {
     min-width: 860px;
 }
+
+.notifyjs-corner {
+    z-index:99999 !important;
+}
