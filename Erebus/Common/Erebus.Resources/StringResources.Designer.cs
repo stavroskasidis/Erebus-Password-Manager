@@ -116,6 +116,15 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copied to clipboard!.
+        /// </summary>
+        public static string CopiedAlertMessage {
+            get {
+                return ResourceManager.GetString("CopiedAlertMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy.
         /// </summary>
         public static string Copy {
@@ -197,6 +206,15 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entries.
+        /// </summary>
+        public static string Entries {
+            get {
+                return ResourceManager.GetString("Entries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Entry Edit.
         /// </summary>
         public static string EntryEdit {
@@ -238,6 +256,15 @@ namespace Erebus.Resources {
         public static string GroupEdit {
             get {
                 return ResourceManager.GetString("GroupEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Groups.
+        /// </summary>
+        public static string Groups {
+            get {
+                return ResourceManager.GetString("Groups", resourceCulture);
             }
         }
         
@@ -292,6 +319,15 @@ namespace Erebus.Resources {
         public static string InvalidInput {
             get {
                 return ResourceManager.GetString("InvalidInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading.
+        /// </summary>
+        public static string Loading {
+            get {
+                return ResourceManager.GetString("Loading", resourceCulture);
             }
         }
         

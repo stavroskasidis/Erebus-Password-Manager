@@ -19,6 +19,9 @@ using Erebus.Core.Server.Implementations;
 using Erebus.Core.Server.Contracts;
 using Erebus.Core.Server;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
+using Erebus.Resources;
 
 namespace Erebus.Server
 {
@@ -46,7 +49,7 @@ namespace Erebus.Server
             {
                 //var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                 //options.Filters.Add(new AuthorizeFilter(policy));
-                
+
                 if (configProvider.GetConfiguration().DisableSSLRequirement == false)
                 {
                     options.Filters.Add(new RequireHttpsAttribute());
@@ -57,7 +60,8 @@ namespace Erebus.Server
             });
 
             services.AddDistributedMemoryCache();
-            services.AddSession(options => {
+            services.AddSession(options =>
+            {
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
                 options.CookieName = ".Erebus";
             });
@@ -73,17 +77,17 @@ namespace Erebus.Server
             services.AddTransient<IVaultRepositoryFactory, VaultFileRepositoryFactory>();
             services.AddTransient<IVaultManipulatorFactory, VaultManipulatorFactory>();
             services.AddTransient<IVaultFactory, DefaultVaultFactory>();
-            services.AddTransient<IPasswordGenerator,PasswordGenerator>();
+            services.AddTransient<IPasswordGenerator, PasswordGenerator>();
             services.AddTransient<ISessionContext, SessionContext>();
             services.AddSingleton<ISyncContext, SyncContext>();
 
             services.AddSingleton<ISecureStringBinarySerializer>(factory =>
             {
                 var serializerEncryptionKey = new SecureString();
-                string randomPassword = factory.GetRequiredService<IPasswordGenerator>().GeneratePassword(50, true,true,true,true);
+                string randomPassword = factory.GetRequiredService<IPasswordGenerator>().GeneratePassword(50, true, true, true, true);
                 var secureStringConverter = factory.GetRequiredService<ISecureStringConverter>();
                 return new SecureStringBinarySerializer(factory.GetRequiredService<ISymetricCryptographer>(),
-                                                        secureStringConverter.ToSecureString(randomPassword), 
+                                                        secureStringConverter.ToSecureString(randomPassword),
                                                         factory.GetRequiredService<ISecureStringConverter>());
             });
         }
@@ -107,7 +111,21 @@ namespace Erebus.Server
             }
 
             app.UseStaticFiles();
-            
+
+            var serverConfiguration = app.ApplicationServices.GetService<IServerConfigurationProvider>().GetConfiguration();
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(new CultureInfo(serverConfiguration.Language)),
+                SupportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo(serverConfiguration.Language)
+                },
+                SupportedUICultures = new List<CultureInfo>
+                {
+                    new CultureInfo(serverConfiguration.Language)
+                }
+            });
+
 
             app.UseMvc(routes =>
             {

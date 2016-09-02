@@ -30,6 +30,11 @@
         $("#" + deleteGroupButtonId).on("click", vaultExplorerIndex.deleteGroup);
         $("#" + addEntryButtonId).on("click", vaultExplorerIndex.addEntry);
         $('#' + treeId).on('changed.jstree', vaultExplorerIndex.onTreeNodeChange);
+        $(window).on("resize", function () {
+            $(".vault-explorer-entries-table-wrapper").height(
+                $(window).height() - $(".btn-toolbar").height()
+             );
+        });
     };
 
     vaultExplorerIndex.enableButtons = function () {
@@ -365,7 +370,7 @@
             copyToClipboard($("#" + inputId)[0]);
         }
 
-        $.notify("Copied!", { autoHide: true, autoHideDelay: 1500, className: "info" , position: "too center" });
+        $.notify("Copied!", { autoHide: true, autoHideDelay: 1500, className: "info", position: "top center" });
     };
 
     vaultExplorerIndex.generatePassword = function (entryId) {
@@ -402,6 +407,8 @@
 
         $("#" + formId).submit();
     };
+
+   
 
     vaultExplorerIndex.acceptGeneratedPassword = function (modalId, targetInputId, generatedPasswordInputId) {
         $("#" + targetInputId).val($("#" + generatedPasswordInputId).val());

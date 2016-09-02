@@ -47,6 +47,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="StringResources.el.resx" />
     <EmbeddedResource Include="StringResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StringResources.Designer.cs</LastGenOutput>

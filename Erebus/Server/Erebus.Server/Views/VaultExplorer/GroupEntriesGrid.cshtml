@@ -1,48 +1,58 @@
 ﻿@model IEnumerable<EntryGridViewModel>
-
-<table class="table table-striped table-hover table-fixed">
-    <thead>
-        <tr>
-            <th>@StringResources.Title</th>
-            <th>@StringResources.Description</th>
-            <th>@StringResources.UserName</th>
-            <th class="password-column">@StringResources.Password</th>
-            <th>@StringResources.Url</th>
-            <th class="actions-column">@StringResources.Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var entry in Model)
-        {
+@*<div id="entries-grid--loader"><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> @StringResources.Loading ...</div>*@
+<div id="entries-grid--wrapper" style="display:none;">
+    <table id="entries-grid--table" class="table table-striped table-hover">
+        <thead>
             <tr>
-                <td>@Html.DisplayFor(model => entry.Title)</td>
-                <td>@Html.DisplayFor(model => entry.Description)</td>
-                <td>@Html.DisplayFor(model => entry.UserName)</td>
-                <td>
-                    <div class="input-group">
-                        <input class="form-control" type="password" id="grid-password-@entry.Id" readonly value="@entry.Password" />
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.toggleShowPassword(this,'grid-password-@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.ShowHide">
-                                <span class="glyphicon glyphicon-eye-open"></span>
-                            </button>
-                            <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.copyPassword('grid-password-@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Copy">
-                                <span class="fa fa-clipboard"></span>
-                            </button>
-                        </span>
-                    </div>
-
-                </td>
-                <td>@Html.DisplayFor(model => entry.Url)</td>
-                <td>
-                    <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.editEntry('@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Edit"><span class="glyphicon glyphicon-pencil"></span></button>
-                    <button type="button" class="btn btn-danger" onclick="vaultExplorerIndex.deleteEntry('@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Delete"><span class="glyphicon glyphicon-trash"></span></button>
-                </td>
+                <th>@StringResources.Title</th>
+                <th>@StringResources.Description</th>
+                <th>@StringResources.UserName</th>
+                <th class="password-column">@StringResources.Password</th>
+                <th>@StringResources.Url</th>
+                <th class="actions-column">@StringResources.Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var entry in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => entry.Title)</td>
+                    <td>@Html.DisplayFor(model => entry.Description)</td>
+                    <td>@Html.DisplayFor(model => entry.UserName)</td>
+                    <td>
+                        <div class="input-group">
+                            <input class="form-control" type="password" id="grid-password-@entry.Id" readonly value="@entry.Password" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.toggleShowPassword(this,'grid-password-@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.ShowHide">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.copyPassword('grid-password-@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Copy">
+                                    <span class="fa fa-clipboard"></span>
+                                </button>
+                            </span>
+                        </div>
+
+                    </td>
+                    <td>@Html.DisplayFor(model => entry.Url)</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.editEntry('@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" class="btn btn-danger" onclick="vaultExplorerIndex.deleteEntry('@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 <script type="text/javascript">
     //Bootstrap tooltips init
-    $('[data-toggle="tooltip"]').tooltip({trigger: 'hover'});
+    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+    $('#entries-grid--table').DataTable({
+        "lengthMenu": [[10, 15, 20, 25], [10, 15, 20, 25]],
+        "initComplete": function (settings, json) {
+            //$("#entries-grid--loader").css("opacity", 0);
+            $("#entries-grid--table").attr("style", null);
+            $("#entries-grid--wrapper").fadeIn();
+        }
+    });
 </script>
