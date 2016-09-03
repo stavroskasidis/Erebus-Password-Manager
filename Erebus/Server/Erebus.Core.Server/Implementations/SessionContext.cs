@@ -20,6 +20,11 @@ namespace Erebus.Core.Server
             this.SecureStringBinarySerializer = secureStringBinarySerializer;
         }
 
+        public void ClearSession()
+        {
+            this.HttpContextAccessor.HttpContext.Session.Clear();
+        }
+
         public string GetCurrentVaultName()
         {
             return this.HttpContextAccessor.HttpContext.Session.GetString(Constants.CURRENT_VAULT_DESSION_KEY);
@@ -34,7 +39,7 @@ namespace Erebus.Core.Server
         }
 
         public void SetCurrentVaultName(string currentVaultName)
-        {
+        { 
             this.HttpContextAccessor.HttpContext.Session.SetString(Constants.CURRENT_VAULT_DESSION_KEY, currentVaultName);
         }
 

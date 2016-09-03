@@ -1,5 +1,5 @@
 ﻿@inject Erebus.Core.Server.Contracts.IServerConfigurationProvider ServerConfigurationProvider
-
+@inject Erebus.Server.Authorization.IAuthorizationLogic AuthorizationLogic
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,73 +33,63 @@
 
 </head>
 <body>
+    @if (AuthorizationLogic.IsLoggedIn)
+    {
+        <div class="nav-side-menu">
+            <div class="brand application-name">@StringResources.ApplicationName<small>@StringResources.ApplicationNameSubtitle</small></div>
+            <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
-    <div class="nav-side-menu">
-        <div class="brand">Brand Logo</div>
-        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+            <div class="menu-list">
 
-        <div class="menu-list">
+                <ul id="menu-content" class="menu-content collapse out">
+                    <li>
+                        <a asp-action="Index" asp-controller="VaultExplorer" >
+                            <i class="fa fa-indent fa-lg"></i> @StringResources.VaultExplorer
+                        </a>
+                    </li>
 
-            <ul id="menu-content" class="menu-content collapse out">
-                <li>
-                    <a href="#">
-                        <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                    </a>
-                </li>
+                    <li>
+                        <a asp-action="Rename" asp-controller="Vault">
+                            <i class="fa fa-pencil-square-o fa-lg"></i> @StringResources.RenameVault
+                        </a>
+                    </li>
 
-                <li data-toggle="collapse" data-target="#products" class="collapsed active">
-                    <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="products">
-                    <li class="active"><a href="#">CSS3 Animation</a></li>
-                    <li><a href="#">General</a></li>
-                    <li><a href="#">Buttons</a></li>
-                    <li><a href="#">Tabs & Accordions</a></li>
-                    <li><a href="#">Typography</a></li>
-                    <li><a href="#">FontAwesome</a></li>
-                    <li><a href="#">Slider</a></li>
-                    <li><a href="#">Panels</a></li>
-                    <li><a href="#">Widgets</a></li>
-                    <li><a href="#">Bootstrap Model</a></li>
+                    <li>
+                        <a asp-action="ChangePassword" asp-controller="Vault" >
+                            <i class="fa fa-unlock-alt fa-lg"></i> @StringResources.ChangeVaultPassword
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-action="Logout" asp-controller="Login">
+                            <i class="fa fa-sign-out fa-lg fa-rotate-180"></i> @StringResources.Logout
+                        </a>
+                    </li>
+
+                    @*<li data-toggle="collapse" data-target="#products" class="collapsed active">
+                        <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="products">
+                        <li class="active"><a href="#">CSS3 Animation</a></li>
+                        <li><a href="#">General</a></li>
+                        <li><a href="#">Buttons</a></li>
+                        <li><a href="#">Tabs & Accordions</a></li>
+                        <li><a href="#">Typography</a></li>
+                        <li><a href="#">FontAwesome</a></li>
+                        <li><a href="#">Slider</a></li>
+                        <li><a href="#">Panels</a></li>
+                        <li><a href="#">Widgets</a></li>
+                        <li><a href="#">Bootstrap Model</a></li>
+                    </ul>*@
                 </ul>
-
-
-                <li data-toggle="collapse" data-target="#service" class="collapsed">
-                    <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="service">
-                    <li>New Service 1</li>
-                    <li>New Service 2</li>
-                    <li>New Service 3</li>
-                </ul>
-
-
-                <li data-toggle="collapse" data-target="#new" class="collapsed">
-                    <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="new">
-                    <li>New New 1</li>
-                    <li>New New 2</li>
-                    <li>New New 3</li>
-                </ul>
-
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-user fa-lg"></i> Profile
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-users fa-lg"></i> Users
-                    </a>
-                </li>
-            </ul>
+            </div>
         </div>
-    </div>
+    }
 
-    <div class="body-container container-fluid">
+    <div class="page-title">
+        <h2>@ViewBag.Title <small>@ViewBag.SubTitle</small></h2>
+    </div>
+    <div class="container-fluid @(AuthorizationLogic.IsLoggedIn ? "body-container" : "")">
         @RenderBody()
     </div>
 

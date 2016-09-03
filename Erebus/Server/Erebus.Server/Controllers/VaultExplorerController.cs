@@ -27,10 +27,15 @@ namespace Erebus.Server.Controllers
             this.VaultManipulatorFactory = vaultManipulatorFactory;
             this.SyncContext = syncContext;
             this.PasswordGenerator = passwordGenerator;
+
         }
 
         public IActionResult Index()
         {
+            this.ViewBag.Title = SessionContext.GetCurrentVaultName();
+            this.ViewBag.SubTitle = StringResources.VaultExplorer;
+
+            var test = this.User.Identity.IsAuthenticated;
             return View();
         }
 

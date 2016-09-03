@@ -14,5 +14,7 @@ namespace Erebus.Core.Server.Contracts
         string GetCurrentVaultName();
         void SetCurrentVaultName(string currentVaultName);
 
+        void ClearSession();
+
     }
 }

@@ -14,11 +14,16 @@ namespace Erebus.Server.Authorization
 {
     public class VaultAuthorizationAttribute : Attribute, IAuthorizationFilter, IFilterMetadata
     {
+        private IAuthorizationLogic AuthorizationLogic { get; set; }
+
+        public VaultAuthorizationAttribute(IAuthorizationLogic authorizationLogic)
+        {
+           this.AuthorizationLogic = authorizationLogic;
+        }
+
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var masterPassword = context.HttpContext.Session.Get(Constants.MASTER_PASSWORD_SESSION_KEY);
-            var currentVault = context.HttpContext.Session.Get(Constants.CURRENT_VAULT_DESSION_KEY);
-            if ((masterPassword == null || currentVault == null ) 
+            if (this.AuthorizationLogic.IsLoggedIn == false
                 && context.Filters.Any(x=> x.GetType() == typeof(AllowAnonymousFilter)) == false)
             {
                 var isAjax = context.HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest";

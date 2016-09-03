@@ -92,5 +92,21 @@ namespace Erebus.Core.Implementations
             var files = FileSystem.GetDirectoryFiles(VaultStorageFolder, "*" + VaultFileExtension);
             return files.Select(x => Path.GetFileNameWithoutExtension(x));
         }
+
+        public bool VaultExists(string vaultName)
+        {
+            GuardClauses.ArgumentIsNotNull(nameof(vaultName), vaultName);
+
+            string path = Path.ChangeExtension(Path.Combine(VaultStorageFolder, vaultName), VaultFileExtension);
+            return this.FileSystem.FileExists(path);
+        }
+
+        public void DeleteVault(string vaultName)
+        {
+            GuardClauses.ArgumentIsNotNull(nameof(vaultName), vaultName);
+
+            string path = Path.ChangeExtension(Path.Combine(VaultStorageFolder, vaultName), VaultFileExtension);
+            this.FileSystem.DeleteFile(path);
+        }
     }
 }

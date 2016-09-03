@@ -35,8 +35,10 @@
                     </td>
                     <td>@Html.DisplayFor(model => entry.Url)</td>
                     <td>
-                        <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.editEntry('@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Edit"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <button type="button" class="btn btn-danger" onclick="vaultExplorerIndex.deleteEntry('@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                        @*<div class="btn-group">*@
+                            <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.editEntry('@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                            <button type="button" class="btn btn-danger" onclick="vaultExplorerIndex.deleteEntry('@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                        @*</div>*@
                     </td>
                 </tr>
             }

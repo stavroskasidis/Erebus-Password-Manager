@@ -50,5 +50,11 @@ namespace Erebus.Core.Implementations
         {
             Directory.CreateDirectory(path);
         }
+
+        public void DeleteFile(string path)
+        {
+            GuardClauses.ArgumentIsNotNull(nameof(path), path);
+            File.Delete(path);
+        }
     }
 }

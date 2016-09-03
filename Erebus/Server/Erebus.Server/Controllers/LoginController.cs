@@ -2,6 +2,7 @@
 using Erebus.Core.Server;
 using Erebus.Core.Server.Contracts;
 using Erebus.Resources;
+using Erebus.Server.Authorization;
 using Erebus.Server.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -18,18 +19,23 @@ namespace Erebus.Server.Controllers
         private IVaultRepositoryFactory VaultRepositoryFactory;
         private ISecureStringConverter SecureStringConverter;
         private ISessionContext SessionContext;
+        private IAuthorizationLogic AuthorizationLogic;
 
         public LoginController(IVaultRepositoryFactory vaultRepositoryFactory, ISecureStringConverter secureStringConverter, 
-                               ISecureStringBinarySerializer secureStringBinarySerializer, ISessionContext sessionContext)
+                               ISecureStringBinarySerializer secureStringBinarySerializer, ISessionContext sessionContext, 
+                               IAuthorizationLogic authorizationLogic)
         {
             this.VaultRepositoryFactory = vaultRepositoryFactory;
             this.SecureStringConverter = secureStringConverter;
             this.SessionContext= sessionContext;
+            this.AuthorizationLogic = authorizationLogic;
         }
 
         [AllowAnonymous]
         public IActionResult Index()
         {
+            if (this.AuthorizationLogic.IsLoggedIn) return RedirectToAction("Index", "VaultExplorer");
+
             var repository = VaultRepositoryFactory.CreateInstance();
             var vaults = repository.GetAllVaultNames();
             if (vaults.Count() == 0) return RedirectToAction("Create", "Vault");
@@ -67,6 +73,19 @@ namespace Erebus.Server.Controllers
 
             model.VaultNames = repository.GetAllVaultNames();
             return View("Index", model);
+        }
+
+
+
+        public IActionResult Logout()
+        {
+            if (this.AuthorizationLogic.IsLoggedIn)
+            {
+                this.SessionContext.ClearSession();
+                return RedirectToAction("Index", "Login");
+            }
+
+            return RedirectToAction("Index", "VaultExplorer");
         }
     }
 }

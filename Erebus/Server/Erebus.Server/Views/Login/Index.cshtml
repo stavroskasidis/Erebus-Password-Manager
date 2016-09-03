@@ -10,7 +10,7 @@
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="panel-title">Login to your Vault</div>
-                @*<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>*@
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a asp-action="Create" asp-controller="Vault">@StringResources.CreateNewVault</a></div>
             </div>
 
             <div style="padding-top:30px" class="panel-body">
@@ -32,7 +32,7 @@
                         <!-- Button -->
 
                         <div class="col-sm-6 controls col-md-offset-5">
-                            <button type="submit" class="btn btn-succ το λοτοess">@StringResources.Login</button>
+                            <button type="submit" class="btn btn-success">@StringResources.Login</button>
                             @*<a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>*@
 
                         </div>

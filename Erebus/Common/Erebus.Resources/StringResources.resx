@@ -250,7 +250,7 @@
     <value>Vault Creation</value>
   </data>
   <data name="VaultCreationMasterPasswordWarning" xml:space="preserve">
-    <value>Master password can be changed but is NOT retrievable. If you forget it, you WILL lose access to this vault !!</value>
+    <value>Master password can be changed but is NOT retrievable. If you forget it, you WILL lose access to your vault !!</value>
   </data>
   <data name="VaultNameAlreadyExists" xml:space="preserve">
     <value>Vault name already exists. Please choose a different name</value>
@@ -272,5 +272,44 @@
   </data>
   <data name="Groups" xml:space="preserve">
     <value>Groups</value>
+  </data>
+  <data name="VaultExplorer" xml:space="preserve">
+    <value>Vault Explorer</value>
+  </data>
+  <data name="CreateNewVault" xml:space="preserve">
+    <value>Create a new vault</value>
+  </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>Erebus</value>
+  </data>
+  <data name="ApplicationNameSubtitle" xml:space="preserve">
+    <value>Password Manager</value>
+  </data>
+  <data name="ChangeVaultPassword" xml:space="preserve">
+    <value>Change Vault Password</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="RenameVault" xml:space="preserve">
+    <value>Rename Vault</value>
+  </data>
+  <data name="NewName" xml:space="preserve">
+    <value>New Name</value>
+  </data>
+  <data name="VaultRename" xml:space="preserve">
+    <value>Vault Rename</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="NewMasterPassword" xml:space="preserve">
+    <value>New Master Password</value>
+  </data>
+  <data name="NewMasterPasswordConfirm" xml:space="preserve">
+    <value>New Master Password Confirmation</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
   </data>
 </root>

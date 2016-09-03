@@ -107,11 +107,47 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erebus.
+        /// </summary>
+        public static string ApplicationName {
+            get {
+                return ResourceManager.GetString("ApplicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password Manager.
+        /// </summary>
+        public static string ApplicationNameSubtitle {
+            get {
+                return ResourceManager.GetString("ApplicationNameSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Vault Password.
+        /// </summary>
+        public static string ChangeVaultPassword {
+            get {
+                return ResourceManager.GetString("ChangeVaultPassword", resourceCulture);
             }
         }
         
@@ -139,6 +175,15 @@ namespace Erebus.Resources {
         public static string Create {
             get {
                 return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new vault.
+        /// </summary>
+        public static string CreateNewVault {
+            get {
+                return ResourceManager.GetString("CreateNewVault", resourceCulture);
             }
         }
         
@@ -341,6 +386,15 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Master Password.
         /// </summary>
         public static string MasterPassword {
@@ -395,6 +449,33 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Master Password.
+        /// </summary>
+        public static string NewMasterPassword {
+            get {
+                return ResourceManager.GetString("NewMasterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Master Password Confirmation.
+        /// </summary>
+        public static string NewMasterPasswordConfirm {
+            get {
+                return ResourceManager.GetString("NewMasterPasswordConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Name.
+        /// </summary>
+        public static string NewName {
+            get {
+                return ResourceManager.GetString("NewName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Sub-Group.
         /// </summary>
         public static string NewSubGroup {
@@ -427,6 +508,24 @@ namespace Erebus.Resources {
         public static string PasswordLength {
             get {
                 return ResourceManager.GetString("PasswordLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename.
+        /// </summary>
+        public static string Rename {
+            get {
+                return ResourceManager.GetString("Rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename Vault.
+        /// </summary>
+        public static string RenameVault {
+            get {
+                return ResourceManager.GetString("RenameVault", resourceCulture);
             }
         }
         
@@ -503,11 +602,20 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Master password can be changed but is NOT retrievable. If you forget it, you WILL lose access to this vault !!.
+        ///   Looks up a localized string similar to Master password can be changed but is NOT retrievable. If you forget it, you WILL lose access to your vault !!.
         /// </summary>
         public static string VaultCreationMasterPasswordWarning {
             get {
                 return ResourceManager.GetString("VaultCreationMasterPasswordWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vault Explorer.
+        /// </summary>
+        public static string VaultExplorer {
+            get {
+                return ResourceManager.GetString("VaultExplorer", resourceCulture);
             }
         }
         
@@ -517,6 +625,15 @@ namespace Erebus.Resources {
         public static string VaultNameAlreadyExists {
             get {
                 return ResourceManager.GetString("VaultNameAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vault Rename.
+        /// </summary>
+        public static string VaultRename {
+            get {
+                return ResourceManager.GetString("VaultRename", resourceCulture);
             }
         }
         

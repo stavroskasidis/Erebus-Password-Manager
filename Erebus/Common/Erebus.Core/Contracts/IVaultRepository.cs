@@ -13,6 +13,8 @@ namespace Erebus.Core.Contracts
         bool IsPasswordValid(string vaultName, SecureString masterPassword);
         Vault GetVault(string vaultName, SecureString masterPassword);
         void SaveVault(Vault vault, SecureString masterPassword);
+        void DeleteVault(string vaultName);
         IEnumerable<string> GetAllVaultNames();
+        bool VaultExists(string vaultName);
     }
 }

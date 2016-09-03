@@ -1,0 +1,36 @@
+﻿@model VaultRenameViewModel
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+
+<div class="container">
+    <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">@Model.VaultName - @StringResources.VaultRename</div>
+            </div>
+
+            <div style="padding-top:30px" class="panel-body">
+                <form class="form-horizontal" role="form" asp-action="Rename">
+
+                    <input type="hidden" asp-for="VaultName" />
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-folder-open"></i></span>
+                        <input asp-for="NewVaultName" class="form-control" placeholder="@StringResources.NewName" />
+                    </div>
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div style="margin-top:10px" class="form-group">
+                        <div class="col-sm-6 controls col-md-offset-5">
+                            <button type="submit" class="btn btn-success">@StringResources.Rename</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
