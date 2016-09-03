@@ -34,7 +34,16 @@ namespace Erebus.Core.Server.Implementations
 
         public IVaultRepository CreateInstance()
         {
-            return new VaultFileRepository(FileSystem, ServerConfigurationProvider.GetConfiguration().VaultsFolder, Constants.VAULT_FILE_NAME_EXTENSION, SymetricCryptographer, Serializer, ClockProvider);
+            var fileRepository = new VaultFileRepository(FileSystem, ServerConfigurationProvider.GetConfiguration().VaultsFolder, Constants.VAULT_FILE_NAME_EXTENSION, SymetricCryptographer, Serializer, ClockProvider);
+            if (string.IsNullOrWhiteSpace(ServerConfigurationProvider.GetConfiguration().BackupFolder))
+            {
+                //No backup
+                return fileRepository;
+            }
+            else
+            {
+                return new VaultFileBackupRepositoryDecorator(fileRepository, ServerConfigurationProvider.GetConfiguration().BackupFolder, Constants.VAULT_FILE_NAME_EXTENSION, Serializer, FileSystem, SymetricCryptographer, ClockProvider);
+            }
         }
     }
 }

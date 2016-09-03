@@ -28,11 +28,11 @@ namespace Erebus.Core.Implementations
             GuardClauses.ArgumentIsNotNull(nameof(symetricCryptographer), symetricCryptographer);
             GuardClauses.ArgumentIsNotNull(nameof(serializer), serializer);
             GuardClauses.ArgumentIsNotNull(nameof(clockProvider), clockProvider);
+            if (vaultFileExtension.StartsWith(".") == false) throw new ArgumentException("File extension string must start with a dot. E.g. \".extension\"", nameof(vaultFileExtension));
 
             this.FileSystem = fileSystem;
             this.VaultStorageFolder = vaultStorageFolder;
             this.VaultFileExtension = vaultFileExtension;
-            if (vaultFileExtension.StartsWith(".") == false) throw new ArgumentException("File extension string must start with a dot. E.g. \".extension\"", nameof(vaultFileExtension));
             this.SymetricCryptographer = symetricCryptographer;
             this.Serializer = serializer;
             this.ClockProvider = clockProvider;

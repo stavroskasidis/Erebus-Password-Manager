@@ -22,7 +22,8 @@ namespace Erebus.Core.Server.Implementations
             {
                 DisableSSLRequirement = bool.Parse(this.ConfigurationRoot["ServerConfiguration:DisableSSLRequirement"]),
                 VaultsFolder = this.ConfigurationRoot["ServerConfiguration:VaultsFolder"],
-                Language = this.ConfigurationRoot["ServerConfiguration:Language"]
+                Language = this.ConfigurationRoot["ServerConfiguration:Language"],
+                BackupFolder = this.ConfigurationRoot["ServerConfiguration:BackupFolder"],
                 //SmtpSettings = new SmtpSettings()
                 //{
                 //    SenderAddress = this.ConfigurationRoot["ServerConfiguration:SmtpSettings:SenderAddress"],

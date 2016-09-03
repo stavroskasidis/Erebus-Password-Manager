@@ -56,5 +56,13 @@ namespace Erebus.Core.Implementations
             GuardClauses.ArgumentIsNotNull(nameof(path), path);
             File.Delete(path);
         }
+
+        public void MoveFile(string sourcePath, string destinationPath)
+        {
+            GuardClauses.ArgumentIsNotNull(nameof(sourcePath), sourcePath);
+            GuardClauses.ArgumentIsNotNull(nameof(destinationPath), destinationPath);
+
+            File.Move(sourcePath, destinationPath);
+        }
     }
 }

@@ -64,6 +64,7 @@
     <Compile Include="Implementations\DefaultVaultFactory.cs" />
     <Compile Include="Implementations\SyncContext.cs" />
     <Compile Include="Implementations\VaultFileRepository.cs" />
+    <Compile Include="Implementations\VaultFileBackupRepositoryDecorator.cs" />
     <Compile Include="Implementations\VaultManipulator.cs" />
     <Compile Include="Implementations\VaultManipulatorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

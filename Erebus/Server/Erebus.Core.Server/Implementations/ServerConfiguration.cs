@@ -10,6 +10,7 @@ namespace Erebus.Core.Server.Implementations
         public bool DisableSSLRequirement { get; set; }
         public string VaultsFolder { get; set; }
         public string Language { get; set; }
+        public string BackupFolder { get; set; }
         //public SmtpSettings SmtpSettings { get; set; }
     }
 

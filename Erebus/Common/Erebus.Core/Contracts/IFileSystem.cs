@@ -15,5 +15,6 @@ namespace Erebus.Core.Contracts
         void WriteAllBytes(string path, byte[] data);
         IEnumerable<string> GetDirectoryFiles(string path,string searchPattern);
         void DeleteFile(string path);
+        void MoveFile(string sourcePath, string destinationPath);
     }
 }
