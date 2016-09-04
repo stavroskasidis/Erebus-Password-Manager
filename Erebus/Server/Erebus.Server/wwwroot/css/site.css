@@ -70,10 +70,22 @@ label.required:after {
     font-size: 22px !important;
 }
 
-.application-name small {
-    display: block;
-    font-size: 10px;
+    .application-name small {
+        display: block;
+        font-size: 10px;
+    }
+
+
+.progress-bar-wrapper {
+    margin-top: 20px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
+
+    .progress-bar-wrapper a {
+        color: inherit;
+        text-decoration: underline;
+    }
 
 /*
     ===============================================================
@@ -82,6 +94,11 @@ label.required:after {
     source: http://bootsnipp.com/snippets/featured/responsive-navigation-menu
     ===============================================================
 */
+
+/*Fix for height:0px after collapsing*/
+.menu-content.out.collapse {
+    height: auto !important;
+}
 
 .page-title {
     margin-left: 203px;
@@ -215,7 +232,7 @@ label.required:after {
         .nav-side-menu li a {
             text-decoration: none;
             color: #e1ffff;
-                display: block;
+            display: block;
         }
 
             .nav-side-menu li a i {
@@ -272,4 +289,10 @@ label.required:after {
 body {
     margin: 0px;
     padding: 0px;
+}
+
+@media (max-width: 940px) {
+    .application-name {
+         line-height: 20px !important;
+    }
 }

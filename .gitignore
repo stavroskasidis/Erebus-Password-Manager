@@ -245,3 +245,4 @@ ModelManifest.xml
 .fake/
 /smtp4dev.exe
 *.evf
+/Erebus/Server/Erebus.Server/Properties/PublishProfiles

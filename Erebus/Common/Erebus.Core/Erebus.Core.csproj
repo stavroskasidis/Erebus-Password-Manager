@@ -45,6 +45,7 @@
     <Compile Include="Contracts\ISecureStringConverter.cs" />
     <Compile Include="Contracts\ISecureStringBinarySerializer.cs" />
     <Compile Include="Contracts\ISerializer.cs" />
+    <Compile Include="Contracts\ITimespanFormater.cs" />
     <Compile Include="Contracts\IVaultFactory.cs" />
     <Compile Include="Contracts\IVaultManipulator.cs" />
     <Compile Include="Contracts\IVaultManipulatorFactory.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Implementations\SecureStringBinarySerializer.cs" />
     <Compile Include="Implementations\DefaultVaultFactory.cs" />
     <Compile Include="Implementations\SyncContext.cs" />
+    <Compile Include="Implementations\TimespanFormater.cs" />
     <Compile Include="Implementations\VaultFileRepository.cs" />
     <Compile Include="Implementations\VaultFileBackupRepositoryDecorator.cs" />
     <Compile Include="Implementations\VaultManipulator.cs" />

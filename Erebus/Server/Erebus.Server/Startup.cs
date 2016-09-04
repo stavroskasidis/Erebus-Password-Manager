@@ -62,7 +62,7 @@ namespace Erebus.Server
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.IdleTimeout = TimeSpan.FromMinutes(configProvider.GetConfiguration().SessionTimeoutMinutes);
                 options.CookieName = ".Erebus";
             });
 
@@ -80,6 +80,7 @@ namespace Erebus.Server
             services.AddTransient<IPasswordGenerator, PasswordGenerator>();
             services.AddTransient<ISessionContext, SessionContext>();
             services.AddTransient<IAuthorizationLogic, SessionAuthorizationLogic>();
+            services.AddTransient<ITimespanFormater, TimespanFormater>();
             services.AddSingleton<ISyncContext, SyncContext>();
 
             services.AddSingleton<ISecureStringBinarySerializer>(factory =>

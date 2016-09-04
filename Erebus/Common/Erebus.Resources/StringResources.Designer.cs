@@ -512,6 +512,15 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        public static string Refresh {
+            get {
+                return ResourceManager.GetString("Refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rename.
         /// </summary>
         public static string Rename {
@@ -544,6 +553,24 @@ namespace Erebus.Resources {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your session expired due to inactivity.
+        /// </summary>
+        public static string SessionExpiredWarning {
+            get {
+                return ResourceManager.GetString("SessionExpiredWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Session expires in.
+        /// </summary>
+        public static string SessionExpiresIn {
+            get {
+                return ResourceManager.GetString("SessionExpiresIn", resourceCulture);
             }
         }
         

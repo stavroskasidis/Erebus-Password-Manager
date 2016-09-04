@@ -1,5 +1,7 @@
 ﻿@inject Erebus.Core.Server.Contracts.IServerConfigurationProvider ServerConfigurationProvider
 @inject Erebus.Server.Authorization.IAuthorizationLogic AuthorizationLogic
+@inject Erebus.Core.Contracts.ITimespanFormater TimespanFormater
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +20,7 @@
     <script src="~/js/notify.js" asp-append-version="true" minified-auto-switch="true"></script>
     <script src="~/lib/datatables/media/js/jquery.dataTables.js" asp-append-version="true" minified-auto-switch="true"></script>
     <script src="~/lib/datatables/media/js/dataTables.bootstrap.js" asp-append-version="true" minified-auto-switch="true"></script>
+    <script src="~/js/sessionTimeout.js" asp-append-version="true" minified-auto-switch="true"></script>
 
     <script type="text/javascript">
         $.extend(true, $.fn.dataTable.defaults, {
@@ -27,9 +30,8 @@
             }
         });
     </script>
+
     @RenderSection("scripts", required: false)
-
-
 
 </head>
 <body>
@@ -43,7 +45,7 @@
 
                 <ul id="menu-content" class="menu-content collapse out">
                     <li>
-                        <a asp-action="Index" asp-controller="VaultExplorer" >
+                        <a asp-action="Index" asp-controller="VaultExplorer">
                             <i class="fa fa-indent fa-lg"></i> @StringResources.VaultExplorer
                         </a>
                     </li>
@@ -55,7 +57,7 @@
                     </li>
 
                     <li>
-                        <a asp-action="ChangePassword" asp-controller="Vault" >
+                        <a asp-action="ChangePassword" asp-controller="Vault">
                             <i class="fa fa-unlock-alt fa-lg"></i> @StringResources.ChangeVaultPassword
                         </a>
                     </li>
@@ -68,8 +70,8 @@
 
                     @*<li data-toggle="collapse" data-target="#products" class="collapsed active">
                         <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
-                    </li>
-                    <ul class="sub-menu collapse" id="products">
+                        </li>
+                        <ul class="sub-menu collapse" id="products">
                         <li class="active"><a href="#">CSS3 Animation</a></li>
                         <li><a href="#">General</a></li>
                         <li><a href="#">Buttons</a></li>
@@ -80,9 +82,27 @@
                         <li><a href="#">Panels</a></li>
                         <li><a href="#">Widgets</a></li>
                         <li><a href="#">Bootstrap Model</a></li>
-                    </ul>*@
+                        </ul>*@
                 </ul>
             </div>
+
+            <div class="progress-bar-wrapper">
+                <span>
+                    @StringResources.SessionExpiresIn:
+                    <a id="session-refresh" href="#" data-toggle="tooltip" data-placement="top" title="@StringResources.Refresh">
+                        <span id="session-remaining-time">@TimespanFormater.FormatTimespan(TimeSpan.FromMinutes(ServerConfigurationProvider.GetConfiguration().SessionTimeoutMinutes))</span>
+                    </a>
+                </span>
+                <div class="progress">
+                    <div id="session-progress-bar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                    sessionTimeout.init(@ServerConfigurationProvider.GetConfiguration().SessionTimeoutMinutes,'@Url.Action( "Logout", "Login", new { expired = true} )');
+                    sessionTimeout.start();
+            </script>
         </div>
     }
 
@@ -97,7 +117,7 @@
         $(function () {
             $(document).ajaxError(function (e, xhr, settings) {
                 if (xhr.status == 401) {
-                    location = '@Url.Action( "Index", "Login" )';
+                    location = '@Url.Action( "Index", "Login" , new {expired = true })';
                 }
             });
 
@@ -105,7 +125,12 @@
             $('[data-toggle="tooltip"]').tooltip({
                 trigger: 'hover'
             });
-        });
+
+            $('#session-refresh').on('click', function(e) {
+                e.preventDefault();
+                sessionTimeout.reset();
+            });
+        })
     </script>
 </body>
 </html>

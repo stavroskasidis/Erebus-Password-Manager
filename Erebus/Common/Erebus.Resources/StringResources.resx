@@ -312,4 +312,13 @@
   <data name="ChangePassword" xml:space="preserve">
     <value>Change Password</value>
   </data>
+  <data name="SessionExpiresIn" xml:space="preserve">
+    <value>Session expires in</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="SessionExpiredWarning" xml:space="preserve">
+    <value>Your session expired due to inactivity</value>
+  </data>
 </root>

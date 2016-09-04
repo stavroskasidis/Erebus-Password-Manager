@@ -11,6 +11,7 @@ namespace Erebus.Core.Server.Implementations
         public string VaultsFolder { get; set; }
         public string Language { get; set; }
         public string BackupFolder { get; set; }
+        public int SessionTimeoutMinutes { get; set; }
         //public SmtpSettings SmtpSettings { get; set; }
     }
 

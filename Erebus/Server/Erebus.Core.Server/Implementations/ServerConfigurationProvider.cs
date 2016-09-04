@@ -24,6 +24,7 @@ namespace Erebus.Core.Server.Implementations
                 VaultsFolder = this.ConfigurationRoot["ServerConfiguration:VaultsFolder"],
                 Language = this.ConfigurationRoot["ServerConfiguration:Language"],
                 BackupFolder = this.ConfigurationRoot["ServerConfiguration:BackupFolder"],
+                SessionTimeoutMinutes = int.Parse(this.ConfigurationRoot["ServerConfiguration:SessionTimeoutMinutes"])
                 //SmtpSettings = new SmtpSettings()
                 //{
                 //    SenderAddress = this.ConfigurationRoot["ServerConfiguration:SmtpSettings:SenderAddress"],

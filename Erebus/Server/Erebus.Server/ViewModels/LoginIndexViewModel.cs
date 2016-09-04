@@ -19,5 +19,7 @@ namespace Erebus.Server.ViewModels
         [DataType(DataType.Password)]
         [Display(Name = nameof(StringResources.MasterPassword), ResourceType = typeof(StringResources))]
         public string MasterPassword { get; set; }
+
+        public bool Expired { get; set; }
     }
 }

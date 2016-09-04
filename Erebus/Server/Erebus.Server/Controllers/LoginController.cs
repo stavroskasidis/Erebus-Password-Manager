@@ -21,18 +21,18 @@ namespace Erebus.Server.Controllers
         private ISessionContext SessionContext;
         private IAuthorizationLogic AuthorizationLogic;
 
-        public LoginController(IVaultRepositoryFactory vaultRepositoryFactory, ISecureStringConverter secureStringConverter, 
-                               ISecureStringBinarySerializer secureStringBinarySerializer, ISessionContext sessionContext, 
+        public LoginController(IVaultRepositoryFactory vaultRepositoryFactory, ISecureStringConverter secureStringConverter,
+                               ISecureStringBinarySerializer secureStringBinarySerializer, ISessionContext sessionContext,
                                IAuthorizationLogic authorizationLogic)
         {
             this.VaultRepositoryFactory = vaultRepositoryFactory;
             this.SecureStringConverter = secureStringConverter;
-            this.SessionContext= sessionContext;
+            this.SessionContext = sessionContext;
             this.AuthorizationLogic = authorizationLogic;
         }
 
         [AllowAnonymous]
-        public IActionResult Index()
+        public IActionResult Index(bool expired)
         {
             if (this.AuthorizationLogic.IsLoggedIn) return RedirectToAction("Index", "VaultExplorer");
 
@@ -42,7 +42,8 @@ namespace Erebus.Server.Controllers
 
             var viewModel = new LoginIndexViewModel()
             {
-                VaultNames = vaults
+                VaultNames = vaults,
+                Expired = expired
             };
 
             return View(viewModel);
@@ -77,15 +78,16 @@ namespace Erebus.Server.Controllers
 
 
 
-        public IActionResult Logout()
+        public IActionResult Logout(bool expired)
         {
-            if (this.AuthorizationLogic.IsLoggedIn)
-            {
-                this.SessionContext.ClearSession();
-                return RedirectToAction("Index", "Login");
-            }
+            this.SessionContext.ClearSession();
+            return RedirectToAction("Index", "Login", new { expired = expired });
+        }
 
-            return RedirectToAction("Index", "VaultExplorer");
+        public JsonResult RenewSession()
+        {
+            this.HttpContext.Session.SetString("KeepSessionAlive", DateTime.Now.ToString());
+            return Json(new { success = true });
         }
     }
 }

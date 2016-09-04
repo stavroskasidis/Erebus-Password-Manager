@@ -1,6 +1,7 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="../gulpfile.js" />
 /// <reference path="js/notify.js" />
+/// <reference path="js/sessiontimeout.js" />
 /// <reference path="js/vaultExplorer/vaultExplorerIndex.js" />
 /// <reference path="js/vaultexplorer/vaultexplorerindex.min.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />

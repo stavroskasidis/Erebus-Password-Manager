@@ -72,6 +72,7 @@
             }
         }).done(function (html) {
             $("#" + entriesGridId).html(html);
+            sessionTimeout.reset();
         });
     };
 
@@ -84,6 +85,7 @@
             }
         }).done(function (html) {
             $("body").append(html);
+            sessionTimeout.reset();
         });
     };
 
@@ -100,6 +102,7 @@
                 }
             }).done(function (html) {
                 $("body").append(html);
+                sessionTimeout.reset();
             });
         }
     };
@@ -118,6 +121,7 @@
                 }
             }).done(function (html) {
                 $("body").append(html);
+                sessionTimeout.reset();
             });
         }
     };
@@ -138,6 +142,7 @@
                 })
                 .done(function () {
                     vaultExplorerIndex.refreshNode(node.parent);
+                    sessionTimeout.reset();
                 });
             }
         }
@@ -157,6 +162,7 @@
                 }
             }).done(function (html) {
                 $("body").append(html);
+                sessionTimeout.reset();
             });
         }
     };
@@ -176,6 +182,7 @@
                 }
             }).done(function (html) {
                 $("body").append(html);
+                sessionTimeout.reset();
             });
         }
     };
@@ -198,6 +205,7 @@
                     vaultExplorerIndex.refreshNode(node.parent, node.id);
                     vaultExplorerIndex.loadGroupEntries(node.id);
                 }
+                sessionTimeout.reset();
             });
         }
     };
@@ -220,15 +228,6 @@
         tree.open_node(node);
     };
 
-    //vaultExplorerIndex.openNode = function (nodeId) {
-    //    var node = $("#" + treeId).jstree().get_node(nodeId);
-    //    $("#" + treeId).jstree().open_node(node);
-    //};
-
-    //vaultExplorerIndex.refreshTree = function () {
-    //    $("#" + treeId).jstree().refresh()
-    //};
-
     vaultExplorerIndex.submitGroupEditForm = function (formId, modalId, parentNodeId) {
         $("#" + formId).one("submit",function (e) {
             if ($(this).valid()) {
@@ -244,6 +243,7 @@
                             vaultExplorerIndex.closeModal(modalId);
                             vaultExplorerIndex.refreshNode(parentNodeId);
                         }
+                        sessionTimeout.reset();
                     }
                 });
             }
@@ -271,6 +271,7 @@
                             vaultExplorerIndex.refreshNode(node.parent, node.id);
                             vaultExplorerIndex.loadGroupEntries(groupId);
                         }
+                        sessionTimeout.reset();
                     }
                 });
             }
@@ -382,6 +383,7 @@
             }
         }).done(function (html) {
             $("body").append(html);
+            sessionTimeout.reset();
         });
     };
 
@@ -399,6 +401,7 @@
                         if (data.success) {
                             $("#" + inputId).val(data.password);
                         }
+                        sessionTimeout.reset();
                     }
                 });
             }
