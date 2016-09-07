@@ -1,3 +1,55 @@
+
+.panel-body .focused-input-wrapper--active  {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-left-style: outset;
+    border-left-width: 10px;
+    border-left-color: rgb(147, 191, 229);
+    background-color: rgba(116, 157, 232, 0.14);
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.panel-body .focused-input-wrapper {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-left-style: outset;
+    border-left-width: 10px;
+    border-left-color: rgba(147, 191, 229, 0);
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+form .focused-input-wrapper--active  {
+    padding-top: 5px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-left-style: outset;
+    border-left-width: 10px;
+    border-left-color: rgb(147, 191, 229);
+    background-color: rgba(116, 157, 232, 0.14);
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+form .focused-input-wrapper {
+    padding-top: 5px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-left-style: outset;
+    border-left-width: 10px;
+    border-left-color: rgba(147, 191, 229, 0);
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+
 .vault-explorer-body {
     width: 100%;
     overflow: hidden; /* will contain if #first is longer than #second */

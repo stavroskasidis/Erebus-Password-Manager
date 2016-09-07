@@ -129,6 +129,9 @@
                 e.preventDefault();
                 sessionTimeout.reset();
             });
+
+            $("body").on("focus","input, select" ,function() { $(this).parents(".focused-input-wrapper").addClass("focused-input-wrapper--active").removeClass("focused-input-wrapper");  });
+            $("body").on("focusout","input, select" ,function() { $(this).parents(".focused-input-wrapper--active").addClass("focused-input-wrapper").removeClass("focused-input-wrapper--active");  });
         })
     </script>
 </body>

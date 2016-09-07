@@ -5,26 +5,26 @@
         <form id="form-@Model.Id" asp-action="AddOrEditEntry">
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="ParentId" />
-            <div class="form-group">
+            <div class="form-group focused-input-wrapper">
                 <label asp-for="Title" add-metadata-classes="true"></label>
                 <span asp-validation-for="Title" class="text-danger"></span>
                 <input asp-for="Title" class="form-control" />
             </div>
 
-            <div class="form-group">
+            <div class="form-group focused-input-wrapper">
                 <label asp-for="UserName" add-metadata-classes="true"></label>
                 <span asp-validation-for="UserName" class="text-danger"></span>
                 <input asp-for="UserName" class="form-control" />
             </div>
 
-            <div class="form-group">
+            <div class="form-group focused-input-wrapper">
                 <label asp-for="Password" add-metadata-classes="true"></label>
                 <span asp-validation-for="Password" class="text-danger"></span>
 
 
-                <div class="input-group">
+                <div class="input-group ">
                     <span class="input-group-btn">
-                        <button id="modal-@Model.Id-generate-password-btn" type="button" class="btn btn-primary" data-toggle="tooltip" 
+                        <button id="modal-@Model.Id-generate-password-btn" type="button" class="btn btn-primary" data-toggle="tooltip"
                                 data-placement="top" title="@StringResources.Generate" onclick="vaultExplorerIndex.generatePassword('@Model.Id');">
                             <span class="fa fa-key"></span>
                         </button>
@@ -38,7 +38,7 @@
                             <span class="glyphicon glyphicon-eye-open"></span>
                         </button>
                         <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@StringResources.Copy"
-                                onclick="vaultExplorerIndex.copyPassword('modal-password-@Model.Id');">
+                                onclick="vaultExplorerIndex.copyPassword(this,'modal-password-@Model.Id');">
                             <span class="fa fa-clipboard"></span>
                         </button>
                     </span>
@@ -46,13 +46,13 @@
 
             </div>
 
-            <div class="form-group">
+            <div class="form-group focused-input-wrapper">
                 <label asp-for="Url" add-metadata-classes="true"></label>
                 <span asp-validation-for="Url" class="text-danger"></span>
                 <input asp-for="Url" class="form-control" />
             </div>
 
-            <div class="form-group">
+            <div class="form-group focused-input-wrapper">
                 <label asp-for="Description" add-metadata-classes="true"></label>
                 <span asp-validation-for="Description" class="text-danger"></span>
                 <input asp-for="Description" class="form-control" />

@@ -362,7 +362,10 @@
         return succeed;
     }
 
-    vaultExplorerIndex.copyPassword = function (inputId) {
+    vaultExplorerIndex.copyPassword = function (buttonElement, inputId) {
+
+
+
         if ($("#" + inputId).prop("type") === "password") {
             $("#" + inputId).prop("type", "text");
             copyToClipboard($("#" + inputId)[0]);
@@ -370,6 +373,8 @@
         } else {
             copyToClipboard($("#" + inputId)[0]);
         }
+
+        //$(buttonElement).tooltip('hide').attr('data-original-title', "Copied!").tooltip('fixTitle').tooltip('show');
 
         $.notify("Copied!", { autoHide: true, autoHideDelay: 1500, className: "info", position: "top center" });
     };
