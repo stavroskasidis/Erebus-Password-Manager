@@ -33,7 +33,7 @@
                         </div>
 
                     </td>
-                    <td>@Html.DisplayFor(model => entry.Url)</td>
+                    <td><a href="@entry.Url" target="_blank">@entry.Url</a></td>
                     <td>
                         @*<div class="btn-group">*@
                             <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.editEntry('@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.Edit"><span class="glyphicon glyphicon-pencil"></span></button>
