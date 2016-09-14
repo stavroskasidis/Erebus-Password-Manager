@@ -11,7 +11,10 @@ namespace Erebus.Mobile
     {
         public MainPage()
         {
+
+            var test = Erebus.Resources.StringResources.Actions;
             InitializeComponent();
+            label.Text = new Erebus.Core.Implementations.ClockProvider().GetNow().ToString();
         }
     }
 }

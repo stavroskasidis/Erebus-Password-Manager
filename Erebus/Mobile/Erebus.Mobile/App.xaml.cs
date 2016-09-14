@@ -12,7 +12,7 @@ namespace Erebus.Mobile
         public App()
         {
             InitializeComponent();
-            
+
             MainPage = new Erebus.Mobile.MainPage();
         }
 

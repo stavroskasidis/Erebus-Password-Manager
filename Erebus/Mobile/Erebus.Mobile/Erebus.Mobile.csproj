@@ -5,15 +5,15 @@
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DBC85667-B769-4D38-B96C-C8911B7008DE}</ProjectGuid>
+    <ProjectGuid>{B78F2F30-680D-4968-A655-BAA42040487E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Erebus.Mobile</RootNamespace>
     <AssemblyName>Erebus.Mobile</AssemblyName>
+    <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -58,12 +58,19 @@
     <None Include="GettingStarted.Xamarin" />
     <None Include="project.json" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Erebus.Core\Erebus.Core.csproj">
+      <Project>{cc2528b8-2964-4145-bf72-1e1a591c1cc0}</Project>
+      <Name>Erebus.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Erebus.Model\Erebus.Model.csproj">
+      <Project>{1f634efc-0bb7-4059-8924-d4d718410b53}</Project>
+      <Name>Erebus.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Erebus.Resources\Erebus.Resources.csproj">
+      <Project>{820b25ad-1845-4cf5-824c-9b552ec86a45}</Project>
+      <Name>Erebus.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

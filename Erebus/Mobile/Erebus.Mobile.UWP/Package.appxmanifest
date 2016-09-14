@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="a70187d1-6704-48f8-a697-6c88f3bc6aa0"
+    Name="0faadde0-bdb1-42c5-8df7-52a1728d7289"
     Publisher="CN=Akira"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="a70187d1-6704-48f8-a697-6c88f3bc6aa0" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="0faadde0-bdb1-42c5-8df7-52a1728d7289" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Erebus.Mobile.UWP</DisplayName>
