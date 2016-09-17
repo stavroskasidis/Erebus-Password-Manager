@@ -21,7 +21,7 @@ namespace Erebus.Server.Authorization
             get
             {
                 var masterPassword = HttpContextAccessor.HttpContext.Session.Get(Constants.MASTER_PASSWORD_SESSION_KEY);
-                var currentVault = HttpContextAccessor.HttpContext.Session.Get(Constants.CURRENT_VAULT_DESSION_KEY);
+                var currentVault = HttpContextAccessor.HttpContext.Session.Get(Constants.CURRENT_VAULT_SESSION_KEY);
                 return (masterPassword != null && currentVault != null);
             }
         }

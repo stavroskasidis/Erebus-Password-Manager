@@ -42,7 +42,7 @@ namespace Erebus.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var configProvider = new ServerConfigurationProvider(this.Configuration);
+            var configReader = new ServerConfigurationReader(this.Configuration);
 
             // Add framework services.
             services.AddMvc(options =>
@@ -50,7 +50,7 @@ namespace Erebus.Server
                 //var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                 //options.Filters.Add(new AuthorizeFilter(policy));
 
-                if (configProvider.GetConfiguration().DisableSSLRequirement == false)
+                if (configReader.GetConfiguration().DisableSSLRequirement == false)
                 {
                     options.Filters.Add(new RequireHttpsAttribute());
                 }
@@ -62,13 +62,13 @@ namespace Erebus.Server
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(configProvider.GetConfiguration().SessionTimeoutMinutes);
+                options.IdleTimeout = TimeSpan.FromMinutes(configReader.GetConfiguration().SessionTimeoutMinutes);
                 options.CookieName = ".Erebus";
             });
 
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IServerConfigurationProvider>(configProvider);
+            services.AddSingleton<IServerConfigurationReader>(configReader);
             services.AddTransient<IClockProvider, ClockProvider>();
             services.AddTransient<IFileSystem, FileSystem>();
             services.AddTransient<ISecureStringConverter, SecureStringConverter>();
@@ -114,7 +114,7 @@ namespace Erebus.Server
 
             app.UseStaticFiles();
 
-            var serverConfiguration = app.ApplicationServices.GetService<IServerConfigurationProvider>().GetConfiguration();
+            var serverConfiguration = app.ApplicationServices.GetService<IServerConfigurationReader>().GetConfiguration();
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
                 DefaultRequestCulture = new RequestCulture(new CultureInfo(serverConfiguration.Language)),

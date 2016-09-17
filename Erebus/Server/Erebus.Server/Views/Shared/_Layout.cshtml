@@ -1,4 +1,4 @@
-﻿@inject Erebus.Core.Server.Contracts.IServerConfigurationProvider ServerConfigurationProvider
+﻿@inject Erebus.Core.Server.Contracts.IServerConfigurationReader ServerConfigurationReader
 @inject Erebus.Server.Authorization.IAuthorizationLogic AuthorizationLogic
 @inject Erebus.Core.Contracts.ITimespanFormater TimespanFormater
 
@@ -25,7 +25,7 @@
     <script type="text/javascript">
         $.extend(true, $.fn.dataTable.defaults, {
             "language": {
-                "url": "@($"/lib/datatables/localization/{ServerConfigurationProvider.GetConfiguration().Language}.json")"
+                "url": "@($"/lib/datatables/localization/{ServerConfigurationReader.GetConfiguration().Language}.json")"
             }
         });
     </script>
@@ -89,7 +89,7 @@
                 <span>
                     @StringResources.SessionExpiresIn:
                     <a id="session-refresh" href="#" data-toggle="tooltip" data-placement="top" title="@StringResources.Refresh">
-                        <span id="session-remaining-time">@TimespanFormater.FormatTimespan(TimeSpan.FromMinutes(ServerConfigurationProvider.GetConfiguration().SessionTimeoutMinutes))</span>
+                        <span id="session-remaining-time">@TimespanFormater.FormatTimespan(TimeSpan.FromMinutes(ServerConfigurationReader.GetConfiguration().SessionTimeoutMinutes))</span>
                     </a>
                 </span>
                 <div class="progress">
@@ -99,7 +99,7 @@
             </div>
 
             <script type="text/javascript">
-                    sessionTimeout.init(@ServerConfigurationProvider.GetConfiguration().SessionTimeoutMinutes,'@Url.Action( "Logout", "Login", new { expired = true} )');
+                    sessionTimeout.init(@ServerConfigurationReader.GetConfiguration().SessionTimeoutMinutes,'@Url.Action( "Logout", "Login", new { expired = true} )');
                     sessionTimeout.start();
             </script>
         </div>

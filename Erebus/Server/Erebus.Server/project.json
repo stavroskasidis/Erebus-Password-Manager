@@ -37,12 +37,12 @@
                 "Erebus.Core": {
                     "target": "project"
                 },
-                "Erebus.Model": {
-                    "target": "project"
-                },
-                "Erebus.Resources": {
-                    "target": "project"
-                }          }
+              "Erebus.Model": {
+                "target": "project"
+              },
+              "Erebus.Resources": {
+                "target": "project"
+              }   }
         }
     },
     "publishOptions": {
@@ -61,7 +61,7 @@
     },
     "scripts": {
         "prepublish": [ "bower install", "dotnet bundle" ],
-        "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+        "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ],
     },
     "tools": {
         "BundlerMinifier.Core": "2.0.238",

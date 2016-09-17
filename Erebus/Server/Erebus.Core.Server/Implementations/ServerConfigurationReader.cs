@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Erebus.Core.Server.Implementations
 {
-    public class ServerConfigurationProvider : IServerConfigurationProvider
+    public class ServerConfigurationReader : IServerConfigurationReader
     {
         private readonly IConfigurationRoot ConfigurationRoot;
 
-        public ServerConfigurationProvider(IConfigurationRoot configurationRoot)
+        public ServerConfigurationReader(IConfigurationRoot configurationRoot)
         {
             this.ConfigurationRoot = configurationRoot;
         }

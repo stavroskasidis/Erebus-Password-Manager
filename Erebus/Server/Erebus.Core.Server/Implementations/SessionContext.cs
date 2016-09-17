@@ -27,7 +27,7 @@ namespace Erebus.Core.Server
 
         public string GetCurrentVaultName()
         {
-            return this.HttpContextAccessor.HttpContext.Session.GetString(Constants.CURRENT_VAULT_DESSION_KEY);
+            return this.HttpContextAccessor.HttpContext.Session.GetString(Constants.CURRENT_VAULT_SESSION_KEY);
         }
 
         public SecureString GetMasterPassword()
@@ -40,7 +40,7 @@ namespace Erebus.Core.Server
 
         public void SetCurrentVaultName(string currentVaultName)
         { 
-            this.HttpContextAccessor.HttpContext.Session.SetString(Constants.CURRENT_VAULT_DESSION_KEY, currentVaultName);
+            this.HttpContextAccessor.HttpContext.Session.SetString(Constants.CURRENT_VAULT_SESSION_KEY, currentVaultName);
         }
 
         public void SetMasterPassword(SecureString masterPassword)

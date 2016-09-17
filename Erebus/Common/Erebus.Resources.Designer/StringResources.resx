@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
   <data name="Actions" xml:space="preserve">
     <value>Actions</value>
   </data>
@@ -129,14 +132,35 @@
   <data name="AddSubGroup" xml:space="preserve">
     <value>Add Sub-Group</value>
   </data>
+  <data name="ApplicationMode" xml:space="preserve">
+    <value>Application Mode</value>
+  </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>Erebus</value>
+  </data>
+  <data name="ApplicationNameSubtitle" xml:space="preserve">
+    <value>Password Manager</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ChangeVaultPassword" xml:space="preserve">
+    <value>Change Vault Password</value>
+  </data>
+  <data name="CopiedAlertMessage" xml:space="preserve">
+    <value>Copied to clipboard!</value>
   </data>
   <data name="Copy" xml:space="preserve">
     <value>Copy</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
+  </data>
+  <data name="CreateNewVault" xml:space="preserve">
+    <value>Create a new vault</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
@@ -159,6 +183,9 @@
   <data name="EditGroup" xml:space="preserve">
     <value>Edit Group</value>
   </data>
+  <data name="Entries" xml:space="preserve">
+    <value>Entries</value>
+  </data>
   <data name="EntryEdit" xml:space="preserve">
     <value>Entry Edit</value>
   </data>
@@ -173,6 +200,9 @@
   </data>
   <data name="GroupEdit" xml:space="preserve">
     <value>Group Edit</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Groups</value>
   </data>
   <data name="IncludeDigits" xml:space="preserve">
     <value>Include Digits (0, 1, 2, ..)</value>
@@ -192,8 +222,20 @@
   <data name="InvalidInput" xml:space="preserve">
     <value>Invalid Input</value>
   </data>
+  <data name="InvalidUrl" xml:space="preserve">
+    <value>Invalid Url</value>
+  </data>
+  <data name="InvalidUrlMessage" xml:space="preserve">
+    <value>The url you have provided is invalid</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
   </data>
   <data name="MasterPassword" xml:space="preserve">
     <value>Master Password</value>
@@ -213,6 +255,15 @@
   <data name="NewGroup" xml:space="preserve">
     <value>New Group</value>
   </data>
+  <data name="NewMasterPassword" xml:space="preserve">
+    <value>New Master Password</value>
+  </data>
+  <data name="NewMasterPasswordConfirm" xml:space="preserve">
+    <value>New Master Password Confirmation</value>
+  </data>
+  <data name="NewName" xml:space="preserve">
+    <value>New Name</value>
+  </data>
   <data name="NewSubGroup" xml:space="preserve">
     <value>New Sub-Group</value>
   </data>
@@ -225,11 +276,32 @@
   <data name="PasswordLength" xml:space="preserve">
     <value>Password Length</value>
   </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="RenameVault" xml:space="preserve">
+    <value>Rename Vault</value>
+  </data>
   <data name="RequiredErrorMessage" xml:space="preserve">
     <value>'{0}' is required</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="ServerNotFound" xml:space="preserve">
+    <value>Server not found</value>
+  </data>
+  <data name="ServerUrl" xml:space="preserve">
+    <value>Server Url</value>
+  </data>
+  <data name="SessionExpiredWarning" xml:space="preserve">
+    <value>Your session expired due to inactivity</value>
+  </data>
+  <data name="SessionExpiresIn" xml:space="preserve">
+    <value>Session expires in</value>
   </data>
   <data name="ShowHide" xml:space="preserve">
     <value>Show/Hide</value>
@@ -252,73 +324,19 @@
   <data name="VaultCreationMasterPasswordWarning" xml:space="preserve">
     <value>Master password can be changed but is NOT retrievable. If you forget it, you WILL lose access to your vault !!</value>
   </data>
-  <data name="VaultNameAlreadyExists" xml:space="preserve">
-    <value>Vault name already exists. Please choose a different name</value>
-  </data>
-  <data name="Warning" xml:space="preserve">
-    <value>Warning</value>
-  </data>
-  <data name="Accept" xml:space="preserve">
-    <value>Accept</value>
-  </data>
-  <data name="CopiedAlertMessage" xml:space="preserve">
-    <value>Copied to clipboard!</value>
-  </data>
-  <data name="Loading" xml:space="preserve">
-    <value>Loading</value>
-  </data>
-  <data name="Entries" xml:space="preserve">
-    <value>Entries</value>
-  </data>
-  <data name="Groups" xml:space="preserve">
-    <value>Groups</value>
-  </data>
   <data name="VaultExplorer" xml:space="preserve">
     <value>Vault Explorer</value>
   </data>
-  <data name="CreateNewVault" xml:space="preserve">
-    <value>Create a new vault</value>
-  </data>
-  <data name="ApplicationName" xml:space="preserve">
-    <value>Erebus</value>
-  </data>
-  <data name="ApplicationNameSubtitle" xml:space="preserve">
-    <value>Password Manager</value>
-  </data>
-  <data name="ChangeVaultPassword" xml:space="preserve">
-    <value>Change Vault Password</value>
-  </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Logout</value>
-  </data>
-  <data name="RenameVault" xml:space="preserve">
-    <value>Rename Vault</value>
-  </data>
-  <data name="NewName" xml:space="preserve">
-    <value>New Name</value>
+  <data name="VaultNameAlreadyExists" xml:space="preserve">
+    <value>Vault name already exists. Please choose a different name</value>
   </data>
   <data name="VaultRename" xml:space="preserve">
     <value>Vault Rename</value>
   </data>
-  <data name="Rename" xml:space="preserve">
-    <value>Rename</value>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
   </data>
-  <data name="NewMasterPassword" xml:space="preserve">
-    <value>New Master Password</value>
-  </data>
-  <data name="NewMasterPasswordConfirm" xml:space="preserve">
-    <value>New Master Password Confirmation</value>
-  </data>
-  <data name="ChangePassword" xml:space="preserve">
-    <value>Change Password</value>
-  </data>
-  <data name="SessionExpiresIn" xml:space="preserve">
-    <value>Session expires in</value>
-  </data>
-  <data name="Refresh" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
-  <data name="SessionExpiredWarning" xml:space="preserve">
-    <value>Your session expired due to inactivity</value>
+  <data name="Configuration" xml:space="preserve">
+    <value>Configuration</value>
   </data>
 </root>
