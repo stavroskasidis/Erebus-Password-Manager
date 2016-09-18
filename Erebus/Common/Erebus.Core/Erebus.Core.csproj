@@ -39,6 +39,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\ByteArrayHelper.cs" />
     <Compile Include="Contracts\ISyncContext.cs" />
     <Compile Include="Contracts\IClockProvider.cs" />
     <Compile Include="Contracts\IFileSystem.cs" />
@@ -46,6 +47,7 @@
     <Compile Include="Contracts\ISecureStringBinarySerializer.cs" />
     <Compile Include="Contracts\ISerializer.cs" />
     <Compile Include="Contracts\ITimespanFormater.cs" />
+    <Compile Include="Contracts\IVaultFileMetadataHandler.cs" />
     <Compile Include="Contracts\IVaultFactory.cs" />
     <Compile Include="Contracts\IVaultManipulator.cs" />
     <Compile Include="Contracts\IVaultManipulatorFactory.cs" />
@@ -55,20 +57,20 @@
     <Compile Include="Contracts\IPasswordGenerator.cs" />
     <Compile Include="Contracts\IVaultRepository.cs" />
     <Compile Include="Implementations\AesCryptographer.cs" />
+    <Compile Include="Implementations\ByteArrayHelper.cs" />
     <Compile Include="Implementations\ClockProvider.cs" />
     <Compile Include="Implementations\GetEntryResult.cs" />
     <Compile Include="Implementations\GetGroupResult.cs" />
     <Compile Include="Implementations\JsonSerializer.cs" />
-    <Compile Include="Implementations\FileSystem.cs" />
     <Compile Include="Implementations\PasswordGenerator.cs" />
     <Compile Include="Implementations\SecureStringBinarySerializer.cs" />
     <Compile Include="Implementations\DefaultVaultFactory.cs" />
-    <Compile Include="Implementations\SyncContext.cs" />
     <Compile Include="Implementations\TimespanFormater.cs" />
     <Compile Include="Implementations\VaultFileRepository.cs" />
     <Compile Include="Implementations\VaultFileBackupRepositoryDecorator.cs" />
     <Compile Include="Implementations\VaultManipulator.cs" />
     <Compile Include="Implementations\VaultManipulatorFactory.cs" />
+    <Compile Include="Implementations\VaultFileMetadataHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implementations\SecureStringConverter.cs" />
   </ItemGroup>

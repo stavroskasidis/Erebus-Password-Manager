@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Erebus.Core.Mobile.Contracts
 {
-    public interface IServerChecker
+    public interface IAlertDisplayer
     {
-        Task<bool> IsServerOnlineAsync(string serverUrl);
+        void DisplayAlert(string title, string message);
     }
 }

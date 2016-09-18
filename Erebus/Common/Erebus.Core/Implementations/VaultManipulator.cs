@@ -34,6 +34,7 @@ namespace Erebus.Core.Implementations
             GuardClauses.ArgumentIsNotNull(nameof(group), group);
             group.CreatedAt = this.ClockProvider.GetNow();
             group.UpdatedAt = this.ClockProvider.GetNow();
+            group.Version++;
 
             if (parentGroupId == null)
             {
@@ -55,6 +56,7 @@ namespace Erebus.Core.Implementations
             if (result == null) throw new ArgumentException("Group not found", nameof(group));
 
             result.Group.UpdatedAt = this.ClockProvider.GetNow();
+            result.Group.Version++;
             result.Group.Name = group.Name;
         }
 
@@ -91,6 +93,7 @@ namespace Erebus.Core.Implementations
 
             entry.CreatedAt = this.ClockProvider.GetNow();
             entry.UpdatedAt = this.ClockProvider.GetNow();
+            entry.Version++;
             result.Group.Entries.Add(entry);
 
         }
@@ -127,6 +130,7 @@ namespace Erebus.Core.Implementations
             var foundEntry = result.Entry;
 
             foundEntry.UpdatedAt = this.ClockProvider.GetNow();
+            foundEntry.Version++;
             foundEntry.Title = entry.Title;
             foundEntry.UserName = entry.UserName;
             foundEntry.Password = entry.Password;

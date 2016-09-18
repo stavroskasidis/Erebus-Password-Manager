@@ -22,6 +22,7 @@ namespace Erebus.Core.Mobile.Implementations
             this.Application.Properties[nameof(configuration.ApplicationMode)] = configuration.ApplicationMode.ToString();
             this.Application.Properties[nameof(configuration.ServerUrl)] = configuration.ServerUrl;
             this.Application.Properties[nameof(configuration.Language)] = configuration.Language;
+            this.Application.Properties[nameof(configuration.AlreadyInitialized)] = configuration.AlreadyInitialized.ToString();
 
             await this.Application.SavePropertiesAsync();
         }

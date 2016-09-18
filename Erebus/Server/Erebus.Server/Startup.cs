@@ -70,7 +70,7 @@ namespace Erebus.Server
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IServerConfigurationReader>(configReader);
             services.AddTransient<IClockProvider, ClockProvider>();
-            services.AddTransient<IFileSystem, FileSystem>();
+            services.AddTransient<IFileSystem, ServerFileSystem>();
             services.AddTransient<ISecureStringConverter, SecureStringConverter>();
             services.AddTransient<ISerializer, JsonSerializer>();
             services.AddTransient<ISymetricCryptographer, AesCryptographer>();
@@ -81,11 +81,12 @@ namespace Erebus.Server
             services.AddTransient<ISessionContext, SessionContext>();
             services.AddTransient<IAuthorizationLogic, SessionAuthorizationLogic>();
             services.AddTransient<ITimespanFormater, TimespanFormater>();
-            services.AddSingleton<ISyncContext, SyncContext>();
+            services.AddSingleton<ISyncContext, ServerSyncContext>();
+            services.AddTransient<IByteArrayHelper, ByteArrayHelper>();
+            services.AddTransient<IVaultFileMetadataHandler, VaultFileMetadataHandler>();
 
             services.AddSingleton<ISecureStringBinarySerializer>(factory =>
             {
-                var serializerEncryptionKey = new SecureString();
                 string randomPassword = factory.GetRequiredService<IPasswordGenerator>().GeneratePassword(50, true, true, true, true);
                 var secureStringConverter = factory.GetRequiredService<ISecureStringConverter>();
                 return new SecureStringBinarySerializer(factory.GetRequiredService<ISymetricCryptographer>(),

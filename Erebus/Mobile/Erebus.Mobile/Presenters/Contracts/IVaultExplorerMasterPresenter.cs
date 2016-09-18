@@ -1,4 +1,4 @@
-﻿using Erebus.Mobile.Views.Contracts;
+﻿using Erebus.Core.Mobile.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Erebus.Mobile.Presenters.Contracts
 {
-    public interface IPresenter
+    interface IVaultExplorerMasterPresenter : IPresenter
     {
-        object GetView();
     }
 }

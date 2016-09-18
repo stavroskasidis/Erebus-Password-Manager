@@ -282,9 +282,6 @@
     };
 
     vaultExplorerIndex.closeModal = function (modalId) {
-        $("#" + modalId).on("hidden.bs.modal", function () {
-            $("#" + modalId).remove();
-        });
         $("#" + modalId).modal('hide');
     };
 

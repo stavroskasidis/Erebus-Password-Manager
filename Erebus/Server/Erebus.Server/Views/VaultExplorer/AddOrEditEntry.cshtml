@@ -1,71 +1,76 @@
 ﻿@model EntryEditViewModel
 
-<bootstrap-modal id="modal-@Model.Id" title="@Model.ModalTitle">
-    <modal-body>
-        <form id="form-@Model.Id" asp-action="AddOrEditEntry">
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="ParentId" />
-            <div class="form-group focused-input-wrapper">
-                <label asp-for="Title" add-metadata-classes="true"></label>
-                <span asp-validation-for="Title" class="text-danger"></span>
-                <input asp-for="Title" class="form-control" />
-            </div>
-
-            <div class="form-group focused-input-wrapper">
-                <label asp-for="UserName" add-metadata-classes="true"></label>
-                <span asp-validation-for="UserName" class="text-danger"></span>
-                <input asp-for="UserName" class="form-control" />
-            </div>
-
-            <div class="form-group focused-input-wrapper">
-                <label asp-for="Password" add-metadata-classes="true"></label>
-                <span asp-validation-for="Password" class="text-danger"></span>
-
-
-                <div class="input-group ">
-                    <span class="input-group-btn">
-                        <button id="modal-@Model.Id-generate-password-btn" type="button" class="btn btn-primary" data-toggle="tooltip"
-                                data-placement="top" title="@StringResources.Generate" onclick="vaultExplorerIndex.generatePassword('@Model.Id');">
-                            <span class="fa fa-key"></span>
-                        </button>
-                    </span>
-
-                    <input id="modal-password-@Model.Id" asp-for="Password" value="@Model.Password" class="form-control" />
-
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@StringResources.ShowHide"
-                                onclick="vaultExplorerIndex.toggleShowPassword(this,'modal-password-@Model.Id');">
-                            <span class="glyphicon glyphicon-eye-open"></span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@StringResources.Copy"
-                                onclick="vaultExplorerIndex.copyPassword(this,'modal-password-@Model.Id');">
-                            <span class="fa fa-clipboard"></span>
-                        </button>
-                    </span>
+<div id="modal-container-@Model.Id">
+    <bootstrap-modal id="modal-@Model.Id" title="@Model.ModalTitle">
+        <modal-body>
+            <form id="form-@Model.Id" asp-action="AddOrEditEntry">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="ParentId" />
+                <div class="form-group focused-input-wrapper">
+                    <label asp-for="Title" add-metadata-classes="true"></label>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                    <input asp-for="Title" class="form-control" />
                 </div>
 
-            </div>
+                <div class="form-group focused-input-wrapper">
+                    <label asp-for="UserName" add-metadata-classes="true"></label>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                    <input asp-for="UserName" class="form-control" />
+                </div>
 
-            <div class="form-group focused-input-wrapper">
-                <label asp-for="Url" add-metadata-classes="true"></label>
-                <span asp-validation-for="Url" class="text-danger"></span>
-                <input asp-for="Url" class="form-control" />
-            </div>
+                <div class="form-group focused-input-wrapper">
+                    <label asp-for="Password" add-metadata-classes="true"></label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
 
-            <div class="form-group focused-input-wrapper">
-                <label asp-for="Description" add-metadata-classes="true"></label>
-                <span asp-validation-for="Description" class="text-danger"></span>
-                <input asp-for="Description" class="form-control" />
-            </div>
-        </form>
-    </modal-body>
-    <modal-footer>
-        <button id="modal-@Model.Id-save-btn" type="button" class="btn btn-primary" onclick="vaultExplorerIndex.submitEntryEditForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId');">@StringResources.Save</button>
-    </modal-footer>
-</bootstrap-modal>
 
-<script type="text/javascript">
-    $.validator.unobtrusive.parse($('#form-@Model.Id'));
-    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
-    $("#modal-@Model.Id").modal({ backdrop: 'static', keyboard: false });
-</script>
+                    <div class="input-group ">
+                        <span class="input-group-btn">
+                            <button id="modal-@Model.Id-generate-password-btn" type="button" class="btn btn-primary" data-toggle="tooltip"
+                                    data-placement="top" title="@StringResources.Generate" onclick="vaultExplorerIndex.generatePassword('@Model.Id');">
+                                <span class="fa fa-key"></span>
+                            </button>
+                        </span>
+
+                        <input id="modal-password-@Model.Id" asp-for="Password" value="@Model.Password" class="form-control" />
+
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@StringResources.ShowHide"
+                                    onclick="vaultExplorerIndex.toggleShowPassword(this,'modal-password-@Model.Id');">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </button>
+                            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@StringResources.Copy"
+                                    onclick="vaultExplorerIndex.copyPassword(this,'modal-password-@Model.Id');">
+                                <span class="fa fa-clipboard"></span>
+                            </button>
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="form-group focused-input-wrapper">
+                    <label asp-for="Url" add-metadata-classes="true"></label>
+                    <span asp-validation-for="Url" class="text-danger"></span>
+                    <input asp-for="Url" class="form-control" />
+                </div>
+
+                <div class="form-group focused-input-wrapper">
+                    <label asp-for="Description" add-metadata-classes="true"></label>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                    <input asp-for="Description" class="form-control" />
+                </div>
+            </form>
+        </modal-body>
+        <modal-footer>
+            <button id="modal-@Model.Id-save-btn" type="button" class="btn btn-primary" onclick="vaultExplorerIndex.submitEntryEditForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId');">@StringResources.Save</button>
+        </modal-footer>
+    </bootstrap-modal>
+
+    <script type="text/javascript">
+        $.validator.unobtrusive.parse($('#form-@Model.Id'));
+        $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+        $("#modal-@Model.Id").modal({ backdrop: 'static', keyboard: false });
+        $("#modal-@Model.Id").on("hidden.bs.modal", function () {
+            $("#modal-container-@Model.Id").remove();
+        });
+    </script>
+</div>

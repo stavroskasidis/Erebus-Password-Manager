@@ -11,12 +11,19 @@ namespace Erebus.Core.Mobile.Implementations
 {
     public class ServerChecker : IServerChecker
     {
-        public async Task<bool> IsServerOnlineAsync(string serverUrl)
+        public async Task<bool> CanCommunicateWithServer(string serverUrl)
         {
             using (var client = new HttpClient())
             {
-                var message = await client.GetAsync(serverUrl, HttpCompletionOption.ResponseHeadersRead);
-                return message.IsSuccessStatusCode;
+                try
+                {
+                    var message = await client.GetAsync(serverUrl, HttpCompletionOption.ResponseHeadersRead);
+                    return message.IsSuccessStatusCode;
+                }
+                catch(HttpRequestException)
+                {
+                    return false;
+                }
             }
         }
     }

@@ -10,6 +10,7 @@ namespace Erebus.Model
     {
         public string Name { get; set; }
         public List<Group> Groups { get; set; }
+        public VaultCreateLocation CreateLocation { get; set; }
 
         public Vault()
         {

@@ -19,15 +19,20 @@ namespace Erebus.Core.Implementations
         private ISerializer Serializer;
         private ISymetricCryptographer SymetricCryptographer;
         private IClockProvider ClockProvider;
+        private IVaultFileMetadataHandler VaultFileMetadataHandler;
 
         public VaultFileBackupRepositoryDecorator(IVaultRepository decoratedVaultRepository, string vaultBackupFolder,
                                                   string vaultFileExtension, ISerializer serializer, IFileSystem fileSystem,
-                                                  ISymetricCryptographer symetricCryptographer, IClockProvider clockProvider)
+                                                  ISymetricCryptographer symetricCryptographer, IClockProvider clockProvider,
+                                                  IVaultFileMetadataHandler vaultFileMetadataHandler)
         {
             GuardClauses.ArgumentIsNotNull(nameof(decoratedVaultRepository), decoratedVaultRepository);
             GuardClauses.ArgumentIsNotNull(nameof(vaultBackupFolder), vaultBackupFolder);
             GuardClauses.ArgumentIsNotNull(nameof(vaultFileExtension), vaultFileExtension);
             if (vaultFileExtension.StartsWith(".") == false) throw new ArgumentException("File extension string must start with a dot. E.g. \".extension\"", nameof(vaultFileExtension));
+            GuardClauses.ArgumentIsNotNull(nameof(symetricCryptographer), symetricCryptographer);
+            GuardClauses.ArgumentIsNotNull(nameof(clockProvider), clockProvider);
+            GuardClauses.ArgumentIsNotNull(nameof(vaultFileMetadataHandler), vaultFileMetadataHandler);
 
             this.VaultRepository = decoratedVaultRepository;
             this.VaultBackupFolder = vaultBackupFolder;
@@ -36,6 +41,7 @@ namespace Erebus.Core.Implementations
             this.FileSystem = fileSystem;
             this.SymetricCryptographer = symetricCryptographer;
             this.ClockProvider = clockProvider;
+            this.VaultFileMetadataHandler = vaultFileMetadataHandler;
         }
 
         public IEnumerable<string> GetAllVaultNames()
@@ -67,10 +73,20 @@ namespace Erebus.Core.Implementations
 
             string vaultBackupFile = Path.ChangeExtension(Path.Combine(VaultBackupFolder, vault.Name), VaultFileExtension);
 
+            //string serialized = this.Serializer.Serialize(vault);  --
+            //byte[] fileBytes = Encoding.UTF8.GetBytes(serialized); --
+            //byte[] encryptedBytes = this.SymetricCryptographer.Encrypt(fileBytes, masterPassword); --
+            //this.FileSystem.WriteAllBytes(vaultBackupFile, encryptedBytes);
+
             string serialized = this.Serializer.Serialize(vault);
-            byte[] fileBytes = Encoding.UTF8.GetBytes(serialized);
-            byte[] encryptedBytes = this.SymetricCryptographer.Encrypt(fileBytes, masterPassword);
-            this.FileSystem.WriteAllBytes(vaultBackupFile, encryptedBytes);
+            byte[] vaultBytes = Encoding.UTF8.GetBytes(serialized);
+            byte[] encryptedVaultBytes = this.SymetricCryptographer.Encrypt(vaultBytes, masterPassword);
+            byte[] fileBytes = VaultFileMetadataHandler.AddMetadataHeader(new VaultMetadata
+            {
+                CreateLocation = vault.CreateLocation,
+                Version = vault.Version
+            }, encryptedVaultBytes);
+            this.FileSystem.WriteAllBytes(vaultBackupFile, fileBytes);
         }
 
         public void DeleteVault(string vaultName)
@@ -92,6 +108,11 @@ namespace Erebus.Core.Implementations
         public bool VaultExists(string vaultName)
         {
             return VaultRepository.VaultExists(vaultName);
+        }
+
+        public VaultMetadata GetVaultMetadata(string vaultName)
+        {
+            return VaultRepository.GetVaultMetadata(vaultName);
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Erebus.Tests.Common
         Mock<ISymetricCryptographer> SymetricCryptographerMock;
         Mock<ISerializer> SerializerMock;
         Mock<IClockProvider> ClockProvider;
+        Mock<IVaultFileMetadataHandler> VaultFileMetadataHandler;
         string VaultStorageFolder = "Vaults";
         string VaultFileExtension = ".evf";
 
@@ -27,6 +28,7 @@ namespace Erebus.Tests.Common
             SymetricCryptographerMock = new Mock<ISymetricCryptographer>(MockBehavior.Strict);
             SerializerMock = new Mock<ISerializer>(MockBehavior.Strict);
             ClockProvider = new Mock<IClockProvider>(MockBehavior.Strict);
+            VaultFileMetadataHandler = new Mock<IVaultFileMetadataHandler>(MockBehavior.Strict);
         }
 
 
@@ -37,7 +39,8 @@ namespace Erebus.Tests.Common
                                                                 VaultFileExtension,
                                                                 SymetricCryptographerMock.Object,
                                                                 SerializerMock.Object,
-                                                                ClockProvider.Object);
+                                                                ClockProvider.Object,
+                                                                VaultFileMetadataHandler.Object);
             ClockProvider.Setup(mock => mock.GetNow()).Returns(DateTime.Now);
 
             return vault;

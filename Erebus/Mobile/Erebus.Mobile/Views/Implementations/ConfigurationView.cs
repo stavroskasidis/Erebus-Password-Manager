@@ -17,10 +17,56 @@ namespace Erebus.Mobile.Views.Implementations
         private Button SaveButton = new Button();
         private Entry ServerUrlEntry = new Entry();
 
+        public event Action Save;
+        public event Action ApplicationModeChange;
+
+        public ConfigurationView()
+        {
+            ApplicationModesPicker.Title = StringResources.ApplicationMode;
+            ApplicationModesPicker.SelectedIndexChanged += (object sender, EventArgs e) => this.ApplicationModeChange?.Invoke();
+            SaveButton.Text = StringResources.Save;
+            SaveButton.Clicked += (object sender, EventArgs e) => this.Save?.Invoke();
+
+            Content = new ScrollView
+            {
+                Content = new StackLayout
+                {
+                    Padding = 10,
+                    Children =
+                    {
+                        new Label
+                        {
+                            Text = StringResources.Configuration,
+                            FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                            TextColor = Color.Black,
+                            //VerticalOptions = LayoutOptions.Center,
+                            HorizontalTextAlignment = TextAlignment.Center, // Center the text in the blue box.
+                            VerticalTextAlignment = TextAlignment.Center, // Center the text in the blue box.
+                        },
+                        ApplicationModesPicker,
+                        new Label
+                        {
+                            Text = StringResources.ServerUrl,
+                            //FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                            TextColor = Color.Black,
+                            //VerticalOptions = LayoutOptions.Center,
+                            //HorizontalTextAlignment = TextAlignment.Center, // Center the text in the blue box.
+                            //VerticalTextAlignment = TextAlignment.Center, // Center the text in the blue box.
+                        },
+                        ServerUrlEntry,
+                        SaveButton
+                    }
+                }
+            };
+        }
+
+
+
         public IEnumerable<ApplicationMode> ApplicationModes
         {
             set
             {
+                this.ApplicationModesPicker.Items.Clear();
                 foreach (string mode in value.Select(x => x.ToString()))
                 {
                     this.ApplicationModesPicker.Items.Add(mode);
@@ -64,53 +110,7 @@ namespace Erebus.Mobile.Views.Implementations
             }
         }
 
-        public event Action Save;
-        public event Action ApplicationModeChange;
 
-        public ConfigurationView()
-        {
-            ApplicationModesPicker.Title = StringResources.ApplicationMode;
-            ApplicationModesPicker.SelectedIndexChanged += (object sender, EventArgs e) => this.ApplicationModeChange?.Invoke();
-            SaveButton.Text = StringResources.Save;
-            SaveButton.Clicked += (object sender, EventArgs e) => this.Save?.Invoke();
-            //ServerUrlEntry.Placeholder = StringResources.ServerUrl;
-            
-            Content = new ScrollView
-            {
-                Content = new StackLayout
-                {
-                    Padding = 10,
-                    Children =
-                    {
-                        new Label
-                        {
-                            Text = StringResources.Configuration,
-                            FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                            TextColor = Color.Black,
-                            //VerticalOptions = LayoutOptions.Center,
-                            HorizontalTextAlignment = TextAlignment.Center, // Center the text in the blue box.
-                            VerticalTextAlignment = TextAlignment.Center, // Center the text in the blue box.
-                        },
-                        ApplicationModesPicker,
-                        new Label
-                        {
-                            Text = StringResources.ServerUrl,
-                            //FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                            TextColor = Color.Black,
-                            //VerticalOptions = LayoutOptions.Center,
-                            //HorizontalTextAlignment = TextAlignment.Center, // Center the text in the blue box.
-                            //VerticalTextAlignment = TextAlignment.Center, // Center the text in the blue box.
-                        },
-                        ServerUrlEntry,
-                        SaveButton
-                    }
-                }
-            };
-        }
 
-        public void ShowAlert(string title, string message)
-        {
-            this.DisplayAlert(title, message, StringResources.Ok);
-        }
     }
 }

@@ -10,5 +10,6 @@ namespace Erebus.Core.Mobile.Contracts
         public ApplicationMode ApplicationMode { get; set; }
         public string ServerUrl { get; set; }
         public string Language { get; set; }
+        public bool AlreadyInitialized { get; set; }
     }
 }

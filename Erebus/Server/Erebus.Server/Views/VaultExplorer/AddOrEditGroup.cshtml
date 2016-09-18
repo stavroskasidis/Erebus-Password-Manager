@@ -1,25 +1,30 @@
 ﻿@model GroupEditViewModel
 
-<bootstrap-modal id="modal-@Model.Id" title="@Model.ModalTitle">
-    <modal-body>
-        <form id="form-@Model.Id" asp-action="AddOrEditGroup">
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="ParentId" />
+<div id="modal-container-@Model.Id">
+    <bootstrap-modal id="modal-@Model.Id" title="@Model.ModalTitle">
+        <modal-body>
+            <form id="form-@Model.Id" asp-action="AddOrEditGroup">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="ParentId" />
 
-            <div class="form-group focused-input-wrapper">
-                <label asp-for="Name" add-metadata-classes="true"></label>
-                <span asp-validation-for="Name" class="text-danger"></span>
-                <input asp-for="Name" class="form-control" />
-            </div>
-        </form>
-    </modal-body>
-    <modal-footer>
-        <button id="modal-@Model.Id-save-btn" type="button" class="btn btn-primary" onclick="vaultExplorerIndex.submitGroupEditForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId');">@StringResources.Save</button>
-    </modal-footer>
-</bootstrap-modal>
+                <div class="form-group focused-input-wrapper">
+                    <label asp-for="Name" add-metadata-classes="true"></label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+            </form>
+        </modal-body>
+        <modal-footer>
+            <button id="modal-@Model.Id-save-btn" type="button" class="btn btn-primary" onclick="vaultExplorerIndex.submitGroupEditForm('form-@Model.Id', 'modal-@Model.Id', '@Model.ParentId');">@StringResources.Save</button>
+        </modal-footer>
+    </bootstrap-modal>
 
-<script type="text/javascript">
-    $.validator.unobtrusive.parse($('#form-@Model.Id'));
-    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
-    $("#modal-@Model.Id").modal({ backdrop: 'static', keyboard: false });
-</script>
+    <script type="text/javascript">
+        $.validator.unobtrusive.parse($('#form-@Model.Id'));
+        $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+        $("#modal-@Model.Id").modal({ backdrop: 'static', keyboard: false });
+        $("#modal-@Model.Id").on("hidden.bs.modal", function () {
+            $("#modal-container-@Model.Id").remove();
+        });
+    </script>
+</div>

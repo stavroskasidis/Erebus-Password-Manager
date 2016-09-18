@@ -16,6 +16,5 @@ namespace Erebus.Mobile.Views.Contracts
         bool ServerUrlInputEnabled { get; set; }
         event Action Save;
         event Action ApplicationModeChange;
-        void ShowAlert(string title, string message);
     }
 }

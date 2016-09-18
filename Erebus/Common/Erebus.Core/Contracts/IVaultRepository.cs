@@ -16,5 +16,6 @@ namespace Erebus.Core.Contracts
         void DeleteVault(string vaultName);
         IEnumerable<string> GetAllVaultNames();
         bool VaultExists(string vaultName);
+        VaultMetadata GetVaultMetadata(string vaultName);
     }
 }

@@ -170,6 +170,15 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contacting Server ....
+        /// </summary>
+        public static string ContactingServer {
+            get {
+                return ResourceManager.GetString("ContactingServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copied to clipboard!.
         /// </summary>
         public static string CopiedAlertMessage {
@@ -265,6 +274,15 @@ namespace Erebus.Resources {
         public static string EditGroup {
             get {
                 return ResourceManager.GetString("EditGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your vault&apos;s master password.
+        /// </summary>
+        public static string EnterVaultMasterPassword {
+            get {
+                return ResourceManager.GetString("EnterVaultMasterPassword", resourceCulture);
             }
         }
         
@@ -548,6 +566,15 @@ namespace Erebus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password required.
+        /// </summary>
+        public static string PasswordRequired {
+            get {
+                return ResourceManager.GetString("PasswordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refresh.
         /// </summary>
         public static string Refresh {
@@ -634,6 +661,24 @@ namespace Erebus.Resources {
         public static string ShowHide {
             get {
                 return ResourceManager.GetString("ShowHide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronize.
+        /// </summary>
+        public static string Synchronize {
+            get {
+                return ResourceManager.GetString("Synchronize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronized !.
+        /// </summary>
+        public static string Synchronized {
+            get {
+                return ResourceManager.GetString("Synchronized", resourceCulture);
             }
         }
         

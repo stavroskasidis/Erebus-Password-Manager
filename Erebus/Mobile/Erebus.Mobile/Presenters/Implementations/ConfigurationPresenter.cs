@@ -15,18 +15,21 @@ namespace Erebus.Mobile.Presenters.Implementations
     {
         private IConfigurationView View;
         private IUrlValidator UrlValidator;
-        private IServerChecker ServerChecker;
         private IMobileConfigurationReader ConfigurationReader;
         private IMobileConfigurationWriter ConfigurationWriter;
+        private INavigationManager NavigationManager;
+        private IAlertDisplayer AlertDisplayer;
 
-        public ConfigurationPresenter(IConfigurationView view, IUrlValidator urlValidator, IServerChecker serverChecker,
-                                       IMobileConfigurationReader configurationReader, IMobileConfigurationWriter configurationWriter)
+        public ConfigurationPresenter(IConfigurationView view, IUrlValidator urlValidator,
+                                       IMobileConfigurationReader configurationReader, IMobileConfigurationWriter configurationWriter,
+                                       INavigationManager navigationManager, IAlertDisplayer alertDisplayer)
         {
             this.View = view;
             this.UrlValidator = urlValidator;
-            this.ServerChecker = serverChecker;
             this.ConfigurationReader = configurationReader;
             this.ConfigurationWriter = configurationWriter;
+            this.NavigationManager = navigationManager;
+            this.AlertDisplayer = alertDisplayer;
 
 
             this.View.ApplicationModes = Enum.GetValues(typeof(ApplicationMode)).Cast<ApplicationMode>();
@@ -43,24 +46,27 @@ namespace Erebus.Mobile.Presenters.Implementations
             return this.View;
         }
 
-        public void OnSave()
+        public async void OnSave()
         {
-            if(this.View.SelectedApplicationMode == ApplicationMode.Client)
+            var configuration = new MobileConfiguration();
+            configuration.ApplicationMode = this.View.SelectedApplicationMode;
+            configuration.Language = "en"; //TODO make an option
+            configuration.AlreadyInitialized = true;
+
+            if (configuration.ApplicationMode == ApplicationMode.Client)
             {
-                var serverUrl = this.View.ServerUrlInputText;
-                bool isValid = this.UrlValidator.IsUrlValid(serverUrl);
+                configuration.ServerUrl = this.View.ServerUrlInputText;
+                bool isValid = this.UrlValidator.IsUrlValid(configuration.ServerUrl);
 
                 if (!isValid)
                 {
-                    View.ShowAlert(StringResources.InvalidUrl, StringResources.InvalidUrlMessage);
+                    this.AlertDisplayer.DisplayAlert(StringResources.InvalidUrl, StringResources.InvalidUrlMessage);
                     return;
                 }
             }
 
-
-
-            //todo navigate next
-            throw new NotImplementedException();
+            await this.ConfigurationWriter.SaveConfigurationAsync(configuration);
+            await this.NavigationManager.NavigateByPopingCurrent<ILoginPresenter>();
 
         }
 
