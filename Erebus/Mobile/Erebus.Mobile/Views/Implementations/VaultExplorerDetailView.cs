@@ -1,4 +1,5 @@
-﻿using Erebus.Mobile.Views.Contracts;
+﻿using Erebus.Mobile.ViewModels;
+using Erebus.Mobile.Views.Contracts;
 using Erebus.Resources;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,7 @@ namespace Erebus.Mobile.Views.Implementations
         {
             set
             {
+                this.Title = value?.FirstOrDefault()?.ParentGroup?.Name;
                 this.ListView.ItemsSource = value;
             }
         }

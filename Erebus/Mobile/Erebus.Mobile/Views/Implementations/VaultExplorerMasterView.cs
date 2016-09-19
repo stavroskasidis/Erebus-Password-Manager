@@ -1,4 +1,5 @@
-﻿using Erebus.Mobile.Views.Contracts;
+﻿using Erebus.Mobile.ViewModels;
+using Erebus.Mobile.Views.Contracts;
 using Erebus.Resources;
 using System;
 using System.Collections.Generic;
@@ -28,8 +29,8 @@ namespace Erebus.Mobile.Views.Implementations
                 SeparatorVisibility = SeparatorVisibility.None
             };
 
-            Padding = new Thickness(0, 20, 0, 0);
-            //Icon = "hamburger.png";
+            Padding = new Thickness(0, 40, 0, 0);
+            Icon = "menu.png";
             Title = StringResources.Groups;
             Content = new StackLayout
             {

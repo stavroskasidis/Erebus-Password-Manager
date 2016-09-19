@@ -2,7 +2,9 @@
 using Erebus.Core.Contracts;
 using Erebus.Core.Mobile.Contracts;
 using Erebus.Mobile.Presenters.Contracts;
+using Erebus.Mobile.ViewModels;
 using Erebus.Mobile.Views.Contracts;
+using Erebus.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +38,7 @@ namespace Erebus.Mobile.Presenters.Implementations
 
                 this.View.MasterView = this.Container.Resolve<IVaultExplorerMasterView>();
                 this.View.MasterView.GroupListItemSelected += OnGroupSelected;
-                this.View.MasterView.GroupList = vault.Groups.Select(group => new GroupListItem(group, null, false));
+                this.View.MasterView.GroupList = GetGroupsModel(vault.Groups,null , null); //vault.Groups.Select(group => new GroupListItem(group, null, false));
 
                 this.View.DetailView = this.Container.Resolve<IVaultExplorerDetailView>();
             }
@@ -47,38 +49,78 @@ namespace Erebus.Mobile.Presenters.Implementations
             return this.View;
         }
 
+        private List<GroupListItem> GetGroupsModel(List<Group> groups, Group parentGroup, List<GroupListItem> parentList)
+        {
+            List<GroupListItem> result = new List<GroupListItem>();
+            foreach (var group in groups)
+            {
+                var item = new GroupListItem();
+                item.Group = group;
+                item.IsNavigateBackItem = false;
+                item.ChildItems = GetGroupsModel(group.Groups, group, result);
+                result.Add(item);
+            }
+
+            if (groups.Count > 0 && parentList != null)
+            {
+                result.Insert(0, new GroupListItem()
+                {
+                    IsNavigateBackItem = true,
+                    Group = parentGroup,
+                    //ChildItems = parent.ChildItems,
+                    ParentItems = parentList
+                });
+                //selected.Group, selected.ParentItem, true));
+            }
+
+            return result;
+        }
+
         public void OnGroupSelected(GroupListItem selected)
         {
+            //if (selected.IsNavigateBackItem)
+            //{
             if (selected.IsNavigateBackItem)
             {
-                var vaultRepository = this.VaultRepositoryFactory.CreateInstance();
-                using (var password = ApplicationContext.GetMasterPassword())
-                {
-                    var vault = vaultRepository.GetVault(this.ApplicationContext.GetCurrentVaultName(), password);
-                    //var vaultManipulator = VaultManipulatorFactory.CreateInstance(vault);
-
-                    if (selected.ParentItem == null)
-                    {
-                        var groupList = vault.Groups.Select(group => new GroupListItem(group, null, false)).ToList();
-                        this.View.MasterView.GroupList = groupList;
-                    }
-                    else
-                    {
-                        var groupList = selected.ParentItem.Group.Groups.Select(group => new GroupListItem(selected.ParentItem.Group, selected.ParentItem.ParentItem, false)).ToList();
-                        groupList.Insert(0, new GroupListItem(selected.Group, selected.ParentItem, true));
-                        this.View.MasterView.GroupList = groupList;
-                    }
-                }
+                this.View.MasterView.GroupList = selected.ParentItems;
             }
-            else
+            else if(selected.ChildItems.Count > 0)
             {
-                if (selected.Group.Groups.Count > 0)
-                {
-                    var groupList = selected.Group.Groups.Select(group => new GroupListItem(group, selected, false)).ToList();
-                    groupList.Insert(0, new GroupListItem(selected.Group, selected.ParentItem, true));
-                    this.View.MasterView.GroupList = groupList;
-                }
+                this.View.MasterView.GroupList = selected.ChildItems;
             }
+            
+            //}
+
+            //if (selected.IsNavigateBackItem)
+            //{
+            //    var vaultRepository = this.VaultRepositoryFactory.CreateInstance();
+            //    using (var password = ApplicationContext.GetMasterPassword())
+            //    {
+            //        var vault = vaultRepository.GetVault(this.ApplicationContext.GetCurrentVaultName(), password);
+            //        //var vaultManipulator = VaultManipulatorFactory.CreateInstance(vault);
+
+            //        if (selected.ParentItem == null)
+            //        {
+            //            var groupList = vault.Groups.Select(group => new GroupListItem(group, null, false)).ToList();
+            //            this.View.MasterView.GroupList = groupList;
+            //        }
+            //        else
+            //        {
+            //            var groupList = selected.ParentItem.Group.Groups.Select(group => new GroupListItem(selected.ParentItem.Group, selected.ParentItem.ParentItem, false)).ToList();
+            //            groupList.Insert(0, new GroupListItem(selected.Group, selected.ParentItem, true));
+            //            this.View.MasterView.GroupList = groupList;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    if (selected.Group.Groups.Count > 0)
+            //    {
+            //        var groupList = selected.Group.Groups.Select(group => new GroupListItem(group, selected, false)).ToList();
+            //        groupList.Insert(0, new GroupListItem(selected.Group, selected.ParentItem, true));
+            //        this.View.MasterView.GroupList = groupList;
+            //    }
+            //}
 
             if (selected.Group.Entries.Count > 0)
             {

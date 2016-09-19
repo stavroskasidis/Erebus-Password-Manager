@@ -86,10 +86,13 @@ namespace Erebus.Mobile.Views.Implementations
             }
             set
             {
-                Device.BeginInvokeOnMainThread(() =>
+                if (value != null)
                 {
-                    this.VaultPicker.SelectedIndex = this.VaultPicker.Items.IndexOf(value.ToString());
-                });
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        this.VaultPicker.SelectedIndex = this.VaultPicker.Items.IndexOf(value.ToString());
+                    });
+                }
             }
         }
 

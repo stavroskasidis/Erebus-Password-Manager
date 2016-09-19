@@ -1,4 +1,5 @@
 ﻿using Erebus.Core.Mobile.Contracts;
+using Erebus.Mobile.ViewModels;
 using Erebus.Mobile.Views.Contracts;
 using System;
 using System.Collections.Generic;
