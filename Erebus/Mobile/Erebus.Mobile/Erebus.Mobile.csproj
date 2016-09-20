@@ -38,23 +38,22 @@
   <ItemGroup>
     <Compile Include="App.xaml.cs" />
     <Compile Include="Presenters\Contracts\IConfigurationPresenter.cs" />
+    <Compile Include="Presenters\Contracts\IEntryDetailsPresenter.cs" />
     <Compile Include="Presenters\Contracts\ILoginPresenter.cs" />
     <Compile Include="Presenters\Contracts\IVaultExplorerPresenter.cs" />
     <Compile Include="Presenters\Implementations\ConfigurationPresenter.cs" />
+    <Compile Include="Presenters\Implementations\EntryDetailsPresenter.cs" />
     <Compile Include="Presenters\Implementations\LoginPresenter.cs" />
     <Compile Include="Presenters\Implementations\VaultExplorerPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\EntryListItem.cs" />
-    <Compile Include="ViewModels\GroupListItem.cs" />
     <Compile Include="Views\Contracts\IConfigurationView.cs" />
+    <Compile Include="Views\Contracts\IEntryDetailsView.cs" />
     <Compile Include="Views\Contracts\ILoginView.cs" />
-    <Compile Include="Views\Contracts\IVaultExplorerDetailView.cs" />
-    <Compile Include="Views\Contracts\IVaultExplorerMasterView.cs" />
     <Compile Include="Views\Contracts\IVaultExplorerView.cs" />
     <Compile Include="Views\Implementations\ConfigurationView.cs" />
+    <Compile Include="Views\Implementations\EntryDetailsView.cs" />
     <Compile Include="Views\Implementations\LoginView.cs" />
-    <Compile Include="Views\Implementations\VaultExplorerDetailView.cs" />
-    <Compile Include="Views\Implementations\VaultExplorerMasterView.cs" />
     <Compile Include="Views\Implementations\VaultExplorerView.cs" />
   </ItemGroup>
   <ItemGroup>

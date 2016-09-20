@@ -43,6 +43,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Contracts\IAlertDisplayer.cs" />
     <Compile Include="Contracts\IApplicationContext.cs" />
+    <Compile Include="Contracts\IClipboardService.cs" />
     <Compile Include="Contracts\IMobileConfigurationWriter.cs" />
     <Compile Include="Contracts\INavigationManager.cs" />
     <Compile Include="Contracts\IPlatformServicesRegistrator.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Contracts\ISynchronizer.cs" />
     <Compile Include="Contracts\IUrlValidator.cs" />
     <Compile Include="Contracts\MobileConfiguration.cs" />
+    <Compile Include="Contracts\PresenterParameter.cs" />
     <Compile Include="Implementations\AlertDisplayer.cs" />
     <Compile Include="Implementations\ApplicationContext.cs" />
     <Compile Include="Implementations\MobileConfigurationReader.cs" />

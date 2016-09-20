@@ -11,6 +11,7 @@ namespace Erebus.Mobile.Presenters.Contracts
 {
     public interface IVaultExplorerPresenter : IPresenter
     {
-        void OnGroupSelected(GroupListItem selected);
+        void OnSearch(string searchText);
+        void OnEntryItemSelected(EntryListItem entryListItem);
     }
 }

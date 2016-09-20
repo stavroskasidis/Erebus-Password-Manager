@@ -62,9 +62,9 @@ namespace Erebus.Mobile
             buider.RegisterType<LoginPresenter>().As<ILoginPresenter>();
             buider.RegisterType<LoginView>().As<ILoginView>();
             buider.RegisterType<VaultExplorerPresenter>().As<IVaultExplorerPresenter>();
-            buider.RegisterType<VaultExplorerDetailView>().As<IVaultExplorerDetailView>();
-            buider.RegisterType<VaultExplorerMasterView>().As<IVaultExplorerMasterView>();
             buider.RegisterType<VaultExplorerView>().As<IVaultExplorerView>();
+            buider.RegisterType<EntryDetailsPresenter>().As<IEntryDetailsPresenter>();
+            buider.RegisterType<EntryDetailsView>().As<IEntryDetailsView>();
 
 
             //=== Platform Specific

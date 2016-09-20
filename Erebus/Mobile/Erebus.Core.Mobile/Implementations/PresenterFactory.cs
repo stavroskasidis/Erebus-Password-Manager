@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Core;
 using Erebus.Core.Mobile.Contracts;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,16 @@ namespace Erebus.Core.Mobile.Implementations
         }
 
 
-        public TPresenter Create<TPresenter>() where TPresenter : IPresenter
+        public TPresenter Create<TPresenter>(params PresenterParameter[] parameters) where TPresenter : IPresenter
         {
-            return Container.Resolve<TPresenter>();
+            if (parameters == null)
+            {
+                return Container.Resolve<TPresenter>();
+            }
+            else
+            {
+                return Container.Resolve<TPresenter>(parameters.Select(x=> new NamedParameter(x.ParameterName, x.Value)));
+            }
         }
     }
 }

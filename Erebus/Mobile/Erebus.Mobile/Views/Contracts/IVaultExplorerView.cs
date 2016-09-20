@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Erebus.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,8 @@ namespace Erebus.Mobile.Views.Contracts
 {
     public interface IVaultExplorerView
     {
-        IVaultExplorerMasterView MasterView { get; set; }
-        IVaultExplorerDetailView DetailView { get; set; }
+        List<EntryListItem> EntryListItems { set; }
+        event Action<string> Search;
+        event Action<EntryListItem> EntrySelected;
     }
 }

@@ -19,15 +19,15 @@ namespace Erebus.Core.Mobile.Implementations
             this.PresenterFactory = presenterFactory;
         }
 
-        public async Task NavigateAsync<TPresenter>() where TPresenter : IPresenter
+        public async Task NavigateAsync<TPresenter>(params PresenterParameter[] parameters) where TPresenter : IPresenter
         {
-            var presenter = this.PresenterFactory.Create<TPresenter>();
+            var presenter = this.PresenterFactory.Create<TPresenter>(parameters);
             await Application.MainPage.Navigation.PushAsync(presenter.GetView() as Page);
         }
 
-        public async Task NavigateByPopingCurrent<TPresenter>() where TPresenter : IPresenter
+        public async Task NavigateByPopingCurrent<TPresenter>(params PresenterParameter[] parameters) where TPresenter : IPresenter
         {
-            var presenter = this.PresenterFactory.Create<TPresenter>();
+            var presenter = this.PresenterFactory.Create<TPresenter>(parameters);
             await this.Application.MainPage.Navigation.PopAsync();
             await this.Application.MainPage.Navigation.PushAsync(presenter.GetView() as Page);
         }

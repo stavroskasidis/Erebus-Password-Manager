@@ -78,7 +78,7 @@ namespace Erebus.Mobile.Presenters.Implementations
             this.ApplicationContext.SetCurrentVaultName(selectedVault);
             this.ApplicationContext.SetMasterPassword(masterPassword);
 
-            this.NavigationManager.NavigateByPopingCurrent<IVaultExplorerPresenter>();
+            this.NavigationManager.NavigateAsync<IVaultExplorerPresenter>();
         }
 
         public async void OnSync()

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Erebus.Core.Mobile.Contracts
 {
-    public interface IPresenterFactory
+    public interface IClipboardService
     {
-        TPresenter Create<TPresenter>(params PresenterParameter[] parameters) where TPresenter : IPresenter;
+        void CopyToClipboard(string text);
     }
 }

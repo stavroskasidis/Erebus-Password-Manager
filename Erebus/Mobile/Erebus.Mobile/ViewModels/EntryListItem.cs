@@ -1,5 +1,6 @@
 ﻿using Erebus.Core;
 using Erebus.Model;
+using Erebus.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace Erebus.Mobile.ViewModels
 {
     public class EntryListItem
     {
-        public Group ParentGroup { get; set; }
+        public string GroupPath { get; set; }
         public Entry Entry { get; set; }
 
-        public string EntryDisplayName
+        public string ItemText
         {
             get
             {
@@ -21,13 +22,21 @@ namespace Erebus.Mobile.ViewModels
             }
         }
 
-        public EntryListItem(Entry entry, Group parentGroup)
+        public string ItemDetail
+        {
+            get
+            {
+                return $"{this.GroupPath}";
+            }
+        }
+
+        public EntryListItem(Entry entry, string groupPath)
         {
             GuardClauses.ArgumentIsNotNull(nameof(entry), entry);
-            GuardClauses.ArgumentIsNotNull(nameof(parentGroup), parentGroup);
+            GuardClauses.ArgumentIsNotNull(nameof(groupPath), groupPath);
 
             this.Entry = entry;
-            this.ParentGroup = parentGroup;
+            this.GroupPath = groupPath;
         }
     }
 }
