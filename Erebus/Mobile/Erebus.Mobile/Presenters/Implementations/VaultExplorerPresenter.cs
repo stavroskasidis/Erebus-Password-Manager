@@ -60,14 +60,11 @@ namespace Erebus.Mobile.Presenters.Implementations
             return this.View;
         }
 
-        public void OnEntryItemSelected(EntryListItem entryListItem)
+        public async void OnEntryItemSelected(EntryListItem entryListItem)
         {
-            Device.BeginInvokeOnMainThread(async () =>
+            await this.NavigationManager.NavigateAsync<IEntryDetailsPresenter>(new PresenterParameter[]
             {
-                await this.NavigationManager.NavigateAsync<IEntryDetailsPresenter>(new PresenterParameter[]
-                {
                     new PresenterParameter("entry", entryListItem.Entry)
-                });
             });
         }
 

@@ -3,7 +3,7 @@
 <div id="modal-container-@Model.Id">
     <bootstrap-modal id="modal-@Model.Id" title="@Model.ModalTitle">
         <modal-body>
-            <form id="form-@Model.Id" asp-action="AddOrEditEntry">
+            <form id="form-@Model.Id" asp-action="AddOrEditEntry" autocomplete="off">
                 <input type="hidden" asp-for="Id" />
                 <input type="hidden" asp-for="ParentId" />
                 <div class="form-group focused-input-wrapper">

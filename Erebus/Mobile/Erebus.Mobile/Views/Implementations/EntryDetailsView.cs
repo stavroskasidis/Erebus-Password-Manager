@@ -108,10 +108,7 @@ namespace Erebus.Mobile.Views.Implementations
 
             set
             {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    this.PasswordEntry.IsPassword = !value;
-                });
+                this.PasswordEntry.IsPassword = !value;
             }
         }
     }

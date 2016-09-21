@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "Xamarin.Forms": "2.2.0.45"
+    "Xamarin.Forms": "2.3.2.127"
   },
   "frameworks": {
     "Xamarin.iOS,Version=v1.0": {}

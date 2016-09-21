@@ -25,14 +25,27 @@ namespace Erebus.Mobile.Views.Implementations
                 this.Search?.Invoke(this.SearchBar.Text);
                 this.ListView.EndRefresh();
             };
-            this.SearchBar.TextChanged += (object sender, TextChangedEventArgs e) =>
+
+            //TODO implement with delay
+            //this.SearchBar.TextChanged += (object sender, TextChangedEventArgs e) =>
+            //{
+            //    this.ListView.BeginRefresh();
+            //    this.Search?.Invoke(this.SearchBar.Text);
+            //    this.ListView.EndRefresh();
+            //};
+
+            this.ListView.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
-                this.ListView.BeginRefresh();
-                this.Search?.Invoke(this.SearchBar.Text);
-                this.ListView.EndRefresh();
+                if (e.Item != null)
+                {
+                    this.EntrySelected?.Invoke(e.Item as EntryListItem);
+                }
             };
 
-            this.ListView.ItemTapped += (object sender, ItemTappedEventArgs e) => this.EntrySelected?.Invoke(e.Item as EntryListItem);
+            this.ListView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
+            {
+                this.ListView.SelectedItem = null;
+            };
 
             this.ListView.ItemTemplate = new DataTemplate(() =>
             {
@@ -43,15 +56,21 @@ namespace Erebus.Mobile.Views.Implementations
             });
             this.ListView.VerticalOptions = LayoutOptions.FillAndExpand;
 
-            Content = new ScrollView
+            Content = new StackLayout
             {
-                Content = new StackLayout
+                Children =
                 {
-                    Padding = 10,
-                    Children =
+                    SearchBar,
+                    new ScrollView
                     {
-                       SearchBar,
-                       ListView
+                        Content = new StackLayout
+                        {
+                            Padding = 10,
+                            Children =
+                            {
+                                ListView
+                            }
+                        }
                     }
                 }
             };
@@ -61,7 +80,10 @@ namespace Erebus.Mobile.Views.Implementations
         {
             set
             {
-                this.ListView.ItemsSource = value;
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    this.ListView.ItemsSource = value;
+                });
             }
         }
     }
