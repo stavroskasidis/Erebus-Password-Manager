@@ -60,9 +60,11 @@ namespace Erebus.Mobile.Presenters.Implementations
 
         public void OnLogin()
         {
+            this.View.DisableUI();
             if (string.IsNullOrWhiteSpace(this.View.MasterPasswordInputText))
             {
                 this.AlertDisplayer.DisplayAlert(StringResources.PasswordRequired,StringResources.EnterVaultMasterPassword);
+                this.View.EnableUI();
                 return;
             }
 
@@ -72,11 +74,13 @@ namespace Erebus.Mobile.Presenters.Implementations
             if(!vaultRepository.IsPasswordValid(selectedVault, masterPassword))
             {
                 this.AlertDisplayer.DisplayAlert("", StringResources.IncorrectPassword);
+                this.View.EnableUI();
                 return;
             }
 
             this.ApplicationContext.SetCurrentVaultName(selectedVault);
             this.ApplicationContext.SetMasterPassword(masterPassword);
+            this.View.EnableUI();
 
             this.NavigationManager.NavigateAsync<IVaultExplorerPresenter>();
         }

@@ -42,7 +42,6 @@ namespace Erebus.Mobile.Views.Implementations
                 {
                     Children =
                     {
-                        SyncButton,
                         new Label
                         {
                             Text = "Login"
@@ -50,6 +49,7 @@ namespace Erebus.Mobile.Views.Implementations
                         VaultPicker,
                         MasterPasswordEntry,
                         LoginButton,
+                        SyncButton,
                         ConfigurationButton,
                         ActivityIndicatorMessage,
                         ActivityIndicator
