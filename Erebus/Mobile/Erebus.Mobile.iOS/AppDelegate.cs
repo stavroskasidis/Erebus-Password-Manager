@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Erebus.Core.Mobile;
 
 namespace Erebus.Mobile.iOS
 {
@@ -23,7 +24,7 @@ namespace Erebus.Mobile.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(new ContainerFactory()));
 
             return base.FinishedLaunching(app, options);
         }

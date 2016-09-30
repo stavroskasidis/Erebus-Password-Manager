@@ -1,4 +1,5 @@
-﻿using Erebus.Core.Mobile.Contracts;
+﻿using Erebus.Core.Contracts;
+using Erebus.Core.Mobile.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,21 +11,26 @@ namespace Erebus.Core.Mobile.Implementations
 {
     public class MobileConfigurationWriter : IMobileConfigurationWriter
     {
-        private Application Application;
+        private IFileSystem FileSystem;
+        private ISerializer Serializer;
 
-        public MobileConfigurationWriter(Application application)
+        public MobileConfigurationWriter(IFileSystem fileSystem, ISerializer serializer)
         {
-            this.Application = application;
+            this.FileSystem = fileSystem;
+            this.Serializer = serializer;
         }
 
-        public async Task SaveConfigurationAsync(MobileConfiguration configuration)
+        public void SaveConfiguration(MobileConfiguration configuration)
         {
-            this.Application.Properties[nameof(configuration.ApplicationMode)] = configuration.ApplicationMode.ToString();
-            this.Application.Properties[nameof(configuration.ServerUrl)] = configuration.ServerUrl;
-            this.Application.Properties[nameof(configuration.Language)] = configuration.Language;
-            this.Application.Properties[nameof(configuration.AlreadyInitialized)] = configuration.AlreadyInitialized.ToString();
+            var serialized = this.Serializer.Serialize(configuration);
+            this.FileSystem.WriteAllBytes(Constants.CONFIG_FILE_PATH, GetBytes(serialized));
+        }
 
-            await this.Application.SavePropertiesAsync();
+        private byte[] GetBytes(string str)
+        {
+            byte[] bytes = new byte[str.Length * sizeof(char)];
+            System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
         }
     }
 }

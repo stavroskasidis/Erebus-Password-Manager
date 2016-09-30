@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Erebus.Core.Mobile;
+using Android.Content;
 
 namespace Erebus.Mobile.Droid
 {
@@ -18,9 +20,10 @@ namespace Erebus.Mobile.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-
+            //this.StartService(new Android.Content.Intent())
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+            
+            LoadApplication(new App(new ContainerFactory()));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Erebus.Core.Mobile;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Erebus.Mobile.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new Erebus.Mobile.App());
+            LoadApplication(new Erebus.Mobile.App(new ContainerFactory()));
         }
     }
 }

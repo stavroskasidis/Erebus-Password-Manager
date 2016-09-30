@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Erebus.Core.Mobile.Contracts
 {
-    public interface IMobileConfigurationWriter
+    public interface ISynchronizationServiceManager
     {
-        void SaveConfiguration(MobileConfiguration configuration);
+        void StartSynchronizationService();
+        void StopSynchronizationService();
     }
 }

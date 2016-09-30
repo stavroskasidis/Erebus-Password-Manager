@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ApplicationMode.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="ContainerFactory.cs" />
     <Compile Include="Contracts\IAlertDisplayer.cs" />
     <Compile Include="Contracts\IApplicationContext.cs" />
     <Compile Include="Contracts\IClipboardService.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Contracts\IPresenterFactory.cs" />
     <Compile Include="Contracts\IMobileConfigurationReader.cs" />
     <Compile Include="Contracts\IServerCommunicator.cs" />
+    <Compile Include="Contracts\ISynchronizationServiceManager.cs" />
     <Compile Include="Contracts\ISynchronizer.cs" />
     <Compile Include="Contracts\IUrlValidator.cs" />
     <Compile Include="Contracts\MobileConfiguration.cs" />

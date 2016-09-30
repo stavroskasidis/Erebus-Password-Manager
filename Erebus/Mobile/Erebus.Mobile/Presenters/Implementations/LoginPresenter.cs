@@ -87,7 +87,6 @@ namespace Erebus.Mobile.Presenters.Implementations
 
         public async void OnSync()
         {
-            var config = MobileConfigurationReader.GetConfiguration();
             this.View.ActivityIndicatorText = StringResources.ContactingServer;
             this.View.DisableUI();
             this.View.ShowLoadingIndicator();

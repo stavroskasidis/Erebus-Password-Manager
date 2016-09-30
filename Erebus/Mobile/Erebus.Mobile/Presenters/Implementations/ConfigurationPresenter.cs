@@ -19,10 +19,11 @@ namespace Erebus.Mobile.Presenters.Implementations
         private IMobileConfigurationWriter ConfigurationWriter;
         private INavigationManager NavigationManager;
         private IAlertDisplayer AlertDisplayer;
+        private ISynchronizationServiceManager SynchronizationServiceManager;
 
         public ConfigurationPresenter(IConfigurationView view, IUrlValidator urlValidator,
                                        IMobileConfigurationReader configurationReader, IMobileConfigurationWriter configurationWriter,
-                                       INavigationManager navigationManager, IAlertDisplayer alertDisplayer)
+                                       INavigationManager navigationManager, IAlertDisplayer alertDisplayer, ISynchronizationServiceManager synchronizationServiceManager)
         {
             this.View = view;
             this.UrlValidator = urlValidator;
@@ -30,6 +31,7 @@ namespace Erebus.Mobile.Presenters.Implementations
             this.ConfigurationWriter = configurationWriter;
             this.NavigationManager = navigationManager;
             this.AlertDisplayer = alertDisplayer;
+            this.SynchronizationServiceManager = synchronizationServiceManager;
 
 
             this.View.ApplicationModes = Enum.GetValues(typeof(ApplicationMode)).Cast<ApplicationMode>();
@@ -63,9 +65,15 @@ namespace Erebus.Mobile.Presenters.Implementations
                     this.AlertDisplayer.DisplayAlert(StringResources.InvalidUrl, StringResources.InvalidUrlMessage);
                     return;
                 }
+
+                this.SynchronizationServiceManager.StartSynchronizationService();
+            }
+            else
+            {
+                this.SynchronizationServiceManager.StopSynchronizationService();
             }
 
-            await this.ConfigurationWriter.SaveConfigurationAsync(configuration);
+            this.ConfigurationWriter.SaveConfiguration(configuration);
             await this.NavigationManager.NavigateByPopingCurrent<ILoginPresenter>();
 
         }

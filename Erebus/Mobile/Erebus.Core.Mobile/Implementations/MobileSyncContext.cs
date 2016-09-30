@@ -10,16 +10,21 @@ namespace Erebus.Core.Mobile.Implementations
 {
     public class MobileSyncContext : ISyncContext
     {
-        private Mutex Mutex = new Mutex();
+        private static volatile bool IsLocked = false;
 
         public void Lock()
         {
-            Mutex.WaitOne();
+            while (IsLocked)
+            {
+                Task.Delay(10).Wait();
+            }
+
+            IsLocked = true;
         }
 
         public void Release()
         {
-            Mutex.ReleaseMutex();
+            IsLocked = false;
         }
     }
 }

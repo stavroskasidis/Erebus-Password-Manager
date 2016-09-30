@@ -10,6 +10,7 @@ namespace Erebus.Core.Mobile
         public const string SERVER_API_URL = "api/mobileservice";
         public const string VAULT_FILE_NAME_EXTENSION = ".evf";
         public const string VAULT_FOLDER = "Vaults";
+        public const string CONFIG_FILE_PATH= "config.json";
 
     }
 }

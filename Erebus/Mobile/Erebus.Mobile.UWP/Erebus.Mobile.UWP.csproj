@@ -96,6 +96,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlatformImplementations\SynchronizeBackgroundTask.cs" />
     <Compile Include="PlatformImplementations\UWPClipboardService.cs" />
     <Compile Include="PlatformImplementations\UWPFileSystem.cs" />
     <Compile Include="MainPage.xaml.cs">

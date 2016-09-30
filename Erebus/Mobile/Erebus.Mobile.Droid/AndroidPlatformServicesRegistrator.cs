@@ -16,6 +16,7 @@ namespace Erebus.Mobile.Droid
         {
             containerBuilder.RegisterType<AndroidFileSystem>().As<IFileSystem>();
             containerBuilder.RegisterType<AndroidClipboardService>().As<IClipboardService>();
+            containerBuilder.RegisterType<AndroidSynchronizationServiceManager>().As<ISynchronizationServiceManager>();
             //containerBuilder.RegisterType<AndroidSyncContext>().As<ISyncContext>();
         }
     }

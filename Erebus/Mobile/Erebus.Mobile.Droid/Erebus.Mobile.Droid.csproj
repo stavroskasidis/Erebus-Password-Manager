@@ -56,11 +56,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidPlatformServicesRegistrator.cs" />
+    <Compile Include="BootReceiver.cs" />
     <Compile Include="PlatformImplementations\AndroidClipboardService.cs" />
     <Compile Include="PlatformImplementations\AndroidFileSystem.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="PlatformImplementations\AndroidSynchronizationServiceManager.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SynchronizationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
@@ -74,7 +77,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />

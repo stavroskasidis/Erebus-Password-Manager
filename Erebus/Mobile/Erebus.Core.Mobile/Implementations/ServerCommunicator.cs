@@ -29,13 +29,14 @@ namespace Erebus.Core.Mobile.Implementations
                 try
                 {
                     var methodUrl = new Uri(new Uri(ServerUrl), "MobileService/CommunicationCheck");
+                    client.Timeout = TimeSpan.FromSeconds(5);
                     var response = await client.GetAsync(methodUrl, HttpCompletionOption.ResponseHeadersRead);
                     using (response)
                     {
                         return response.IsSuccessStatusCode;
                     }
                 }
-                catch (HttpRequestException)
+                catch (Exception)
                 {
                     return false;
                 }
