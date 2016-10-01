@@ -117,10 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login" xml:space="preserve">
-    <value>Είσοδος</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Κωδικός</value>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
   </data>
 </root>

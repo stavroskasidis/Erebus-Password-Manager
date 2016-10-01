@@ -6,8 +6,10 @@ using System.Reflection.Emit;
 using System.Text;
 using Xamarin.Forms;
 using Erebus.Mobile.Presenters.Contracts;
-using Erebus.Resources;
+using Erebus.Resource;
 using Erebus.Core.Mobile;
+using System.Reflection;
+using System.Globalization;
 
 namespace Erebus.Mobile.Views.Implementations
 {

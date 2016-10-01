@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Erebus.Mobile.Views.Contracts;
-using Erebus.Resources;
+using Erebus.Resource;
 using Erebus.Core.Mobile.Contracts;
 using Erebus.Core.Mobile;
 

@@ -8,7 +8,7 @@ using Erebus.Mobile.Presenters.Contracts;
 using Erebus.Mobile.Presenters.Implementations;
 using Erebus.Mobile.Views.Contracts;
 using Erebus.Mobile.Views.Implementations;
-using Erebus.Resources;
+using Erebus.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Erebus.Core.Contracts;
 using Erebus.Server.ViewModels;
 using Erebus.Core.Server.Contracts;
-using Erebus.Resources;
+using Erebus.Resource;
 
 namespace Erebus.Server.Controllers
 {

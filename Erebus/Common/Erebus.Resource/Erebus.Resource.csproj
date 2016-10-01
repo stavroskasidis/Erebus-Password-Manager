@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D0E9B1AC-D07E-4966-98CC-A576CDF30BF2}</ProjectGuid>
+    <ProjectGuid>{F99B69FC-6B2A-44E7-97FD-E6B4A6B90D35}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Erebus.Resources</RootNamespace>
-    <AssemblyName>Erebus.Resources</AssemblyName>
+    <RootNamespace>Erebus.Resource</RootNamespace>
+    <AssemblyName>Erebus.Resource</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -39,17 +39,18 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Erebus.Resources.Designer\StringResources.Designer.cs">
-      <Link>StringResources.Designer.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\Erebus.Resources.Designer\StringResources.el.resx">
-      <Link>StringResources.el.resx</Link>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\Erebus.Resources.Designer\StringResources.resx">
-      <Link>StringResources.resx</Link>
+    <EmbeddedResource Include="StringResources.el.resx" />
+    <EmbeddedResource Include="StringResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

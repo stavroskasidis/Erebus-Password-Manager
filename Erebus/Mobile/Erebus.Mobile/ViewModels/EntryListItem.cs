@@ -1,6 +1,6 @@
 ﻿using Erebus.Core;
 using Erebus.Model;
-using Erebus.Resources;
+using Erebus.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;

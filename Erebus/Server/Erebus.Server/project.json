@@ -37,12 +37,12 @@
                 "Erebus.Core": {
                     "target": "project"
                 },
-              "Erebus.Model": {
-                "target": "project"
-              },
-              "Erebus.Resources": {
-                "target": "project"
-              }   }
+                "Erebus.Model": {
+                    "target": "project"
+                },
+                "Erebus.Resource": {
+                    "target": "project"
+                }            }
         }
     },
     "publishOptions": {

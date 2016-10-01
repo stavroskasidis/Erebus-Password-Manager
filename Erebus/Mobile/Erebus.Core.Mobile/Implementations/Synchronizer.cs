@@ -1,6 +1,6 @@
 ﻿using Erebus.Core.Contracts;
 using Erebus.Core.Mobile.Contracts;
-using Erebus.Resources;
+using Erebus.Resource;
 using System;
 using System.Collections.Generic;
 using System.IO;

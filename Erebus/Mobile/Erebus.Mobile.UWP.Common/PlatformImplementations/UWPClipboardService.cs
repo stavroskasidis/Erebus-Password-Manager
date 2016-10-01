@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 
-namespace Erebus.Mobile.UWP.PlatformImplementations
+namespace Erebus.Mobile.UWP.Common.PlatformImplementations
 {
     public class UWPClipboardService : IClipboardService
     {

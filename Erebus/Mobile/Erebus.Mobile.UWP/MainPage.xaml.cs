@@ -21,7 +21,6 @@ namespace Erebus.Mobile.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
             LoadApplication(new Erebus.Mobile.App(new ContainerFactory()));
         }
     }

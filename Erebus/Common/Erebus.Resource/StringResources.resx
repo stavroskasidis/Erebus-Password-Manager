@@ -150,6 +150,12 @@
   <data name="ChangeVaultPassword" xml:space="preserve">
     <value>Change Vault Password</value>
   </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="ContactingServer" xml:space="preserve">
+    <value>Contacting Server ...</value>
+  </data>
   <data name="CopiedAlertMessage" xml:space="preserve">
     <value>Copied to clipboard!</value>
   </data>
@@ -182,6 +188,9 @@
   </data>
   <data name="EditGroup" xml:space="preserve">
     <value>Edit Group</value>
+  </data>
+  <data name="EnterVaultMasterPassword" xml:space="preserve">
+    <value>Enter your vault's master password</value>
   </data>
   <data name="Entries" xml:space="preserve">
     <value>Entries</value>
@@ -276,6 +285,9 @@
   <data name="PasswordLength" xml:space="preserve">
     <value>Password Length</value>
   </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Password required</value>
+  </data>
   <data name="Refresh" xml:space="preserve">
     <value>Refresh</value>
   </data>
@@ -306,6 +318,12 @@
   <data name="ShowHide" xml:space="preserve">
     <value>Show/Hide</value>
   </data>
+  <data name="Synchronize" xml:space="preserve">
+    <value>Synchronize</value>
+  </data>
+  <data name="Synchronized" xml:space="preserve">
+    <value>Synchronized !</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
   </data>
@@ -335,23 +353,5 @@
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Warning</value>
-  </data>
-  <data name="Configuration" xml:space="preserve">
-    <value>Configuration</value>
-  </data>
-  <data name="ContactingServer" xml:space="preserve">
-    <value>Contacting Server ...</value>
-  </data>
-  <data name="Synchronized" xml:space="preserve">
-    <value>Synchronized !</value>
-  </data>
-  <data name="Synchronize" xml:space="preserve">
-    <value>Synchronize</value>
-  </data>
-  <data name="EnterVaultMasterPassword" xml:space="preserve">
-    <value>Enter your vault's master password</value>
-  </data>
-  <data name="PasswordRequired" xml:space="preserve">
-    <value>Password required</value>
   </data>
 </root>

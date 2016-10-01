@@ -18,17 +18,17 @@
         }
       }
     },
-    "Erebus.Resources/1.0.0": {
+    "Erebus.Resources2/1.0.0": {
       "type": "project",
-      "framework": ".NETStandard,Version=v1.3",
+      "framework": ".NETStandard,Version=v1.1",
       "compile": {
-        "bin/Debug/Erebus.Resources.dll": {}
+        "bin/Debug/Erebus.Resources2.dll": {}
       },
       "runtime": {
-        "bin/Debug/Erebus.Resources.dll": {}
+        "bin/Debug/Erebus.Resources2.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/Erebus.Resources.pdb": {
+        "bin/Debug/Erebus.Resources2.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true

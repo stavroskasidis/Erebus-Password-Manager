@@ -79,9 +79,9 @@
       <Project>{1f634efc-0bb7-4059-8924-d4d718410b53}</Project>
       <Name>Erebus.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Common\Erebus.Resources\Erebus.Resources.csproj">
-      <Project>{d0e9b1ac-d07e-4966-98cc-a576cdf30bf2}</Project>
-      <Name>Erebus.Resources</Name>
+    <ProjectReference Include="..\..\Common\Erebus.Resource\Erebus.Resource.csproj">
+      <Project>{f99b69fc-6b2a-44e7-97fd-e6b4a6b90d35}</Project>
+      <Name>Erebus.Resource</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

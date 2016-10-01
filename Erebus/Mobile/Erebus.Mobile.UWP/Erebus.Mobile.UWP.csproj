@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Erebus.Mobile.UWP</RootNamespace>
     <AssemblyName>Erebus.Mobile.UWP</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>en-us</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
@@ -18,6 +18,9 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>Windows_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CopyNuGetImplementations>true</CopyNuGetImplementations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -96,14 +99,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PlatformImplementations\SynchronizeBackgroundTask.cs" />
-    <Compile Include="PlatformImplementations\UWPClipboardService.cs" />
-    <Compile Include="PlatformImplementations\UWPFileSystem.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UWPPlatformServicesRegistrator.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -134,12 +133,20 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Erebus.Core\Erebus.Core.csproj">
-      <Project>{CC2528B8-2964-4145-BF72-1E1A591C1CC0}</Project>
+      <Project>{cc2528b8-2964-4145-bf72-1e1a591c1cc0}</Project>
       <Name>Erebus.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Erebus.Core.Mobile\Erebus.Core.Mobile.csproj">
-      <Project>{7A0E80C1-C0E2-4F3F-B378-228A12BC23DD}</Project>
+      <Project>{7a0e80c1-c0e2-4f3f-b378-228a12bc23dd}</Project>
       <Name>Erebus.Core.Mobile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Erebus.Mobile.UWP.Common\Erebus.Mobile.UWP.Common.csproj">
+      <Project>{f264701b-f523-4c62-94dd-a0e6cb27127f}</Project>
+      <Name>Erebus.Mobile.UWP.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Erebus.Mobile.UWP.Tasks\Erebus.Mobile.UWP.Tasks.csproj">
+      <Project>{10a17b64-62f5-4c93-a3aa-ca6d71e859ae}</Project>
+      <Name>Erebus.Mobile.UWP.Tasks</Name>
     </ProjectReference>
     <ProjectReference Include="..\Erebus.Mobile\Erebus.Mobile.csproj">
       <Project>{b78f2f30-680d-4968-a655-baa42040487e}</Project>

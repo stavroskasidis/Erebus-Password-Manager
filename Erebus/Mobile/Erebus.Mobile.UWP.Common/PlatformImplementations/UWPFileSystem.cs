@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace Erebus.Mobile.UWP.PlatformImplementations
+namespace Erebus.Mobile.UWP.Common.PlatformImplementations
 {
     public class UWPFileSystem : IFileSystem
     {
