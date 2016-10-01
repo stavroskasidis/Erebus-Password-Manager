@@ -38,11 +38,11 @@ namespace Erebus.Mobile.UWP.Common.PlatformImplementations
             //if (requestTask != BackgroundAccessStatus.DeniedByUser &&
             //    requestTask != BackgroundAccessStatus.DeniedBySystemPolicy)
             //{
-                var builder = new BackgroundTaskBuilder();
-                builder.Name = BackgroundTaskName;
-                builder.TaskEntryPoint = BackgroundTaskEntryPoint;
-                builder.SetTrigger(new TimeTrigger(45, false));
-                builder.Register();
+            var builder = new BackgroundTaskBuilder();
+            builder.Name = BackgroundTaskName;
+            builder.TaskEntryPoint = BackgroundTaskEntryPoint;
+            builder.SetTrigger(new TimeTrigger(45, false));
+            builder.Register();
             //}
 
         }

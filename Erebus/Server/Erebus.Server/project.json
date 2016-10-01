@@ -42,7 +42,7 @@
                 },
                 "Erebus.Resource": {
                     "target": "project"
-                }            }
+                }           }
         }
     },
     "publishOptions": {
