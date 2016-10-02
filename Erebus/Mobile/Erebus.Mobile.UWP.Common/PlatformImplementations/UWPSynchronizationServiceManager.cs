@@ -41,7 +41,7 @@ namespace Erebus.Mobile.UWP.Common.PlatformImplementations
             var builder = new BackgroundTaskBuilder();
             builder.Name = BackgroundTaskName;
             builder.TaskEntryPoint = BackgroundTaskEntryPoint;
-            builder.SetTrigger(new TimeTrigger(15, false));
+            builder.SetTrigger(new TimeTrigger(45, false));
             builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
             builder.Register();
             //}
