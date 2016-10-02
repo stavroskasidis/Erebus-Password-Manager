@@ -21,7 +21,7 @@
                     <td>@Html.DisplayFor(model => entry.UserName)</td>
                     <td>
                         <div class="input-group">
-                            <input class="form-control" type="password" id="grid-password-@entry.Id" readonly value="@entry.Password" />
+                            <input class="form-control" type="password" id="grid-password-@entry.Id" readonly value="@entry.Password" autocomplete="new-password"/>
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-primary" onclick="vaultExplorerIndex.toggleShowPassword(this,'grid-password-@entry.Id');" data-toggle="tooltip" data-placement="top" title="@StringResources.ShowHide">
                                     <span class="glyphicon glyphicon-eye-open"></span>

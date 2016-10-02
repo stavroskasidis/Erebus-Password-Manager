@@ -13,7 +13,7 @@ namespace Erebus.Mobile.UWP.Common.PlatformImplementations
         private const string BackgroundTaskName = "SynchronizationBackgroundTask";
         private const string BackgroundTaskEntryPoint = "Erebus.Mobile.UWP.Tasks.SynchronizationBackgroundTask";
 
-        public void StartSynchronizationService()
+        public async void StartSynchronizationService()
         {
             var taskRegistered = false;
 
@@ -33,7 +33,7 @@ namespace Erebus.Mobile.UWP.Common.PlatformImplementations
                 StopSynchronizationService();
             }
 
-            var requestTask = BackgroundExecutionManager.RequestAccessAsync();
+            var requestTask = await BackgroundExecutionManager.RequestAccessAsync();
 
             //if (requestTask != BackgroundAccessStatus.DeniedByUser &&
             //    requestTask != BackgroundAccessStatus.DeniedBySystemPolicy)
@@ -41,7 +41,8 @@ namespace Erebus.Mobile.UWP.Common.PlatformImplementations
             var builder = new BackgroundTaskBuilder();
             builder.Name = BackgroundTaskName;
             builder.TaskEntryPoint = BackgroundTaskEntryPoint;
-            builder.SetTrigger(new TimeTrigger(45, false));
+            builder.SetTrigger(new TimeTrigger(15, false));
+            builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
             builder.Register();
             //}
 
@@ -49,6 +50,7 @@ namespace Erebus.Mobile.UWP.Common.PlatformImplementations
 
         public void StopSynchronizationService()
         {
+            BackgroundExecutionManager.RemoveAccess();
             foreach (var cur in BackgroundTaskRegistration.AllTasks)
             {
                 if (cur.Value.Name == BackgroundTaskName)

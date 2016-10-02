@@ -20,7 +20,7 @@
             </div>
 
             <div style="padding-top:30px" class="panel-body">
-                <form class="form-horizontal" role="form" asp-action="Validate" autocomplete="off">
+                <form class="form-horizontal" role="form" asp-action="Validate" autocomplete="new-password">
 
                     <div class="input-group focused-input-wrapper">
                         <span class="input-group-addon"><i class="fa fa-archive"></i></span>
@@ -30,7 +30,7 @@
 
                     <div class="input-group focused-input-wrapper">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input type="password" class="form-control" asp-for="MasterPassword" placeholder="@StringResources.MasterPassword">
+                        <input type="password" class="form-control" asp-for="MasterPassword" placeholder="@StringResources.MasterPassword" autocomplete="new-password">
                     </div>
                     <span asp-validation-for="MasterPassword" class="text-danger"></span>
 

@@ -36,7 +36,7 @@ namespace Erebus.Core.Mobile.Implementations
                         return response.IsSuccessStatusCode;
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return false;
                 }

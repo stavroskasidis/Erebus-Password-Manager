@@ -19,6 +19,7 @@ namespace Erebus.Mobile.iOS
         {
             containerBuilder.RegisterType<iOSFileSystem>().As<IFileSystem>();
             containerBuilder.RegisterType<iOSClipboardService>().As<IClipboardService>();
+            containerBuilder.RegisterType<iOSSynchronizationServiceManager>().As<ISynchronizationServiceManager>();
             //containerBuilder.RegisterType<iOSSyncContext>().As<ISyncContext>();
         }
     }
