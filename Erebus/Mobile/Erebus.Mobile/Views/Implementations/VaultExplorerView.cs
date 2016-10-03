@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Erebus.Mobile.ViewModels;
+using System.Threading;
 
 namespace Erebus.Mobile.Views.Implementations
 {
@@ -16,6 +17,7 @@ namespace Erebus.Mobile.Views.Implementations
 
         public event Action<string> Search;
         public event Action<EntryListItem> EntrySelected;
+        private CancellationTokenSource SearchCancellationTokenSource;
 
         public VaultExplorerView()
         {
@@ -26,13 +28,29 @@ namespace Erebus.Mobile.Views.Implementations
                 this.ListView.EndRefresh();
             };
 
-            //TODO implement with delay
-            //this.SearchBar.TextChanged += (object sender, TextChangedEventArgs e) =>
-            //{
-            //    this.ListView.BeginRefresh();
-            //    this.Search?.Invoke(this.SearchBar.Text);
-            //    this.ListView.EndRefresh();
-            //};
+            this.SearchBar.TextChanged += async (object sender, TextChangedEventArgs e) =>
+            {
+                if (this.SearchCancellationTokenSource != null)
+                {
+                    this.SearchCancellationTokenSource.Cancel();
+                }
+                this.SearchCancellationTokenSource = new CancellationTokenSource();
+                var cancellationToken = this.SearchCancellationTokenSource.Token;
+                try
+                {
+                    await Task.Delay(TimeSpan.FromMilliseconds(200), cancellationToken);
+                    if (cancellationToken.IsCancellationRequested == false)
+                    {
+                        this.ListView.BeginRefresh();
+                        this.Search?.Invoke(this.SearchBar.Text);
+                        this.ListView.EndRefresh();
+                    }
+                }
+                catch (OperationCanceledException)
+                {
+                    //Expected
+                }
+            };
 
             this.ListView.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
