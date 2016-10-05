@@ -5,6 +5,9 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using Erebus.Core.Mobile;
+using ObjCRuntime;
+using Erebus.Core.Mobile.Contracts;
+using Autofac;
 
 namespace Erebus.Mobile.iOS
 {
@@ -27,6 +30,29 @@ namespace Erebus.Mobile.iOS
             LoadApplication(new App(new ContainerFactory()));
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override async void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
+        {
+            try
+            {
+                var containerFactory = new ContainerFactory();
+                containerFactory.AddRegistrations(builder =>
+                {
+                    var iosRegistrations = new iOSPlatformServicesRegistrator();
+                    iosRegistrations.RegisterPlatformSpecificServices(builder);
+                });
+
+                var container = containerFactory.Build();
+                var synchronizer = container.Resolve<ISynchronizer>();
+
+                var serverOnline = await synchronizer.Synchronize();
+                completionHandler(UIBackgroundFetchResult.NewData);
+            }
+            catch (Exception ex)
+            {
+                completionHandler(UIBackgroundFetchResult.Failed);
+            }
         }
     }
 }
