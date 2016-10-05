@@ -21,14 +21,9 @@ namespace Erebus.Core.Mobile.Implementations
 
         public TPresenter Create<TPresenter>(params PresenterParameter[] parameters) where TPresenter : IPresenter
         {
-            if (parameters == null)
-            {
-                return Container.Resolve<TPresenter>();
-            }
-            else
-            {
-                return Container.Resolve<TPresenter>(parameters.Select(x=> new NamedParameter(x.ParameterName, x.Value)));
-            }
+			return parameters == null ? 
+				Container.Resolve<TPresenter>() : 
+				Container.Resolve<TPresenter>(parameters.Select(x=> new NamedParameter(x.ParameterName, x.Value)));
         }
     }
 }
