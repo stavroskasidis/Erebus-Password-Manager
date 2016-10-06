@@ -5,13 +5,13 @@
       "type": "project",
       "framework": ".NETStandard,Version=v1.3",
       "compile": {
-        "bin/Debug/Erebus.Model.dll": {}
+        "bin/Release/Erebus.Model.dll": {}
       },
       "runtime": {
-        "bin/Debug/Erebus.Model.dll": {}
+        "bin/Release/Erebus.Model.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/Erebus.Model.pdb": {
+        "bin/Release/Erebus.Model.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
@@ -22,13 +22,13 @@
       "type": "project",
       "framework": ".NETStandard,Version=v1.1",
       "compile": {
-        "bin/Debug/Erebus.Resource.dll": {}
+        "bin/Release/Erebus.Resource.dll": {}
       },
       "runtime": {
-        "bin/Debug/Erebus.Resource.dll": {}
+        "bin/Release/Erebus.Resource.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/Erebus.Resource.pdb": {
+        "bin/Release/Erebus.Resource.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
@@ -39,13 +39,13 @@
       "type": "project",
       "framework": ".NETStandard,Version=v1.3",
       "compile": {
-        "bin/Debug/Erebus.Core.dll": {}
+        "bin/Release/Erebus.Core.dll": {}
       },
       "runtime": {
-        "bin/Debug/Erebus.Core.dll": {}
+        "bin/Release/Erebus.Core.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/Erebus.Core.pdb": {
+        "bin/Release/Erebus.Core.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true

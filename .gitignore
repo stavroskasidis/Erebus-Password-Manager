@@ -246,3 +246,4 @@ ModelManifest.xml
 /smtp4dev.exe
 *.evf
 /Erebus/Server/Erebus.Server/Properties/PublishProfiles
+/SetupOutput
