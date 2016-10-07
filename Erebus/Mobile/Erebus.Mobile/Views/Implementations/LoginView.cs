@@ -13,7 +13,7 @@ namespace Erebus.Mobile.Views.Implementations
     {
         private Picker VaultPicker = new Picker();
         private Button LoginButton = new Button();
-        private Button SyncButton= new Button();
+        private Button SyncButton = new Button();
         private Label ActivityIndicatorMessage = new Label();
         private Button ConfigurationButton = new Button();
         private Entry MasterPasswordEntry = new Entry();
@@ -22,6 +22,14 @@ namespace Erebus.Mobile.Views.Implementations
         public event Action Login;
         public event Action NavigateToConfiguration;
         public event Action Sync;
+        public event Action Initialize;
+
+        private bool Initialized;
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
 
         public LoginView()
         {
@@ -35,6 +43,15 @@ namespace Erebus.Mobile.Views.Implementations
             SyncButton.Text = StringResources.Synchronize;
             SyncButton.Clicked += (object sender, EventArgs e) => this.Sync?.Invoke();
             ActivityIndicator.IsVisible = false;
+            Initialized = false;
+            Appearing += (object sender, EventArgs e) =>
+            {
+                if (!Initialized)
+                {
+                    Initialize?.Invoke();
+                    Initialized = true;
+                }
+            };
 
             Content = new ScrollView
             {

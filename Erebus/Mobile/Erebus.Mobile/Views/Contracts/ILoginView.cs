@@ -20,5 +20,6 @@ namespace Erebus.Mobile.Views.Contracts
         event Action Login;
         event Action NavigateToConfiguration;
         event Action Sync;
+        event Action Initialize;
     }
 }

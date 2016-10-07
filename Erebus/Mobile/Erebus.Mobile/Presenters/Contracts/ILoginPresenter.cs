@@ -12,5 +12,6 @@ namespace Erebus.Mobile.Presenters.Contracts
         void OnLogin();
         void OnNavigateToConfiguration();
         void OnSync();
+        void OnInitialize();
     }
 }

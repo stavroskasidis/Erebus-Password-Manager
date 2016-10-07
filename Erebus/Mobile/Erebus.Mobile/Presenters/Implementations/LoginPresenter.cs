@@ -50,6 +50,8 @@ namespace Erebus.Mobile.Presenters.Implementations
             this.View.Login += OnLogin;
             this.View.NavigateToConfiguration += OnNavigateToConfiguration;
             this.View.Sync += OnSync;
+            this.Synchronizer.StatusUpdate += (message) => this.View.ActivityIndicatorText = message;
+            this.View.Initialize += OnInitialize;
 
         }
 
@@ -58,31 +60,34 @@ namespace Erebus.Mobile.Presenters.Implementations
             return View;
         }
 
-        public void OnLogin()
+        public async void OnLogin()
         {
             this.View.DisableUI();
+            this.View.ShowLoadingIndicator();
             if (string.IsNullOrWhiteSpace(this.View.MasterPasswordInputText))
             {
                 this.AlertDisplayer.DisplayAlert(StringResources.PasswordRequired,StringResources.EnterVaultMasterPassword);
                 this.View.EnableUI();
+                this.View.HideLoadingIndicator();
                 return;
             }
 
             var vaultRepository = this.VaultRepositoryFactory.CreateInstance();
             var selectedVault = this.View.SelectedVaultName;
             var masterPassword =  this.SecureStringConverter.ToSecureString(this.View.MasterPasswordInputText);
-            if(!vaultRepository.IsPasswordValid(selectedVault, masterPassword))
+            if(!await Task.Run( () => vaultRepository.IsPasswordValid(selectedVault, masterPassword)))
             {
                 this.AlertDisplayer.DisplayAlert("", StringResources.IncorrectPassword);
                 this.View.EnableUI();
+                this.View.HideLoadingIndicator();
                 return;
             }
 
             this.ApplicationContext.SetCurrentVaultName(selectedVault);
             this.ApplicationContext.SetMasterPassword(masterPassword);
+            await this.NavigationManager.NavigateAsync<IVaultExplorerPresenter>();
             this.View.EnableUI();
-
-            this.NavigationManager.NavigateAsync<IVaultExplorerPresenter>();
+            this.View.HideLoadingIndicator();
         }
 
         public async void OnSync()
@@ -91,7 +96,6 @@ namespace Erebus.Mobile.Presenters.Implementations
             this.View.DisableUI();
             this.View.ShowLoadingIndicator();
 
-            this.Synchronizer.StatusUpdate += (message) => this.View.ActivityIndicatorText = message;
             bool success = await this.Synchronizer.Synchronize();
             if (success)
             {
@@ -108,6 +112,17 @@ namespace Erebus.Mobile.Presenters.Implementations
         public void OnNavigateToConfiguration()
         {
             this.NavigationManager.NavigateAsync<IConfigurationPresenter>();
+        }
+
+        public void OnInitialize()
+        {
+            var repository = VaultRepositoryFactory.CreateInstance();
+            var vaults = repository.GetAllVaultNames();
+            var config = MobileConfigurationReader.GetConfiguration();
+            if (vaults.Count() == 0 && config.ApplicationMode == ApplicationMode.Client && config.AlreadyInitialized)
+            {
+                OnSync();
+            }
         }
     }
 }
