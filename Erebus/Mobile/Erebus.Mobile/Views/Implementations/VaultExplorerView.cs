@@ -23,9 +23,7 @@ namespace Erebus.Mobile.Views.Implementations
         {
             this.SearchBar.SearchButtonPressed += (object sender, EventArgs e) =>
             {
-                this.ListView.BeginRefresh();
                 this.Search?.Invoke(this.SearchBar.Text);
-                this.ListView.EndRefresh();
             };
 
             this.SearchBar.TextChanged += async (object sender, TextChangedEventArgs e) =>
@@ -38,17 +36,22 @@ namespace Erebus.Mobile.Views.Implementations
                 var cancellationToken = this.SearchCancellationTokenSource.Token;
                 try
                 {
-                    await Task.Delay(TimeSpan.FromMilliseconds(200), cancellationToken);
-                    if (cancellationToken.IsCancellationRequested == false)
+                    await Task.Delay(TimeSpan.FromMilliseconds(300), cancellationToken);
+                    if (cancellationToken.IsCancellationRequested) return;
+
+                    await Task.Run(() =>
                     {
-                        this.ListView.BeginRefresh();
                         this.Search?.Invoke(this.SearchBar.Text);
-                        this.ListView.EndRefresh();
-                    }
+                    }, cancellationToken);
+
                 }
                 catch (OperationCanceledException)
                 {
                     //Expected
+                }
+                finally
+                {
+
                 }
             };
 
@@ -100,7 +103,9 @@ namespace Erebus.Mobile.Views.Implementations
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
+                    this.ListView.BeginRefresh();
                     this.ListView.ItemsSource = value;
+                    this.ListView.EndRefresh();
                 });
             }
         }
