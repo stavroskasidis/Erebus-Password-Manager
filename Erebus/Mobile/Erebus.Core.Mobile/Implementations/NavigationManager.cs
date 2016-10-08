@@ -25,11 +25,17 @@ namespace Erebus.Core.Mobile.Implementations
             await Application.MainPage.Navigation.PushAsync(presenter.GetView() as Page);
         }
 
-        public async Task NavigateByPopingCurrent<TPresenter>(params PresenterParameter[] parameters) where TPresenter : IPresenter
+        public async Task NavigateAsNewStack<TPresenter>(params PresenterParameter[] parameters) where TPresenter : IPresenter
         {
             var presenter = this.PresenterFactory.Create<TPresenter>(parameters);
+            //await this.Application.MainPage.Navigation.PopAsync();
+            var view = await Task.Run(()=> presenter.GetView() as Page);
+            this.Application.MainPage = new NavigationPage(view);
+        }
+
+        public async Task PopCurrent()
+        {
             await this.Application.MainPage.Navigation.PopAsync();
-            await this.Application.MainPage.Navigation.PushAsync(presenter.GetView() as Page);
         }
     }
 }

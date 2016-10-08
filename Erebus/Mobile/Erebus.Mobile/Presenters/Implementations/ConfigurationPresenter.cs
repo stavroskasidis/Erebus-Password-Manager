@@ -50,6 +50,8 @@ namespace Erebus.Mobile.Presenters.Implementations
 
         public async void OnSave()
         {
+            bool goToLogin = !ConfigurationReader.GetConfiguration().AlreadyInitialized;
+
             var configuration = new MobileConfiguration();
             configuration.ApplicationMode = this.View.SelectedApplicationMode;
             configuration.Language = "en"; //TODO make an option
@@ -74,7 +76,15 @@ namespace Erebus.Mobile.Presenters.Implementations
             }
 
             this.ConfigurationWriter.SaveConfiguration(configuration);
-            await this.NavigationManager.NavigateByPopingCurrent<ILoginPresenter>();
+            if (goToLogin)
+            {
+                await this.NavigationManager.NavigateAsNewStack<ILoginPresenter>();
+            }
+            else
+            {
+                await this.NavigationManager.PopCurrent();
+            }
+            
 
         }
 

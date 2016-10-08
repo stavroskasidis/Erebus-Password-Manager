@@ -10,6 +10,7 @@ namespace Erebus.Core.Mobile.Contracts
     public interface INavigationManager
     {
         Task NavigateAsync<TPresenter>(params PresenterParameter[] parameters) where TPresenter : IPresenter;
-        Task NavigateByPopingCurrent<TPresenter>(params PresenterParameter[] parameters) where TPresenter : IPresenter;
+        Task NavigateAsNewStack<TPresenter>(params PresenterParameter[] parameters) where TPresenter : IPresenter;
+        Task PopCurrent();
     }
 }
