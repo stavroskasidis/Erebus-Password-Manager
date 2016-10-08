@@ -22,62 +22,9 @@ namespace Erebus.Mobile
     {
         public static IContainer Container { get; set; }
 
-        //protected void RegisterDependencies(ContainerBuilder buider)
-        //{
-        //    //=== Common ===
-        //    buider.RegisterType<MobileConfigurationReader>().As<IMobileConfigurationReader>().SingleInstance();
-        //    buider.RegisterType<MobileConfigurationWriter>().As<IMobileConfigurationWriter>().SingleInstance();
-        //    buider.RegisterType<UrlValidator>().As<IUrlValidator>().SingleInstance();
-        //    buider.RegisterType<ApplicationContext>().As<IApplicationContext>().SingleInstance();
-        //    buider.RegisterType<NavigationManager>().As<INavigationManager>().SingleInstance();
-        //    buider.RegisterType<PresenterFactory>().As<IPresenterFactory>().SingleInstance();
-        //    buider.RegisterType<AlertDisplayer>().As<IAlertDisplayer>().SingleInstance();
-        //    buider.RegisterType<JsonSerializer>().As<ISerializer>().SingleInstance();
-        //    buider.RegisterType<VaultFileRepositoryFactory>().As<IVaultRepositoryFactory>().SingleInstance();
-        //    buider.RegisterType<AesCryptographer>().As<ISymetricCryptographer>().SingleInstance();
-        //    buider.RegisterType<ClockProvider>().As<IClockProvider>().SingleInstance();
-        //    buider.RegisterType<VaultFileMetadataHandler>().As<IVaultFileMetadataHandler>().SingleInstance();
-        //    buider.RegisterType<SecureStringConverter>().As<ISecureStringConverter>().SingleInstance();
-        //    buider.RegisterType<ByteArrayHelper>().As<IByteArrayHelper>().SingleInstance();
-        //    buider.RegisterType<Synchronizer>().As<ISynchronizer>();
-        //    buider.RegisterType<MobileSyncContext>().As<ISyncContext>();
-        //    buider.RegisterType<PasswordGenerator>().As<IPasswordGenerator>();
-        //    buider.Register<ISecureStringBinarySerializer>(x =>
-        //    {
-        //        string randomPassword = x.Resolve<IPasswordGenerator>().GeneratePassword(50, true, true, true, true);
-        //        var secureStringConverter = x.Resolve<ISecureStringConverter>();
-        //        return new SecureStringBinarySerializer(x.Resolve<ISymetricCryptographer>(), secureStringConverter.ToSecureString(randomPassword), x.Resolve<ISecureStringConverter>());
-        //    }).SingleInstance();
-
-        //    buider.Register<IServerCommunicator>(x =>
-        //    {
-        //        return new ServerCommunicator(x.Resolve<IMobileConfigurationReader>().GetConfiguration().ServerUrl, x.Resolve<ISerializer>());
-        //    });
-        //    buider.Register<Application>(x => Application.Current);
-        //    buider.Register<IContainer>(x => Container);
-
-        //    //=== Views/Presenters
-
-        //    buider.RegisterType<ConfigurationPresenter>().As<IConfigurationPresenter>();
-        //    buider.RegisterType<ConfigurationView>().As<IConfigurationView>();
-        //    buider.RegisterType<LoginPresenter>().As<ILoginPresenter>();
-        //    buider.RegisterType<LoginView>().As<ILoginView>();
-        //    buider.RegisterType<VaultExplorerPresenter>().As<IVaultExplorerPresenter>();
-        //    buider.RegisterType<VaultExplorerView>().As<IVaultExplorerView>();
-        //    buider.RegisterType<EntryDetailsPresenter>().As<IEntryDetailsPresenter>();
-        //    buider.RegisterType<EntryDetailsView>().As<IEntryDetailsView>();
-
-
-        //    //=== Platform Specific
-        //    var platformServicesRegistrator = DependencyService.Get<IPlatformServicesRegistrator>();
-        //    platformServicesRegistrator.RegisterPlatformSpecificServices(buider);
-        //}
-
         public App(ContainerFactory containerFactory)
         {
             InitializeComponent();
-
-            //var containerBuilder = new ContainerBuilder();
             containerFactory.AddRegistrations(builder =>
             {
                 builder.Register<Application>(x => Application.Current);

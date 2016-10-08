@@ -27,6 +27,7 @@ namespace Erebus.Mobile.Views.Implementations
         {
             PasswordEntry.IsEnabled = false;
             PasswordEntry.IsPassword = true;
+            PasswordEntry.HorizontalOptions = LayoutOptions.FillAndExpand;
             PasswordShowHideButton.Text = StringResources.ShowHide;
             PasswordCopyButton.Text = StringResources.Copy;
             this.PasswordShowHideButton.Clicked += (object sender, EventArgs e) => ShowHidePassword?.Invoke();
@@ -51,20 +52,27 @@ namespace Erebus.Mobile.Views.Implementations
                             Text = StringResources.UserName
                         },
                         UserNameLabel,
-
-                        new Label
-                        {
-                            FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-                            Text = StringResources.Password
-                        },
                         new StackLayout
                         {
                             Orientation = StackOrientation.Horizontal,
                             Children=
                             {
-                                PasswordEntry,
+                                new Label
+                                {
+                                    FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
+                                    Text = StringResources.Password
+                                },
                                 PasswordShowHideButton,
                                 PasswordCopyButton
+                             }
+                        },
+                        new StackLayout
+                        {
+                            Orientation = StackOrientation.Horizontal,
+                            HorizontalOptions = LayoutOptions.FillAndExpand,
+                            Children=
+                            {
+                                PasswordEntry,
                             }
                         },
 
