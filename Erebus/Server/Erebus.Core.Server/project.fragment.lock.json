@@ -5,13 +5,13 @@
       "type": "project",
       "framework": ".NETStandard,Version=v1.3",
       "compile": {
-        "bin/Release/Erebus.Core.dll": {}
+        "bin/Debug/Erebus.Core.dll": {}
       },
       "runtime": {
-        "bin/Release/Erebus.Core.dll": {}
+        "bin/Debug/Erebus.Core.dll": {}
       },
       "contentFiles": {
-        "bin/Release/Erebus.Core.pdb": {
+        "bin/Debug/Erebus.Core.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
@@ -22,13 +22,13 @@
       "type": "project",
       "framework": ".NETStandard,Version=v1.3",
       "compile": {
-        "bin/Release/Erebus.Model.dll": {}
+        "bin/Debug/Erebus.Model.dll": {}
       },
       "runtime": {
-        "bin/Release/Erebus.Model.dll": {}
+        "bin/Debug/Erebus.Model.dll": {}
       },
       "contentFiles": {
-        "bin/Release/Erebus.Model.pdb": {
+        "bin/Debug/Erebus.Model.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true

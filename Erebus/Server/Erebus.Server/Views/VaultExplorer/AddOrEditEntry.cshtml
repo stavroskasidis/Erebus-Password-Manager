@@ -24,16 +24,14 @@
 
 
                     <div class="input-group ">
+
+                        <input id="modal-password-@Model.Id" asp-for="Password" value="@Model.Password" class="form-control" autocomplete="new-password"/>
+
                         <span class="input-group-btn">
                             <button id="modal-@Model.Id-generate-password-btn" type="button" class="btn btn-primary" data-toggle="tooltip"
                                     data-placement="top" title="@StringResources.Generate" onclick="vaultExplorerIndex.generatePassword('@Model.Id');">
                                 <span class="fa fa-key"></span>
                             </button>
-                        </span>
-
-                        <input id="modal-password-@Model.Id" asp-for="Password" value="@Model.Password" class="form-control" autocomplete="new-password"/>
-
-                        <span class="input-group-btn">
                             <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@StringResources.ShowHide"
                                     onclick="vaultExplorerIndex.toggleShowPassword(this,'modal-password-@Model.Id');">
                                 <span class="glyphicon glyphicon-eye-open"></span>
