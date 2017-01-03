@@ -20,7 +20,7 @@ namespace Erebus.Mobile.UWP.Common
         public void RegisterPlatformSpecificServices(ContainerBuilder containerBuilder)
         {
             containerBuilder.RegisterType<UWPFileSystem>().As<IFileSystem>();
-            containerBuilder.RegisterType<UWPClipboardService>().As<IClipboardService>();
+            //containerBuilder.RegisterType<UWPClipboardService>().As<IClipboardService>();
             containerBuilder.RegisterType<UWPSynchronizationServiceManager>().As<ISynchronizationServiceManager>();
             //containerBuilder.RegisterType<UWPSyncContext>().As<ISyncContext>();
         }

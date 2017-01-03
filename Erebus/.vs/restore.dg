@@ -1,7 +1,10 @@
-#:C:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Server\Erebus.Server.xproj
-C:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Server\Erebus.Server.xproj|C:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Core\Erebus.Core.csproj
-C:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Server\Erebus.Server.xproj|C:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Core.Server\Erebus.Core.Server.xproj
-C:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Server\Erebus.Server.xproj|C:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Model\Erebus.Model.csproj
-C:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Server\Erebus.Server.xproj|C:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Resource\Erebus.Resource.csproj
-C:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Core\Erebus.Core.csproj|C:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Model\Erebus.Model.csproj
-C:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Core.Server\Erebus.Core.Server.xproj|C:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Core\Erebus.Core.csproj
+#:D:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Server\Erebus.Server.xproj
+D:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Server\Erebus.Server.xproj|D:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Core\Erebus.Core.csproj
+D:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Server\Erebus.Server.xproj|D:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Core.Server\Erebus.Core.Server.xproj
+D:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Server\Erebus.Server.xproj|D:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Model\Erebus.Model.csproj
+D:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Server\Erebus.Server.xproj|D:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Resource\Erebus.Resource.csproj
+D:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Core\Erebus.Core.csproj|D:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Model\Erebus.Model.csproj
+D:\Projects\Erebus Password Manager\Erebus\Server\Erebus.Core.Server\Erebus.Core.Server.xproj|D:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Core\Erebus.Core.csproj
+#:D:\Projects\Erebus Password Manager\Erebus\Tests\Erebus.Tests\Erebus.Tests.xproj
+D:\Projects\Erebus Password Manager\Erebus\Tests\Erebus.Tests\Erebus.Tests.xproj|D:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Core\Erebus.Core.csproj
+D:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Core\Erebus.Core.csproj|D:\Projects\Erebus Password Manager\Erebus\Common\Erebus.Model\Erebus.Model.csproj

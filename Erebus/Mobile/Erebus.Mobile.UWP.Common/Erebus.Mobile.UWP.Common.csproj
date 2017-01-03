@@ -107,7 +107,6 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlatformImplementations\UWPClipboardService.cs" />
     <Compile Include="PlatformImplementations\UWPFileSystem.cs" />
     <Compile Include="PlatformImplementations\UWPSynchronizationServiceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

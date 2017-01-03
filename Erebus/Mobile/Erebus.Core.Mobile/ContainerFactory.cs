@@ -38,6 +38,7 @@ namespace Erebus.Core.Mobile
             ContainerBuilder.RegisterType<Synchronizer>().As<ISynchronizer>();
             ContainerBuilder.RegisterType<MobileSyncContext>().As<ISyncContext>();
             ContainerBuilder.RegisterType<PasswordGenerator>().As<IPasswordGenerator>();
+            ContainerBuilder.RegisterType<ClipboardService>().As<IClipboardService>();
             ContainerBuilder.Register<IServerCommunicator>(x =>
             {
                 return new ServerCommunicator(x.Resolve<IMobileConfigurationReader>().GetConfiguration().ServerUrl, x.Resolve<ISerializer>());
