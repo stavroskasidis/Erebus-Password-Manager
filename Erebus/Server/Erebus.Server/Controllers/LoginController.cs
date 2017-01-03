@@ -75,9 +75,9 @@ namespace Erebus.Server.Controllers
             model.VaultNames = repository.GetAllVaultNames();
             return View("Index", model);
         }
+        
 
-
-
+        [AllowAnonymous]
         public IActionResult Logout(bool expired)
         {
             this.SessionContext.ClearSession();
