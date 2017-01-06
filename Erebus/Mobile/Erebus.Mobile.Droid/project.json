@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "Xamarin.Plugins.Clipboard": "1.0.2"
   },
   "frameworks": {
     "MonoAndroid,Version=v6.0": {

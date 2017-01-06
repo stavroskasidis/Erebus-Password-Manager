@@ -1,6 +1,7 @@
 ﻿{
   "dependencies": {
-    "Xamarin.Forms": "2.3.2.127"
+    "Xamarin.Forms": "2.3.2.127",
+    "Xamarin.Plugins.Clipboard": "1.0.2"
   },
   "frameworks": {
     "Xamarin.iOS,Version=v1.0": {}

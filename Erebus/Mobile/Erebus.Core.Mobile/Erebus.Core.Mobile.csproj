@@ -59,6 +59,7 @@
     <Compile Include="Contracts\PresenterParameter.cs" />
     <Compile Include="Implementations\AlertDisplayer.cs" />
     <Compile Include="Implementations\ApplicationContext.cs" />
+    <Compile Include="Implementations\ClipboardService.cs" />
     <Compile Include="Implementations\MobileConfigurationReader.cs" />
     <Compile Include="Implementations\MobileConfigurationWriter.cs" />
     <Compile Include="Implementations\MobileSyncContext.cs" />

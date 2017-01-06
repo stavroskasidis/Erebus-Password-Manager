@@ -18,7 +18,7 @@ namespace Erebus.Mobile.iOS
         public void RegisterPlatformSpecificServices(ContainerBuilder containerBuilder)
         {
             containerBuilder.RegisterType<iOSFileSystem>().As<IFileSystem>();
-            containerBuilder.RegisterType<iOSClipboardService>().As<IClipboardService>();
+            //containerBuilder.RegisterType<iOSClipboardService>().As<IClipboardService>();
             containerBuilder.RegisterType<iOSSynchronizationServiceManager>().As<ISynchronizationServiceManager>();
             //containerBuilder.RegisterType<iOSSyncContext>().As<ISyncContext>();
         }
