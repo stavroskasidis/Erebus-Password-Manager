@@ -1,4 +1,4 @@
-﻿using Erebus.Resource;
+﻿using Erebus.Localization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System;

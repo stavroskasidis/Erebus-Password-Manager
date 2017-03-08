@@ -67,18 +67,6 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Erebus.Core\Erebus.Core.csproj">
-      <Project>{cc2528b8-2964-4145-bf72-1e1a591c1cc0}</Project>
-      <Name>Erebus.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Erebus.Model\Erebus.Model.csproj">
-      <Project>{1f634efc-0bb7-4059-8924-d4d718410b53}</Project>
-      <Name>Erebus.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Erebus.Resource\Erebus.Resource.csproj">
-      <Project>{f99b69fc-6b2a-44e7-97fd-e6b4a6b90d35}</Project>
-      <Name>Erebus.Resource</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Erebus.Core.Mobile\Erebus.Core.Mobile.csproj">
       <Project>{7a0e80c1-c0e2-4f3f-b378-228a12bc23dd}</Project>
       <Name>Erebus.Core.Mobile</Name>

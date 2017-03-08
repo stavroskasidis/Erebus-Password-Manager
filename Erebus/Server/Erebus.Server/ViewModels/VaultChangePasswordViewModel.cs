@@ -1,4 +1,4 @@
-﻿using Erebus.Resource;
+﻿using Erebus.Localization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

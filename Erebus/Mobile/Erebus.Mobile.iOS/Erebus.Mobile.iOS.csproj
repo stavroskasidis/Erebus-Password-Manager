@@ -125,10 +125,6 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Erebus.Core\Erebus.Core.csproj">
-      <Project>{CC2528B8-2964-4145-BF72-1E1A591C1CC0}</Project>
-      <Name>Erebus.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Erebus.Core.Mobile\Erebus.Core.Mobile.csproj">
       <Project>{7A0E80C1-C0E2-4F3F-B378-228A12BC23DD}</Project>
       <Name>Erebus.Core.Mobile</Name>

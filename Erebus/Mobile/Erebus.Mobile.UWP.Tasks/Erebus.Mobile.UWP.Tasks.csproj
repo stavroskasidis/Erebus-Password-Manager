@@ -112,10 +112,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Erebus.Core\Erebus.Core.csproj">
-      <Project>{cc2528b8-2964-4145-bf72-1e1a591c1cc0}</Project>
-      <Name>Erebus.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Erebus.Mobile.UWP.Common\Erebus.Mobile.UWP.Common.csproj">
       <Project>{f264701b-f523-4c62-94dd-a0e6cb27127f}</Project>
       <Name>Erebus.Mobile.UWP.Common</Name>

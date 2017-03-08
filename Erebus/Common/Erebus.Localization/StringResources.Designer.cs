@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Erebus.Resource {
+namespace Erebus.Localization {
     using System;
     using System.Reflection;
     
@@ -40,7 +40,7 @@ namespace Erebus.Resource {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Erebus.Resource.StringResources", typeof(StringResources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Erebus.Localization.StringResources", typeof(StringResources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -132,10 +132,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Erebus.Core\Erebus.Core.csproj">
-      <Project>{cc2528b8-2964-4145-bf72-1e1a591c1cc0}</Project>
-      <Name>Erebus.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Erebus.Core.Mobile\Erebus.Core.Mobile.csproj">
       <Project>{7a0e80c1-c0e2-4f3f-b378-228a12bc23dd}</Project>
       <Name>Erebus.Core.Mobile</Name>

@@ -1,91 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CC2528B8-2964-4145-BF72-1E1A591C1CC0}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Erebus.Core</RootNamespace>
-    <AssemblyName>Erebus.Core</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFramework>netstandard1.4</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="project.json" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.2.0" />
+    <PackageReference Include="System.Security.SecureString" Version="4.3.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Contracts\ByteArrayHelper.cs" />
-    <Compile Include="Contracts\ISyncContext.cs" />
-    <Compile Include="Contracts\IClockProvider.cs" />
-    <Compile Include="Contracts\IFileSystem.cs" />
-    <Compile Include="Contracts\ISecureStringConverter.cs" />
-    <Compile Include="Contracts\ISecureStringBinarySerializer.cs" />
-    <Compile Include="Contracts\ISerializer.cs" />
-    <Compile Include="Contracts\ITimespanFormater.cs" />
-    <Compile Include="Contracts\IVaultFileMetadataHandler.cs" />
-    <Compile Include="Contracts\IVaultFactory.cs" />
-    <Compile Include="Contracts\IVaultManipulator.cs" />
-    <Compile Include="Contracts\IVaultManipulatorFactory.cs" />
-    <Compile Include="Contracts\IVaultRepositoryFactory.cs" />
-    <Compile Include="GuardClauses.cs" />
-    <Compile Include="Contracts\ISymetricCryptographer.cs" />
-    <Compile Include="Contracts\IPasswordGenerator.cs" />
-    <Compile Include="Contracts\IVaultRepository.cs" />
-    <Compile Include="Implementations\AesCryptographer.cs" />
-    <Compile Include="Implementations\ByteArrayHelper.cs" />
-    <Compile Include="Implementations\ClockProvider.cs" />
-    <Compile Include="Implementations\GetEntryResult.cs" />
-    <Compile Include="Implementations\GetGroupResult.cs" />
-    <Compile Include="Implementations\JsonSerializer.cs" />
-    <Compile Include="Implementations\PasswordGenerator.cs" />
-    <Compile Include="Implementations\SecureStringBinarySerializer.cs" />
-    <Compile Include="Implementations\DefaultVaultFactory.cs" />
-    <Compile Include="Implementations\TimespanFormater.cs" />
-    <Compile Include="Implementations\VaultFileRepository.cs" />
-    <Compile Include="Implementations\VaultFileBackupRepositoryDecorator.cs" />
-    <Compile Include="Implementations\VaultManipulator.cs" />
-    <Compile Include="Implementations\VaultManipulatorFactory.cs" />
-    <Compile Include="Implementations\VaultFileMetadataHandler.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Implementations\SecureStringConverter.cs" />
+    <ProjectReference Include="..\Erebus.Model\Erebus.Model.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Erebus.Model\Erebus.Model.csproj">
-      <Project>{1f634efc-0bb7-4059-8924-d4d718410b53}</Project>
-      <Name>Erebus.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

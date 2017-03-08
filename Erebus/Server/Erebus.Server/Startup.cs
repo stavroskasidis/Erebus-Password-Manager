@@ -21,7 +21,7 @@ using Erebus.Core.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
-using Erebus.Resource;
+using Erebus.Localization;
 
 namespace Erebus.Server
 {

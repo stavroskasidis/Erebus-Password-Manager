@@ -1,7 +1,7 @@
 ﻿using Erebus.Core.Contracts;
 using Erebus.Core.Server.Contracts;
 using Erebus.Model;
-using Erebus.Resource;
+using Erebus.Localization;
 using Erebus.Server.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
