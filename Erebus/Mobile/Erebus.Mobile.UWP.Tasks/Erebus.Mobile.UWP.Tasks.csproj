@@ -116,9 +116,9 @@
       <Project>{f264701b-f523-4c62-94dd-a0e6cb27127f}</Project>
       <Name>Erebus.Mobile.UWP.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Erebus.Core.Mobile\Erebus.Core.Mobile.csproj">
-      <Project>{7a0e80c1-c0e2-4f3f-b378-228a12bc23dd}</Project>
-      <Name>Erebus.Core.Mobile</Name>
+    <ProjectReference Include="..\Erebus.Mobile\Erebus.Mobile.csproj">
+      <Project>{d246c12d-3f6b-4468-acbb-4863146cc17c}</Project>
+      <Name>Erebus.Mobile</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

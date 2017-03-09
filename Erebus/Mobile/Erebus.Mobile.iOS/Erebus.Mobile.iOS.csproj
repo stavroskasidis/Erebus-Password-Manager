@@ -125,17 +125,13 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Erebus.Core.Mobile\Erebus.Core.Mobile.csproj">
-      <Project>{7A0E80C1-C0E2-4F3F-B378-228A12BC23DD}</Project>
-      <Name>Erebus.Core.Mobile</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Erebus.Mobile\Erebus.Mobile.csproj">
-      <Project>{b78f2f30-680d-4968-a655-baa42040487e}</Project>
-      <Name>Erebus.Mobile</Name>
-    </ProjectReference>
+    <BundleResource Include="Resources\menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\menu.png" />
+    <ProjectReference Include="..\Erebus.Mobile\Erebus.Mobile.csproj">
+      <Project>{d246c12d-3f6b-4468-acbb-4863146cc17c}</Project>
+      <Name>Erebus.Mobile</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
