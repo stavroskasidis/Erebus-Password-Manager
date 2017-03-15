@@ -14,6 +14,8 @@ namespace Erebus.Core.Implementations
 
         public string ToString(SecureString secureString)
         {
+            GuardClauses.ArgumentIsNotNull(nameof(secureString), secureString);
+
             IntPtr marshaledSecureString = SecureStringMarshal.SecureStringToGlobalAllocUnicode(secureString);
             string actualString = Marshal.PtrToStringUni(marshaledSecureString);
             Marshal.FreeHGlobal(marshaledSecureString);
@@ -22,6 +24,8 @@ namespace Erebus.Core.Implementations
 
         public SecureString ToSecureString(string actualString)
         {
+            GuardClauses.ArgumentIsNotNull(nameof(actualString), actualString);
+
             SecureString secureString = new SecureString();
             foreach(char c in actualString)
             {
