@@ -24,7 +24,7 @@ namespace Erebus.Mobile
 
         public App(ContainerFactory containerFactory)
         {
-            InitializeComponent();
+            //InitializeComponent();
             containerFactory.AddRegistrations(builder =>
             {
                 builder.Register<Application>(x => Application.Current);

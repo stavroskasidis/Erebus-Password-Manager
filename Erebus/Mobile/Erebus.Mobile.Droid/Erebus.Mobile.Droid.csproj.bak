@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -95,21 +95,13 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Erebus.Core\Erebus.Core.csproj">
-      <Project>{CC2528B8-2964-4145-BF72-1E1A591C1CC0}</Project>
-      <Name>Erebus.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Erebus.Core.Mobile\Erebus.Core.Mobile.csproj">
-      <Project>{7a0e80c1-c0e2-4f3f-b378-228a12bc23dd}</Project>
-      <Name>Erebus.Core.Mobile</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Erebus.Mobile\Erebus.Mobile.csproj">
-      <Project>{b78f2f30-680d-4968-a655-baa42040487e}</Project>
-      <Name>Erebus.Mobile</Name>
-    </ProjectReference>
+    <AndroidResource Include="Resources\drawable\menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\menu.png" />
+    <ProjectReference Include="..\Erebus.Mobile\Erebus.Mobile.csproj">
+      <Project>{d246c12d-3f6b-4468-acbb-4863146cc17c}</Project>
+      <Name>Erebus.Mobile</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.3.0" />
-    <PackageReference Include="Xamarin.Forms" Version="2.3.4.212-pre4" />
+    <PackageReference Include="Xamarin.Forms" Version="2.3.5.233-pre1" />
     <PackageReference Include="Xamarin.Plugins.Clipboard" Version="1.0.2" />
   </ItemGroup>
 

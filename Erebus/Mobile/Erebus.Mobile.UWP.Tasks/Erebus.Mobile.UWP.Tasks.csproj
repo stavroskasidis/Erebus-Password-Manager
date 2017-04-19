@@ -11,7 +11,7 @@
     <AssemblyName>Erebus.Mobile.UWP.Tasks</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -112,6 +112,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Erebus.Core\Erebus.Core.csproj">
+      <Project>{33d7a3c4-7bdb-4f7e-bda1-933ee7dccd0d}</Project>
+      <Name>Erebus.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Erebus.Core.Mobile\Erebus.Core.Mobile.csproj">
+      <Project>{c1725523-96b5-4588-a08b-10abdd71b2f5}</Project>
+      <Name>Erebus.Core.Mobile</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Erebus.Mobile.UWP.Common\Erebus.Mobile.UWP.Common.csproj">
       <Project>{f264701b-f523-4c62-94dd-a0e6cb27127f}</Project>
       <Name>Erebus.Mobile.UWP.Common</Name>
