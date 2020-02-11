@@ -1,4 +1,7 @@
 # Erebus-Password-Manager
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/stavroskasidis/Erebus-Password-Manager.svg)](https://greenkeeper.io/)
+
 An open source, password manager for personal use.
 
 # Features:
