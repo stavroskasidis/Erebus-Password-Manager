@@ -1,0 +1,9 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "Erebus/Server/Erebus.Server/package.json"
+      ]
+    }
+  }
+}
