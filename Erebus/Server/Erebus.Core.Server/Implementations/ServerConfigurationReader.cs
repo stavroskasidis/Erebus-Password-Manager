@@ -9,9 +9,9 @@ namespace Erebus.Core.Server.Implementations
 {
     public class ServerConfigurationReader : IServerConfigurationReader
     {
-        private readonly IConfigurationRoot ConfigurationRoot;
+        private readonly IConfiguration ConfigurationRoot;
 
-        public ServerConfigurationReader(IConfigurationRoot configurationRoot)
+        public ServerConfigurationReader(IConfiguration configurationRoot)
         {
             this.ConfigurationRoot = configurationRoot;
         }
